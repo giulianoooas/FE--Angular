@@ -7,7 +7,7 @@ import { Car } from '../models/car.model';
   providedIn: 'root'
 })
 export class CarService {
-  private baseUrl = 'http:localhost:3000/';
+  private baseUrl = 'http://localhost:3000/';
 
   public constructor(private http: HttpClient) { }
 
