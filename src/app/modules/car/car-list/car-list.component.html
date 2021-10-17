@@ -1,1 +1,7 @@
-<p>car-list works!</p>
+
+<div class="title">
+  <span class="title--centred">List of all cars</span>
+</div>
+<div *ngFor="let car of cars">
+  <app-car [car]="car"></app-car>
+</div>
