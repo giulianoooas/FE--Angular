@@ -11,8 +11,8 @@ export class CarService {
 
   public constructor(private http: HttpClient) { }
 
-  public getCarById(carId: number): Observable<Car>{
-    return this.http.get<Car>(`${this.baseUrl}cars/${carId}`);
+  public getCarById(carId: number): Observable<Car | undefined>{
+    return this.http.get<Car | undefined>(`${this.baseUrl}cars/${carId}`);
   }
 
   public getCars(): Observable<Car[]>{

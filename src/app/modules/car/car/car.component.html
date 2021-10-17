@@ -10,7 +10,10 @@
       {{description || ''}}
     </span>
     <span class="car__description--price">
-      Price: {{price}}
+      Price: {{price}} <mat-icon>euro</mat-icon>
     </span>
+    <div>
+      <button mat-button (click)="visitPage()">visit</button>
+    </div>
   </div>
 </div>
