@@ -1,7 +1,8 @@
-
-<div class="title">
-  <span class="title--centred">List of all cars</span>
-</div>
-<div *ngFor="let car of cars">
-  <app-car [car]="car"></app-car>
+<div class="cars">
+  <div class="title">
+    <span class="title--centred">List of all cars</span>
+  </div>
+  <div *ngFor="let car of cars" class= "car">
+    <app-car [car]="car"></app-car>
+  </div>
 </div>

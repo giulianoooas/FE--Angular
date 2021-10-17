@@ -6,11 +6,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { CarListComponent } from './car-list/car-list.component';
+import { CarDetailsComponent } from './car-details/car-details.component';
 
 
 
 @NgModule({
-  declarations: [CarComponent, CarListComponent],
+  declarations: [CarComponent, CarListComponent, CarDetailsComponent],
   imports: [
     CommonModule, RouterModule, HttpClientModule, MatIconModule, MatButtonModule
   ]

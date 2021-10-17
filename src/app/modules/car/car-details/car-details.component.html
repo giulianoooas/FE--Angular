@@ -1,0 +1,25 @@
+<ng-container *ngIf="!!car">
+  <div class="car-destails">
+    <div class="car-details__title">
+      {{car.name}}
+    </div>
+    <div class="car-details__content">
+      <div class="car-details__content__image">
+        <div class="car-details__content__image--image">
+          <img [src]="car.imageUrl"/>
+        </div>
+        <div class="car-details__content__image--back">
+          <button (click)="goCarsDashboard()" mat-button>See all cars</button>
+        </div>
+      </div>
+      <div class="car-details__content__details">
+        <span class="car-details__content__details--description">
+          Description: {{car.description}}
+        </span>
+        <span class="car-details__content__details--price">
+           Price: {{car.price}} <mat-icon>euro</mat-icon>
+        </span>
+      </div>
+    </div>
+  </div>
+</ng-container>

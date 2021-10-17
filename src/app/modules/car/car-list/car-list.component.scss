@@ -1,8 +1,15 @@
 .title{
-  text-align: center;
   font-size: 23px;
+}
 
-  &--centred{
-    padding-right:2em;
+.cars{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+
+  .car{
+    padding-left: 20%;
   }
 }

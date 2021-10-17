@@ -4,5 +4,4 @@ export interface Car{
     imageUrl: string;
     price: number;
     description: string;
-    comments?:Comment[];
 }
