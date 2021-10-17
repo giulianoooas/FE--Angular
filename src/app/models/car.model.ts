@@ -1,5 +1,5 @@
 export interface Car{
-    carId: string;
+    carId: number;
     name: string;
     imageUrl: string;
     price: number;

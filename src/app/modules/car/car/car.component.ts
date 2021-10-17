@@ -13,14 +13,14 @@ export class CarComponent implements OnInit, OnDestroy {
   public imageSrc: string;
   public description: string;
   public price: number;
-  public carId: string;
+  public carId: number;
 
   public constructor(
     private carService: CarService,
     private route: ActivatedRoute) {}
 
   public ngOnInit(): void {
-    this.carId = this.route.snapshot.paramMap.get('carId') || '';
+    this.carId = Number(this.route.snapshot.paramMap.get('carId'));
     this.setCar();
   }
 
@@ -30,7 +30,6 @@ export class CarComponent implements OnInit, OnDestroy {
       this.description= car.description;
       this.price = car.price;
       this.imageSrc = car.imageUrl;
-      console.log(car);
     });
   }
 

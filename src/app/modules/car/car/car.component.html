@@ -1,1 +1,16 @@
-<p>car works!</p>
+<div class="car">
+  <div class="car__image">
+    <img [src]="imageSrc" alt="Car image"/>
+  </div>
+  <div class="car__description">
+    <span class="car__description--name">
+      {{name}}
+    </span>
+    <span class="car__description--description">
+      {{description || ''}}
+    </span>
+    <span class="car__description--price">
+      Price: {{price}}
+    </span>
+  </div>
+</div>
