@@ -12,6 +12,15 @@
     padding: 2em;
   }
 
+  &__comments{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    padding-top: 2em;
+  }
+
   &__content{
     display:flex;
     flex-direction: row;

@@ -7,11 +7,13 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import { CarListComponent } from './car-list/car-list.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
+import { CommentComponent } from './car-details/components/comment/comment.component';
+import { CommentsListComponent } from './car-details/components/comments-list/comments-list.component';
 
 
 
 @NgModule({
-  declarations: [CarComponent, CarListComponent, CarDetailsComponent],
+  declarations: [CarComponent, CarListComponent, CarDetailsComponent, CommentComponent, CommentsListComponent],
   imports: [
     CommonModule, RouterModule, HttpClientModule, MatIconModule, MatButtonModule
   ]
