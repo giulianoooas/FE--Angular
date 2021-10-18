@@ -1,3 +1,6 @@
 <div class="navbar">
-
+  <div *ngFor="let navbarElement of navbarElements">
+    <app-navbar-element [navbarElement]="navbarElement">
+    </app-navbar-element>
+  </div>
 </div>
