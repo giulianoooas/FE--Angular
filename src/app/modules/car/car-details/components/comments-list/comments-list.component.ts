@@ -21,10 +21,28 @@ export class CommentsListComponent implements OnInit {
   }
 
   public deleteComment(commentId: number): void{
-    this.commentService.deleteComment(commentId).subscribe();
-    this.comments = this.comments.filter((comment) => {
-      comment.commentId != commentId
-    })
+    this.commentService.deleteComment(commentId).subscribe((flag: boolean) =>{
+      if (flag){
+          const com = [];
+          for (const comment of this.comments){
+            if (comment.commentId != commentId){
+              com.push(comment);
+            }
+          }
+          this.comments = com;
+        }
+      });
+
   }
 
+  public createComment(comment: Comment): void{
+    this.commentService.createComment(comment).subscribe(
+      (res) => {
+        if (res.id > 0){
+          comment.commentId = res.id;
+          this.comments.push(comment);
+        }
+      }
+    );
+  }
 }

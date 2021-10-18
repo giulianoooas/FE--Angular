@@ -15,11 +15,11 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.baseUrl}cars/${carId}/comments`);
   }
 
-  public addComment(comment: {carId: string, message: string, date: string}): Observable<void>{
-    return this.http.post<void>(`${this.baseUrl}comments`,comment);
+  public createComment(comment:Comment): Observable<{id:number}>{
+    return this.http.post<{id:number}>(`${this.baseUrl}comments`,comment);
   }
 
-  public deleteComment(commentId: number): Observable<void>{
-    return this.http.delete<void>(`${this.baseUrl}comments/${commentId}`);
+  public deleteComment(commentId: number): Observable<boolean>{
+    return this.http.delete<boolean>(`${this.baseUrl}comments/${commentId}`);
   }
 }

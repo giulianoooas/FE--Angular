@@ -1,1 +1,4 @@
-<p>comment-create works!</p>
+<form [formGroup]="formGroup" (ngSubmit)="createComment()">
+  <input matInput type="text" placeholder="comment" formControlName="message">
+  <button mat-button class="button">create</button>
+</form>

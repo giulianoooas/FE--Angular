@@ -1,4 +1,10 @@
-<div *ngIf="comments.length != 0" class="comments-list">
+<div class="comments-list">
+  <div>
+    <app-comment-create
+    (save)="createComment($event)"
+    [carId]="carId"
+    ></app-comment-create>
+  </div>
   <div *ngFor="let comment of comments">
     <app-comment
       (deleteComment)="deleteComment($event)"
