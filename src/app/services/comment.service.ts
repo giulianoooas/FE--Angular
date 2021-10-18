@@ -14,4 +14,12 @@ export class CommentService {
   public getCommentsByCarId(carId: number): Observable<Comment[]>{
     return this.http.get<Comment[]>(`${this.baseUrl}cars/${carId}/comments`);
   }
+
+  public addComment(comment: {carId: string, message: string, date: string}): Observable<void>{
+    return this.http.post<void>(`${this.baseUrl}comments`,comment);
+  }
+
+  public deleteComment(commentId: number): Observable<void>{
+    return this.http.delete<void>(`${this.baseUrl}comments/${commentId}`);
+  }
 }

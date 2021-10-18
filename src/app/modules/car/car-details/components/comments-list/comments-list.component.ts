@@ -20,4 +20,11 @@ export class CommentsListComponent implements OnInit {
     })
   }
 
+  public deleteComment(commentId: number): void{
+    this.commentService.deleteComment(commentId).subscribe();
+    this.comments = this.comments.filter((comment) => {
+      comment.commentId != commentId
+    })
+  }
+
 }

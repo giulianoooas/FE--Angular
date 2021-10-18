@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 import { CommentComponent } from './comment.component';
 
@@ -8,6 +10,7 @@ describe('CommentComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
+      imports:[MatButtonModule,MatIconModule],
       declarations: [ CommentComponent ]
     })
     .compileComponents();

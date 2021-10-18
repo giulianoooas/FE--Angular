@@ -1,4 +1,11 @@
 <div class="comment">
   <span class="comment__message">{{message}}</span>
   <span class="comment__date">{{date}}</span>
+  <div>
+    <button mat-button class="button"
+      (click)="delete()"
+    >
+      Delete <mat-icon>delete</mat-icon>
+    </button>
+  </div>
 </div>

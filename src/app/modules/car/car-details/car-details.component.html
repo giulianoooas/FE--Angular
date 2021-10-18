@@ -10,6 +10,9 @@
         </div>
         <div class="car-details__content__image--back">
           <button (click)="goCarsDashboard()" mat-button>See all cars</button>
+          <button mat-button (click)="showHideComments()">
+            {{messagesShowCommentsButton[optionShowComments]}} comments
+          </button>
         </div>
       </div>
       <div class="car-details__content__details">
@@ -22,7 +25,7 @@
       </div>
     </div>
     <div class="car-details__comments">
-      <app-comments-list [carId]="carId">
+      <app-comments-list [carId]="carId" *ngIf="isShowComments">
       </app-comments-list>
     </div>
   </div>

@@ -1,6 +1,7 @@
 <div *ngIf="comments.length != 0" class="comments-list">
   <div *ngFor="let comment of comments">
     <app-comment
+      (deleteComment)="deleteComment($event)"
       [comment]="comment"
     ></app-comment>
   </div>

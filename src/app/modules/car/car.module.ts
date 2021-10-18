@@ -9,11 +9,12 @@ import { CarListComponent } from './car-list/car-list.component';
 import { CarDetailsComponent } from './car-details/car-details.component';
 import { CommentComponent } from './car-details/components/comment/comment.component';
 import { CommentsListComponent } from './car-details/components/comments-list/comments-list.component';
+import { CommentCreateComponent } from './car-details/components/comment-create/comment-create.component';
 
 
 
 @NgModule({
-  declarations: [CarComponent, CarListComponent, CarDetailsComponent, CommentComponent, CommentsListComponent],
+  declarations: [CarComponent, CarListComponent, CarDetailsComponent, CommentComponent, CommentsListComponent, CommentCreateComponent],
   imports: [
     CommonModule, RouterModule, HttpClientModule, MatIconModule, MatButtonModule
   ]
