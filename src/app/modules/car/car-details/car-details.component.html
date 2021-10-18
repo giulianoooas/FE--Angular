@@ -1,8 +1,5 @@
 <ng-container *ngIf="!!car">
   <div class="car-destails">
-    <div class="car-details__title">
-      {{car.name}}
-    </div>
     <div class="car-details__content">
       <div class="car-details__content__image">
         <div class="car-details__content__image--image">
@@ -16,6 +13,9 @@
         </div>
       </div>
       <div class="car-details__content__details">
+        <span class="car-details__content__details--name">
+          Name: {{car.name}}
+        </span>
         <span class="car-details__content__details--description">
           Description: {{car.description}}
         </span>

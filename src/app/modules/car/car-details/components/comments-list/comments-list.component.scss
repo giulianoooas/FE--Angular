@@ -1,0 +1,21 @@
+.comments-list{
+  border: 1px solid black;
+  border-radius: 8px;
+  width: 70em;
+  max-height: 25em;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  &__header{
+    background-color: #E0E0E0;
+    border-radius: 8px;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__comments{
+    padding: 1em;
+  }
+}

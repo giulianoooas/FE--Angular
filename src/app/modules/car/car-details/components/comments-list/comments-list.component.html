@@ -1,11 +1,11 @@
 <div class="comments-list">
-  <div>
+  <div class="comments-list__header">
     <app-comment-create
     (save)="createComment($event)"
     [carId]="carId"
     ></app-comment-create>
   </div>
-  <div *ngFor="let comment of comments">
+  <div *ngFor="let comment of comments" class="comments-list__comments">
     <app-comment
       (deleteComment)="deleteComment($event)"
       [comment]="comment"
