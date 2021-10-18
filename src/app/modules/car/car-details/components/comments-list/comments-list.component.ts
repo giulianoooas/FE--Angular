@@ -37,11 +37,8 @@ export class CommentsListComponent implements OnInit {
 
   public createComment(comment: Comment): void{
     this.commentService.createComment(comment).subscribe(
-      (res) => {
-        if (res.id > 0){
-          comment.commentId = res.id;
-          this.comments.push(comment);
-        }
+      (com) => {
+        this.comments.push(com);
       }
     );
   }

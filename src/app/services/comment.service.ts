@@ -15,8 +15,8 @@ export class CommentService {
     return this.http.get<Comment[]>(`${this.baseUrl}cars/${carId}/comments`);
   }
 
-  public createComment(comment:Comment): Observable<{id:number}>{
-    return this.http.post<{id:number}>(`${this.baseUrl}comments`,comment);
+  public createComment(comment:Comment): Observable<Comment>{
+    return this.http.post<Comment>(`${this.baseUrl}comments`,comment);
   }
 
   public deleteComment(commentId: number): Observable<boolean>{
