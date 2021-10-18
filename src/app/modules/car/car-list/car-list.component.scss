@@ -8,6 +8,9 @@
   justify-content: flex-start;
   align-items: center;
   width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 60em;
 
   .car{
     padding-left: 20%;

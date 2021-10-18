@@ -1,4 +1,10 @@
 <form [formGroup]="formGroup" (ngSubmit)="createComment()">
-  <input matInput type="text" placeholder="comment" formControlName="message">
-  <button mat-button class="button">create</button>
+  <input matInput type="text"
+  placeholder="comment"
+  formControlName="message"
+  class="message"
+  >
+  <button mat-button
+  type="submit"
+  class="button">create</button>
 </form>
