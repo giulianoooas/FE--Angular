@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { MAX_INPUT_CONSTANT_LENGTH } from 'src/app/constants/comment-max-length.constant';
 import { Comment } from 'src/app/models/comment.model';
 
 @Component({
@@ -15,6 +16,7 @@ export class CommentCreateComponent implements OnInit, OnDestroy {
   });
   public subscription: Subscription = new Subscription();
 
+  public maxLength = MAX_INPUT_CONSTANT_LENGTH;
   @Input()public carId: number;
   @Output()public save: EventEmitter<Comment>= new EventEmitter<Comment>();
 

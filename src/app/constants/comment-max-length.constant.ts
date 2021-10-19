@@ -1,0 +1,1 @@
+export const MAX_INPUT_CONSTANT_LENGTH = 50;

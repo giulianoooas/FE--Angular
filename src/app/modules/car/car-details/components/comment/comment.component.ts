@@ -3,6 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angu
 import { Comment } from 'src/app/models/comment.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import {Subscription } from 'rxjs';
+import { MAX_INPUT_CONSTANT_LENGTH } from 'src/app/constants/comment-max-length.constant';
 
 @Component({
   selector: 'app-comment',
@@ -18,6 +19,7 @@ export class CommentComponent implements OnInit, OnDestroy {
   public isEditable = false;
   public formGroup: FormGroup;
   public subscription: Subscription = new Subscription();
+  public maxLength = MAX_INPUT_CONSTANT_LENGTH;
 
   @Output() private deleteComment: EventEmitter<number> = new EventEmitter<number>();
   @Output() private editComment: EventEmitter<Comment>=

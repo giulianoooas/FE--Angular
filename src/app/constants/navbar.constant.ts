@@ -12,9 +12,5 @@ export const NAVBAR_CONSTANT: Navbar[] = [
   {
     label: 'Categories',
     url: '/categories'
-  },
-  {
-    label: 'Create category',
-    url: '/categories/create'
-  },
+  }
 ]
