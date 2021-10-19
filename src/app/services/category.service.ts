@@ -17,6 +17,6 @@ export class CategoryService {
   }
 
   public getAllCarOfCategory(categoryId: number): Observable<Car[]>{
-    return this.http.get<Car[]>(`${this.baseUrl}/categories/${categoryId}/cars`);
+    return this.http.get<Car[]>(`${this.baseUrl}categories/${categoryId}/cars`);
   }
 }
