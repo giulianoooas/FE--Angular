@@ -12,6 +12,17 @@
     padding-left: 1em;
     font-size: 18px;
     width:60%;
+
+    .input{
+      font-size: 18px;
+      border: 0;
+      width:100%;
+      background-color: #E6E6E6;
+    }
+
+    .input:active, :focus{
+      outline: 0;
+    }
   }
 
   &__action{

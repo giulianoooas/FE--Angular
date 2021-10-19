@@ -42,4 +42,16 @@ export class CommentsListComponent implements OnInit {
       }
     );
   }
+
+  public editComment(comment: Comment): void{
+    this.commentService.editComment(comment).subscribe((comment:Comment) => {
+      for (const com of this.comments){
+        if (com.commentId == comment.commentId){
+          com.date = new Date(comment.date);
+          com.message = comment.message;
+          break;
+        }
+      }
+    })
+  }
 }

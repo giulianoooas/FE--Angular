@@ -5,8 +5,9 @@
     [carId]="carId"
     ></app-comment-create>
   </div>
-  <div *ngFor="let comment of comments" class="comments-list__comments">
+  <div *ngFor="let comment of comments; let i= index" class="comments-list__comments">
     <app-comment
+      (editComment)="editComment($event)"
       (deleteComment)="deleteComment($event)"
       [comment]="comment"
     ></app-comment>

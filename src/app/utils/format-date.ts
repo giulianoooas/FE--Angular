@@ -4,8 +4,8 @@ export const formatDate = (date: Date): string => {
     const months = String(date.getMonth());
     const day = String(date.getDate());
     const minutes = String(date.getMinutes());
-    const seconds =  String(date.getSeconds());
-    return `${convertTimeCorrectFormat(day)}.${convertTimeCorrectFormat(months)}.${convertTimeCorrectFormat(year)} ${convertTimeCorrectFormat(minutes)}:${convertTimeCorrectFormat(seconds)}`;
+    const hours =  String(date.getHours());
+    return `${convertTimeCorrectFormat(day)}.${convertTimeCorrectFormat(months)}.${convertTimeCorrectFormat(year)} ${convertTimeCorrectFormat(hours)}:${convertTimeCorrectFormat(minutes)}`;
   } catch(error){
     return '';
   }

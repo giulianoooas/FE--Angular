@@ -20,6 +20,10 @@ export class CommentService {
   }
 
   public deleteComment(commentId: number): Observable<boolean>{
-    return this.http.delete<boolean>(`${this.baseUrl}comments/${commentId}`);
+    return this.http.delete<boolean>(`${this.baseUrl}comments/${commentId}/delete`);
+  }
+
+  public editComment(comment: Comment): Observable<Comment>{
+    return this.http.put<Comment>(`${this.baseUrl}comments/${comment.commentId}/edit`,comment);
   }
 }
