@@ -18,6 +18,7 @@ import {MatInputModule} from '@angular/material/input';
   declarations: [CarComponent, CarListComponent, CarDetailsComponent, CommentComponent, CommentsListComponent, CommentCreateComponent],
   imports: [
     CommonModule, RouterModule, HttpClientModule, MatIconModule, MatButtonModule, ReactiveFormsModule, FormsModule, MatInputModule
-  ]
+  ],
+  exports: [CarComponent]
 })
 export class CarModule { }

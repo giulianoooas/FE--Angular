@@ -1,1 +1,23 @@
-<p>category-element works!</p>
+<div class="category-element">
+  <div class="category-element__details">
+    <div class="category-element__details__name">
+      {{category.name}}
+    </div>
+    <div class="category-element__details__button">
+      <button class="button">
+        Show cars <mat-icon>eye</mat-icon>
+      </button>
+    </div>
+  </div>
+  <div class="category-element__cars">
+    <ng-container *ngIf="showCars">
+      <div class="car"
+        *ngFor="let car of cars"
+      >
+        <app-car
+          [car]="car"
+        ></app-car>
+      </div>
+    </ng-container>
+  </div>
+</div>

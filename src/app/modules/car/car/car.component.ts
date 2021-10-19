@@ -17,16 +17,14 @@ export class CarComponent implements OnInit, OnDestroy {
   @Input() public car: Car;
 
   public constructor(
-    private carService: CarService,
-    private route: ActivatedRoute,
     private router:Router) {}
 
   public ngOnInit(): void {
-    this.carId = Number(this.route.snapshot.paramMap.get('carId'));
     this.setCar();
   }
 
   private setCar(): void {
+    this.carId = this.car.carId;
     this.name = this.car.name;
     this.description= this.car.description;
     this.price = this.car.price;
