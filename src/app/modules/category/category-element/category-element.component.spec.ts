@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CarModule } from '../../car/car.module';
@@ -12,7 +13,7 @@ describe('CategoryElementComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports:[HttpClientModule, MatIconModule, MatButtonModule, CarModule],
+      imports:[HttpClientModule, MatIconModule, MatButtonModule, CarModule, ReactiveFormsModule],
       declarations: [ CategoryElementComponent ]
     })
     .compileComponents();

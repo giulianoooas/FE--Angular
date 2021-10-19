@@ -6,6 +6,7 @@ import { CarModule } from '../car/car.module';
 import { CategoryElementComponent } from './category-element/category-element.component'
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryListComponent } from './category-list/category-list.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { CategoryListComponent } from './category-list/category-list.component';
     MatIconModule,
     MatButtonModule,
     CarModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ]})
 export class CategoryModule { }

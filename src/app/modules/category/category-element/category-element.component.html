@@ -3,26 +3,55 @@
 >
   <div class="category-element__details">
     <div class="category-element__details__name">
-      {{category.name}}
+      Category: <span *ngIf="!isEditable">
+        {{category.name}}
+        </span>
+        <form *ngIf="isEditable"
+          [formGroup]="formGroup"
+        >
+          <input
+            class="input"
+            formControlName="name"
+            [value]="category.name"
+            type="text"
+          />
+        </form>
     </div>
-    <div class="category-element__details__button">
+    <div class="category-element__details__buttons">
+      <ng-container *ngIf="isEditable">
+        <button class="button"
+          mat-button
+          (click)="editCategory()"
+      >
+        Save <mat-icon>save</mat-icon>
+      </button>
       <button class="button"
         mat-button
-        (click)="getCars()"
+        (click)="makeUnEditable()"
+      >
+        Undo <mat-icon>navigate_before</mat-icon>
+      </button>
+      </ng-container>
+      <ng-container *ngIf="!isEditable">
+        <button class="button"
+        mat-button
+        (click)="requestToShowCars()"
       >
         Show cars <mat-icon>visibility</mat-icon>
       </button>
-    </div>
-  </div>
-  <div class="category-element__cars">
-    <ng-container *ngIf="showCars">
-      <div class="car"
-        *ngFor="let car of cars"
+      <button class="button"
+        mat-button
+        (click)="makeEditable()"
       >
-        <app-car
-          [car]="car"
-        ></app-car>
-      </div>
-    </ng-container>
+        Edit <mat-icon>edit</mat-icon>
+      </button>
+      <button class="button"
+        mat-button
+        (click)="deleteCategory()"
+      >
+        Delete <mat-icon>delete</mat-icon>
+      </button>
+      </ng-container>
+    </div>
   </div>
 </div>

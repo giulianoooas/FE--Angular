@@ -1,4 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { Car } from 'src/app/models/car.model';
 import { Category } from 'src/app/models/category.model';
 import { CategoryService } from 'src/app/services/category.service';
@@ -8,17 +10,61 @@ import { CategoryService } from 'src/app/services/category.service';
   templateUrl: './category-element.component.html',
   styleUrls: ['./category-element.component.scss']
 })
-export class CategoryElementComponent  {
+export class CategoryElementComponent implements OnInit, OnDestroy {
   @Input() public category: Category;
-  public cars: Car[] = [];
-  public showCars = false;
+  @Input() public showCars = false;
+  @Output() public showCarsEvent: EventEmitter<number>=
+    new EventEmitter<number>();
+  @Output() public deleteCategoryEvent: EventEmitter<number>=
+    new EventEmitter<number>();
+  @Output() public editCategoryEvent: EventEmitter<Category>=
+    new EventEmitter<Category>();
 
-  public constructor(private categoryService: CategoryService){}
+  public isEditable = false;
+  public formGroup: FormGroup;
+  public editedCategory: Category;
+  public subscription: Subscription= new Subscription();
 
-  public getCars(): void{
-    this.showCars = true;
-    this.categoryService.getAllCarOfCategory(this.category.categoryId).subscribe((cars) => {
-      this.cars = cars;
-    })
+  public ngOnInit(): void{
+    this.editedCategory = {...this.category};
+    this.formGroup =new FormGroup({
+      name: new FormControl(this.category.name)
+    });
+    this.subscription.add(
+      this.formGroup.valueChanges.subscribe((category)=> {
+        if (!!category.name){
+          this.editedCategory.name = category.name;
+        }
+      })
+    );
+  }
+
+  public requestToShowCars(): void{
+    this.showCarsEvent.emit(this.category.categoryId);
+  }
+
+  public makeEditable(): void{
+    this.isEditable = true;
+  }
+
+  public makeUnEditable(): void{
+    this.editedCategory.name = this.category.name;
+    this.formGroup.controls['name'].setValue(this.category.name);
+    this.isEditable = false;
+  }
+
+  public deleteCategory(): void{
+    this.showCarsEvent.emit(-1);
+    this.deleteCategoryEvent.emit(this.category.categoryId);
+  }
+
+  public editCategory(): void{
+    this.editCategoryEvent.emit(this.editedCategory);
+    this.category.name = this.editedCategory.name;
+    this.makeUnEditable();
+  }
+
+  public ngOnDestroy(): void{
+    this.subscription.unsubscribe();
   }
 }

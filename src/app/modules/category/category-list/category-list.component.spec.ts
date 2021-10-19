@@ -1,5 +1,6 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 
@@ -11,7 +12,7 @@ describe('CategoryListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule, MatIconModule, MatButton],
+      imports: [HttpClientModule, MatIconModule, MatButton, ReactiveFormsModule],
       declarations: [ CategoryListComponent ]
     })
     .compileComponents();

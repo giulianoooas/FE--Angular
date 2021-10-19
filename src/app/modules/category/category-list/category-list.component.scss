@@ -1,0 +1,14 @@
+.category-list{
+  width:100%;
+  height:50em;
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  .category{
+    margin:1em;
+  }
+
+  .cars{
+    padding-left: 20em;
+  }
+}

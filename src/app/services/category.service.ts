@@ -19,4 +19,12 @@ export class CategoryService {
   public getAllCarOfCategory(categoryId: number): Observable<Car[]>{
     return this.http.get<Car[]>(`${this.baseUrl}categories/${categoryId}/cars`);
   }
+
+  public deleteCategory(categoryId: number): Observable<Category[]>{
+    return this.http.delete<Category[]>(`${this.baseUrl}categories/${categoryId}/delete`);
+  }
+
+  public editCategory(category: Category): Observable<Category>{
+    return this.http.put<Category>(`${this.baseUrl}categories/${category.categoryId}/edit`,category);
+  }
 }
