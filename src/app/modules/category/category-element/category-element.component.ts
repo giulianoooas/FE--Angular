@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Category } from 'src/app/models/category.model';
 
 @Component({
   selector: 'app-category-element',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category-element.component.scss']
 })
 export class CategoryElementComponent implements OnInit {
+  @Input() public category: Category;
 
   public constructor() { }
 

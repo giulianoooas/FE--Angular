@@ -4,4 +4,5 @@ export interface Car{
     imageUrl: string;
     price: number;
     description: string;
+    categoryId?: string;
 }
