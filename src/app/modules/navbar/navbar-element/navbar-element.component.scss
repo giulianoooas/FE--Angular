@@ -3,7 +3,11 @@
   color:whitesmoke;
   font-size: 20px;
   font-weight: 400;
-  padding-left: 2em;
+  margin-left: 2em;
   text-align: center;
-  width: 5em;
+
+  &__label{
+    display: flex;
+    justify-content: center;
+  }
 }
