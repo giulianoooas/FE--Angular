@@ -1,9 +1,8 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { Car } from 'src/app/models/car.model';
+import { MAX_INPUT_CONSTANT_LENGTH_CATEGORIES } from 'src/app/constants/comment-max-length.constant';
 import { Category } from 'src/app/models/category.model';
-import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-category-element',
@@ -20,6 +19,7 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
   @Output() public editCategoryEvent: EventEmitter<Category>=
     new EventEmitter<Category>();
 
+  public maxLength = MAX_INPUT_CONSTANT_LENGTH_CATEGORIES;
   public isEditable = false;
   public formGroup: FormGroup;
   public editedCategory: Category;

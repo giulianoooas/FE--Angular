@@ -20,6 +20,15 @@
     &__name{
       font-size: 20px;
       font-weight: 400;
+
+      .input{
+        font-size: 20px;
+        border: 0;
+      }
+
+      .input:focus{
+        outline: 0;
+      }
     }
 
     &__buttons{

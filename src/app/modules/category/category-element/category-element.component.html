@@ -3,7 +3,7 @@
 >
   <div class="category-element__details">
     <div class="category-element__details__name">
-      Category: <span *ngIf="!isEditable">
+     <span *ngIf="!isEditable">
         {{category.name}}
         </span>
         <form *ngIf="isEditable"
@@ -14,6 +14,7 @@
             formControlName="name"
             [value]="category.name"
             type="text"
+            [maxlength]="maxLength"
           />
         </form>
     </div>
