@@ -27,4 +27,8 @@ export class CategoryService {
   public editCategory(category: Category): Observable<Category>{
     return this.http.put<Category>(`${this.baseUrl}categories/${category.categoryId}/edit`,category);
   }
+
+  public createCategory(category: Category): Observable<Category>{
+    return this.http.post<Category>(`${this.baseUrl}categories`,category);
+  }
 }

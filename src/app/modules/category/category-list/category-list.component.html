@@ -1,4 +1,7 @@
 <div class="category-list">
+  <app-category-create
+    (createCategoryEvent)="createCategory($event)"
+  ></app-category-create>
   <div *ngFor="let category of categories">
     <app-category-element
       class="category"

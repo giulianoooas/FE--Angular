@@ -7,12 +7,14 @@ import { CategoryElementComponent } from './category-element/category-element.co
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { CategoryCreateComponent } from './category-create/category-create.component';
 
 
 @NgModule({
   declarations: [
     CategoryListComponent,
-    CategoryElementComponent
+    CategoryElementComponent,
+    CategoryCreateComponent
   ],
   imports: [
     CommonModule,

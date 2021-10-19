@@ -1,14 +1,13 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import {  Router } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
-import { CarService } from 'src/app/services/car.service';
 
 @Component({
   selector: 'app-car',
   templateUrl: './car.component.html',
   styleUrls: ['./car.component.scss']
 })
-export class CarComponent implements OnInit, OnDestroy {
+export class CarComponent implements OnInit {
   public name: string;
   public imageSrc: string;
   public description: string;
@@ -32,11 +31,7 @@ export class CarComponent implements OnInit, OnDestroy {
   }
 
   public visitPage(): void{
-    this.router.navigate([`${this.router.url}/${this.carId}`]);
-  }
-
-  public ngOnDestroy(): void{
-
+    this.router.navigate([`cars/${this.carId}`]);
   }
 
 }

@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { MAX_INPUT_CONSTANT_LENGTH_CATEGORIES } from 'src/app/constants/comment-max-length.constant';
+import { MAX_INPUT_CONSTANT_LENGTH_CATEGORIES } from 'src/app/constants/input-max-length.constant';
 import { Category } from 'src/app/models/category.model';
 
 @Component({
@@ -59,6 +59,8 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
   }
 
   public editCategory(): void{
+    if (this.editedCategory.name === '')
+      return;
     this.editCategoryEvent.emit(this.editedCategory);
     this.category.name = this.editedCategory.name;
     this.makeUnEditable();

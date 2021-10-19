@@ -1,0 +1,28 @@
+<div class="category-create">
+  <div class="category-create__clear">
+    <button mat-button
+      class="button"
+      (click)="clearText()"
+    >
+        Clear <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+  <div class="category-create__input">
+    <form [formGroup]="formGroup">
+      <input
+        class="input"
+        [maxLength]="maxLength"
+        formControlName="name"
+        type="text"
+      />
+    </form>
+  </div>
+  <div class="category-create__save">
+    <button mat-button
+      class="button"
+      (click)="createCategory()"
+    >
+        Create <mat-icon>create</mat-icon>
+    </button>
+  </div>
+</div>

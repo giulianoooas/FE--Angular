@@ -1,0 +1,23 @@
+@import "../../../styles/variables.scss";
+
+.category-create{
+  width:50em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #E0E0E0;
+  border-radius: 8px;
+  border: 1px black solid;
+  margin-left: 1em;
+
+  .input{
+    font-size: 20px;
+    width: 30em;
+    text-align: center;
+  }
+
+  .button{
+    font-size: 16px;
+  }
+}

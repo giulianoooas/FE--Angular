@@ -44,4 +44,10 @@ export class CategoryListComponent implements OnInit {
       }
     })
   }
+
+  public createCategory(category: Category): void{
+    this.categoryService.createCategory(category).subscribe((category) => {
+      this.categories.push(category);
+    })
+  }
 }
