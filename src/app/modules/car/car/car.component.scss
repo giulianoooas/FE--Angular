@@ -1,3 +1,5 @@
+@import '../../../styles/variables.scss';
+
 .car{
   background-color: white;
   border-radius: 10%;
@@ -43,7 +45,7 @@
       margin-top: 1em;
 
       button{
-        background-color: #212924;
+        background-color: $buttonColor;
         color:white;
         font-weight: 500;
         font-size:16px;
