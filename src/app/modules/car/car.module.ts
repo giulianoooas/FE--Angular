@@ -12,10 +12,12 @@ import { CommentsListComponent } from './car-details/components/comments-list/co
 import { CommentCreateComponent } from './car-details/components/comment-create/comment-create.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
+import { CarCategoryNameComponent } from './car-details/components/car-category-name/car-category-name.component';
+
 
 
 @NgModule({
-  declarations: [CarComponent, CarListComponent, CarDetailsComponent, CommentComponent, CommentsListComponent, CommentCreateComponent],
+  declarations: [CarComponent, CarListComponent, CarDetailsComponent, CommentComponent, CommentsListComponent, CommentCreateComponent, CarCategoryNameComponent],
   imports: [
     CommonModule, RouterModule, HttpClientModule, MatIconModule, MatButtonModule, ReactiveFormsModule, FormsModule, MatInputModule
   ],

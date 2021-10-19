@@ -1,0 +1,15 @@
+@import "../../../../../styles/variables.scss";
+
+.category-name{
+  margin-top: 1em;
+  width:4em;
+  background-color: $buttonColor;
+  color:aliceblue;
+  height: 4em;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 20px;
+}

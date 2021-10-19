@@ -22,6 +22,11 @@
         <span class="car-details__content__details--price">
            Price: {{car.price}} <mat-icon>euro</mat-icon>
         </span>
+        <div>
+          <app-car-category-name
+            [categoryName]="categoryName"
+          ></app-car-category-name>
+        </div>
       </div>
     </div>
     <div class="car-details__comments">

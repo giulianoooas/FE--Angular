@@ -11,13 +11,15 @@ import { CarService } from 'src/app/services/car.service';
 export class CarDetailsComponent implements OnInit {
   public car: Car;
   public carId: number;
+  public categoryName: string;
   public isShowComments = true;
   public messagesShowCommentsButton = ['Show', 'Hide'];
   public optionShowComments = 1;
 
-  public constructor(private carService: CarService,
+  public constructor(
+    private carService: CarService,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,) { }
 
   public ngOnInit(): void {
     this.setCar();
@@ -26,8 +28,10 @@ export class CarDetailsComponent implements OnInit {
   private setCar(): void{
     this.carId = Number(this.route.snapshot.paramMap.get('carId'));
     this.carService.getCarById(this.carId).subscribe((car) => {
-      if (!!car)
-      this.car = car;
+      if (!!car){
+        this.car = car.car;
+        this.categoryName = car.categoryName;
+      }
     })
   }
 
