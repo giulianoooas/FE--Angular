@@ -1,1 +1,55 @@
-<p>car-create works!</p>
+<div class="car-create">
+  <form [formGroup]="formGroup"
+    class = "form"
+  >
+      <input matInput
+        formControlName="name"
+        type="text"
+        class="input"
+        [value]="car.name"
+      >
+      <textarea
+        formControlName="description"
+        class="textarea"
+        [value]="car.description"
+      ></textarea>
+      <input
+        formControlName="price"
+        type="number"
+        class="input"
+        [value]="car.price"
+      >
+      <input matInput
+        formControlName="imageUrl"
+        type="text"
+        class="input"
+        [value]="car.imageUrl"
+      >
+      <mat-select formControlName="categoryId">
+        <ng-container *ngFor="let category of categories">
+          <mat-option
+            [value]="category.categoryId"
+          >
+          {{category.name}}
+        </mat-option>
+        </ng-container>
+      </mat-select>
+  </form>
+  <ng-container *ngIf="isEditMode">
+    <button
+      mat-button
+      (click)="editCar()">Edit</button>
+  </ng-container>
+  <ng-container *ngIf="!isEditMode">
+    <button
+      mat-button
+      (click)="createCar()">Create</button>
+  </ng-container>
+  <mat-error *ngIf="errorMessage.length != 0">
+    <ul>
+      <li *ngFor="let error of errorMessage">
+        <span>{{error}}</span>
+      </li>
+    </ul>
+  </mat-error>
+</div>

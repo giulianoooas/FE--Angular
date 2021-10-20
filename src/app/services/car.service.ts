@@ -11,8 +11,8 @@ export class CarService {
 
   public constructor(private http: HttpClient) { }
 
-  public getCarById(carId: number): Observable<{car:Car,categoryName:string} | undefined>{
-    return this.http.get<{car:Car,categoryName:string} | undefined>(`${this.baseUrl}cars/${carId}`);
+  public getCarById(carId: number): Observable<{car:Car,categoryName:string}>{
+    return this.http.get<{car:Car,categoryName:string}>(`${this.baseUrl}cars/${carId}`);
   }
 
   public getCars(): Observable<Car[]>{
@@ -29,5 +29,13 @@ export class CarService {
 
   public deleteCar(carId: number): Observable<void>{
     return this.http.delete<void>(`${this.baseUrl}cars/${carId}`)
+  }
+
+  public createCar(car:Car): Observable<Car>{
+    return this.http.post<Car>(`${this.baseUrl}cars`,car);
+  }
+
+  public editCar(car:Car): Observable<Car>{
+    return this.http.put<Car>(`${this.baseUrl}cars/${car.carId}/edit`,car);
   }
 }

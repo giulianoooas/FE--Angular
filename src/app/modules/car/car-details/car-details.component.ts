@@ -18,7 +18,7 @@ export class CarDetailsComponent implements OnInit {
   public constructor(
     private carService: CarService,
     private route: ActivatedRoute,
-    private router: Router,) { }
+    private router: Router) { }
 
   public ngOnInit(): void {
     this.setCar();
@@ -39,7 +39,12 @@ export class CarDetailsComponent implements OnInit {
   }
 
   public deleteCar(): void{
-    this.carService.deleteCar(this.carId).subscribe();
-    this.goCarsDashboard();
+    this.carService.deleteCar(this.carId).subscribe(() => {
+      this.goCarsDashboard();
+    });
+  }
+
+  public editCar(): void{
+    this.router.navigateByUrl(`cars/${this.carId}/edit`);
   }
 }

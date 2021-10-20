@@ -25,9 +25,19 @@ const routes: Routes = [
       },
       {
         path: ':carId',
-        component: CarDetailsComponent,
-        canActivate: [CarGuard]
-      }
+        canActivate: [CarGuard],
+        children:[
+          {
+            path: '',
+            component: CarDetailsComponent,
+          },
+          {
+            path: 'edit',
+            component: CarCreateComponent
+          }
+        ]
+        }
+
       ]
   },
   {
