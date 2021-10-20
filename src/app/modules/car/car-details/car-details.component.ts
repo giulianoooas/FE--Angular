@@ -12,7 +12,6 @@ export class CarDetailsComponent implements OnInit {
   public car: Car;
   public carId: number;
   public categoryName: string;
-  public isShowComments = true;
   public messagesShowCommentsButton = ['Show', 'Hide'];
   public optionShowComments = 1;
 
@@ -37,11 +36,6 @@ export class CarDetailsComponent implements OnInit {
 
   public goCarsDashboard(): void{
     this.router.navigate(['/cars']);
-  }
-
-  public showHideComments(): void{
-    this.isShowComments = !this.isShowComments;
-    this.optionShowComments = (this.optionShowComments + 1) % 2;
   }
 
 }
