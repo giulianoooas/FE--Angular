@@ -2,4 +2,39 @@
 
 .car-create{
   margin-left: 3em;
+  height: 40em;
+
+  .form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .input{
+      margin-top: 2em;
+    }
+
+    .select{
+      margin-top: 2em;
+    }
+
+    .textarea{
+      margin-top: 2em;
+    }
+
+  }
+  .buttons{
+    margin-top: 2em;
+  }
+
+  .error{
+    margin-top: 2em;
+  }
+
+  .title{
+    margin-bottom: 2em;
+    font-weight: 400;
+    font-size: 24px;
+  }
 }
+

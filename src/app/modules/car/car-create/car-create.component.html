@@ -1,4 +1,8 @@
 <div class="car-create">
+  <div class="title">
+    <ng-container *ngIf="isEditMode">Edit {{car.name}} </ng-container>
+    <ng-container *ngIf="!isEditMode">Create a car </ng-container>
+  </div>
   <form [formGroup]="formGroup"
     class = "form"
   >
@@ -7,25 +11,32 @@
         type="text"
         class="input"
         [value]="car.name"
+        placeholder="Write a name for car"
       >
       <textarea
         formControlName="description"
         class="textarea"
         [value]="car.description"
+        placeholder="Write a description"
       ></textarea>
       <input
         formControlName="price"
         type="number"
         class="input"
         [value]="car.price"
+        placeholder="Set a price"
       >
       <input matInput
         formControlName="imageUrl"
         type="text"
         class="input"
         [value]="car.imageUrl"
+        placeholder="Set an image url"
       >
-      <mat-select formControlName="categoryId">
+      <mat-select
+        formControlName="categoryId"
+        placeholder="Select a category"
+        class="select">
         <ng-container *ngFor="let category of categories">
           <mat-option
             [value]="category.categoryId"
@@ -35,17 +46,19 @@
         </ng-container>
       </mat-select>
   </form>
-  <ng-container *ngIf="isEditMode">
-    <button
-      mat-button
-      (click)="editCar()">Edit</button>
-  </ng-container>
-  <ng-container *ngIf="!isEditMode">
-    <button
-      mat-button
-      (click)="createCar()">Create</button>
-  </ng-container>
-  <mat-error *ngIf="errorMessage.length != 0">
+  <div class="buttons">
+    <ng-container *ngIf="isEditMode">
+      <button
+        mat-button
+        (click)="editCar()">Edit</button>
+    </ng-container>
+    <ng-container *ngIf="!isEditMode">
+      <button
+        mat-button
+        (click)="createCar()">Create</button>
+    </ng-container>
+  </div>
+  <mat-error *ngIf="errorMessage.length != 0" class="error">
     <ul>
       <li *ngFor="let error of errorMessage">
         <span>{{error}}</span>
