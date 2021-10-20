@@ -26,4 +26,8 @@ export class CarService {
   public getCategoryName(carId: number): Observable<string>{
     return this.http.get<string>(`${this.baseUrl}cars/${carId}/category-name`)
   }
+
+  public deleteCar(carId: number): Observable<void>{
+    return this.http.delete<void>(`${this.baseUrl}cars/${carId}`)
+  }
 }

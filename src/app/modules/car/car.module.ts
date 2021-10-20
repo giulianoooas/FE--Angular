@@ -13,11 +13,12 @@ import { CommentCreateComponent } from './car-details/components/comment-create/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import { CarCategoryNameComponent } from './car-details/components/car-category-name/car-category-name.component';
+import { CarCreateComponent } from './car-create/car-create.component';
 
 
 
 @NgModule({
-  declarations: [CarComponent, CarListComponent, CarDetailsComponent, CommentComponent, CommentsListComponent, CommentCreateComponent, CarCategoryNameComponent],
+  declarations: [CarComponent, CarListComponent, CarDetailsComponent, CommentComponent, CommentsListComponent, CommentCreateComponent, CarCategoryNameComponent, CarCreateComponent],
   imports: [
     CommonModule, RouterModule, HttpClientModule, MatIconModule, MatButtonModule, ReactiveFormsModule, FormsModule, MatInputModule
   ],

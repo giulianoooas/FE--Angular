@@ -38,4 +38,8 @@ export class CarDetailsComponent implements OnInit {
     this.router.navigate(['/cars']);
   }
 
+  public deleteCar(): void{
+    this.carService.deleteCar(this.carId).subscribe();
+    this.goCarsDashboard();
+  }
 }
