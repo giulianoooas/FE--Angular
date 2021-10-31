@@ -12,7 +12,7 @@ export class CommentService {
   public constructor(private http: HttpClient) { }
 
   public getCommentsByCarId(carId: number): Observable<Comment[]>{
-    return this.http.get<Comment[]>(`${this.baseUrl}cars/${carId}/comments`);
+    return this.http.get<Comment[]>(`${this.baseUrl}comments/${carId}/car`);
   }
 
   public createComment(comment:Comment): Observable<Comment>{
