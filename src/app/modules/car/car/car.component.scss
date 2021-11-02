@@ -8,16 +8,16 @@
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
-  width: 80%;
-  height:400px;
+  width: 80em;
+  height:22em;
   margin-top: 1em;
 
   &__image{
-    width:40%;
+    width:35em;
 
     img{
-      width: 400px;
-      height:200px;
+      width: 30em;
+      height:20em;
       border-radius: 10%;
     }
   }
@@ -27,7 +27,7 @@
     justify-content: flex-start;
     flex-direction: column;
     align-items: center;
-    width:50%;
+    width:35em;
 
     &--name{
       font-weight: 600;
