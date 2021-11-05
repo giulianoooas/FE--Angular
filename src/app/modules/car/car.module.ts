@@ -15,6 +15,8 @@ import {MatInputModule} from '@angular/material/input';
 import { CarCategoryNameComponent } from './car-details/components/car-category-name/car-category-name.component';
 import { CarCreateComponent } from './car-create/car-create.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -37,7 +39,9 @@ import { MatSelectModule } from '@angular/material/select';
     ReactiveFormsModule,
     FormsModule,
     MatInputModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
+    SharedModule
     ],
   exports: [CarComponent]
 })

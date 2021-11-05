@@ -1,11 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Car } from 'src/app/models/car.model';
 import { Category } from 'src/app/models/category.model';
 import { CarService } from 'src/app/services/car.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { ImageZoomComponent } from '../../shared/image-zoom/image-zoom.component';
 
 @Component({
   selector: 'app-car-create',
@@ -39,7 +41,8 @@ export class CarCreateComponent implements OnInit, OnDestroy {
     private carService: CarService,
     private router: Router,
     private route: ActivatedRoute,
-    private categoryService: CategoryService) { }
+    private categoryService: CategoryService,
+    private dialog: MatDialog) { }
 
   public ngOnInit(): void {
     this.setEditMode();
@@ -141,6 +144,16 @@ export class CarCreateComponent implements OnInit, OnDestroy {
       this.carService.editCar(this.car).subscribe((car) => {
         this.router.navigateByUrl(`cars/${car.carId}`);
       })
+  }
+
+  public openDialog(): void{
+    this.dialog.open(ImageZoomComponent, {
+      height:'700px',
+      width:'700px',
+      data: {
+        imageUrl: this.car.imageUrl
+      }
+    },)
   }
 
   public ngOnDestroy(): void{

@@ -70,7 +70,9 @@
       </ul>
     </mat-error>
     </div>
-  <div>
+  <div
+    (click)="openDialog()"
+  >
     <img
       *ngIf="car.imageUrl"
       [src]="car.imageUrl"
