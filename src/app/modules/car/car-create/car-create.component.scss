@@ -1,40 +1,73 @@
 @import '../../../styles/variables.scss';
 
+.title{
+  margin-bottom: 2em;
+  font-weight: 400;
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 15em;
+}
+
 .car-create{
-  margin-left: 3em;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width:100%;
+  margin-left: 6em;
   height: 40em;
 
   .form{
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    text-align: center;
     align-items: center;
 
     .input{
+      width:20em;
       margin-top: 2em;
+      text-align: center;
+      border-radius: 2em;
+      border: 1px solid black;
     }
 
     .select{
+      width:20em;
       margin-top: 2em;
+      text-align: center;
+      border-radius: 2em;
+      border: 1px solid black;
     }
 
     .textarea{
+      text-align: center;
+      width:20em;
+      height: 10em;
       margin-top: 2em;
+      border-radius: 2em;
+      border: 1px solid black;
+      resize: none;
     }
 
   }
   .buttons{
     margin-top: 2em;
+    width: 3em;
+
+    .button{
+      font-size: 18px;
+    }
   }
 
   .error{
-    margin-top: 2em;
+    margin-top: 3em;
   }
 
-  .title{
-    margin-bottom: 2em;
-    font-weight: 400;
-    font-size: 24px;
+  .imageForDisplaying{
+    width:400px;
+    height:400px;
+    border-radius: 20%;
+    margin-left: 6em;
   }
 }
 
