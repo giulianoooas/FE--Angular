@@ -2,4 +2,16 @@
   (click)="closeDialog()"
   [src]="imageSrc"
   class="image"
+  id="image"
 >
+
+<div
+  class="buttons"
+>
+  <button mat-button
+    (click)="zoomIn()"
+  >Zoom in</button>
+  <button mat-button
+    (click)="zoomOut()"
+  >Zoom out</button>
+</div>

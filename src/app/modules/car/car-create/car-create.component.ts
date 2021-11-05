@@ -148,7 +148,7 @@ export class CarCreateComponent implements OnInit, OnDestroy {
 
   public openDialog(): void{
     this.dialog.open(ImageZoomComponent, {
-      height:'700px',
+      height:'800px',
       width:'700px',
       data: {
         imageUrl: this.car.imageUrl

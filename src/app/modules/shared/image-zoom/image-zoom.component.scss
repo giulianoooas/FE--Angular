@@ -2,3 +2,9 @@
   width:700px;
   height:700px;
 }
+
+.buttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
