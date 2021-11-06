@@ -5,4 +5,5 @@ export interface Car{
     price: number;
     description: string;
     categoryId: number;
+    userId: number;
 }

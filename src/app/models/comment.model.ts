@@ -3,5 +3,6 @@ export interface Comment{
   carId: number;
   message: string;
   date: Date;
+  userId: number;
 }
 
