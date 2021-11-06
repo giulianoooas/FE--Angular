@@ -1,11 +1,13 @@
 <div class="category-list">
   <app-category-create
+    *ngIf="userId >= 0"
     (createCategoryEvent)="createCategory($event)"
   ></app-category-create>
   <div *ngFor="let category of categories">
     <app-category-element
       class="category"
       [category]="category"
+      [userId]="userId"
       (showCarsEvent)="showCars($event)"
       (deleteCategoryEvent)="deleteCategory($event)"
       (editCategoryEvent)="editCategory($event)"

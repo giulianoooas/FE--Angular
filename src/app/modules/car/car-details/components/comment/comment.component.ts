@@ -22,6 +22,7 @@ export class CommentComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
   public maxLength = MAX_INPUT_CONSTANT_LENGTH_COMMENTS;
 
+  @Input() isAdmin: boolean;
   @Input() userId: number;
   @Output() private deleteComment: EventEmitter<number> = new EventEmitter<number>();
   @Output() private editComment: EventEmitter<Comment>=

@@ -11,6 +11,7 @@ import { CommentService } from 'src/app/services/comment.service';
 export class CommentsListComponent implements OnInit {
   public comments: Comment[] = [];
   public userId: number;
+  public isAdmin = false;
 
   @Input() public carId: number;
 
@@ -21,6 +22,7 @@ export class CommentsListComponent implements OnInit {
       this.comments = comments;
     })
     this.userId = this.authService.getUserId();
+    this.isAdmin = this.authService.getIsAdmin();
   }
 
   public deleteComment(commentId: number): void{

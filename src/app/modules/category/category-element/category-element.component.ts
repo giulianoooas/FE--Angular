@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MAX_INPUT_CONSTANT_LENGTH_CATEGORIES } from 'src/app/constants/input-max-length.constant';
 import { Category } from 'src/app/models/category.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-category-element',
@@ -10,6 +11,7 @@ import { Category } from 'src/app/models/category.model';
   styleUrls: ['./category-element.component.scss']
 })
 export class CategoryElementComponent implements OnInit, OnDestroy {
+  @Input() userId: number;
   @Input() public category: Category;
   @Input() public showCars = false;
   @Output() public showCarsEvent: EventEmitter<number>=
@@ -18,12 +20,15 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
     new EventEmitter<number>();
   @Output() public editCategoryEvent: EventEmitter<Category>=
     new EventEmitter<Category>();
+  public isAdmin = false;
 
   public maxLength = MAX_INPUT_CONSTANT_LENGTH_CATEGORIES;
   public isEditable = false;
   public formGroup: FormGroup;
   public editedCategory: Category;
   public subscription: Subscription= new Subscription();
+
+  public constructor(private authService: AuthService){}
 
   public ngOnInit(): void{
     this.editedCategory = {...this.category};
@@ -37,6 +42,7 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
         }
       })
     );
+    this.isAdmin = this.authService.getIsAdmin();
   }
 
   public requestToShowCars(): void{

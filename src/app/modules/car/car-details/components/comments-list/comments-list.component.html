@@ -9,6 +9,7 @@
   <div *ngFor="let comment of comments; let i= index" class="comments-list__comments">
     <app-comment
       [userId]="userId"
+      [isAdmin]="isAdmin"
       (editComment)="editComment($event)"
       (deleteComment)="deleteComment($event)"
       [comment]="comment"
