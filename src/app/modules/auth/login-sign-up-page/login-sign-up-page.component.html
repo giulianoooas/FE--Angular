@@ -1,1 +1,42 @@
-<p>login-sign-up-page works!</p>
+<form class="form"
+  [formGroup]="formGroup"
+>
+  <div class="section">
+    <label class="label">
+      Email
+    </label>
+    <input
+      matInput
+      type="email"
+      placeholder="Email"
+      formControlName="email">
+  </div>
+  <div class="section">
+    <label class="label">
+      Email
+    </label>
+    <input
+      matInput
+      type="password"
+      placeholder="Password"
+      formControlName="password">
+  </div>
+  <button
+    mat-button
+    (click)="actionOnForm()"
+    class="button"
+  >
+    {{buttonText}}
+  </button>
+</form>
+<mat-error
+  *ngIf="errorMessages.length"
+>
+  <ul>
+    <div *ngFor="let errorMessage of errorMessages">
+      <li>
+        {{errorMessage}}
+      </li>
+    </div>
+  </ul>
+</mat-error>

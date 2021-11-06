@@ -2,12 +2,21 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { CarGuard } from './guards/car.guard';
+import { LoginSignUpPageComponent } from './modules/auth/login-sign-up-page/login-sign-up-page.component';
 import { CarCreateComponent } from './modules/car/car-create/car-create.component';
 import { CarDetailsComponent } from './modules/car/car-details/car-details.component';
 import { CarListComponent } from './modules/car/car-list/car-list.component';
 import { CategoryListComponent } from './modules/category/category-list/category-list.component';
 
 const routes: Routes = [
+    {
+      path: 'login',
+      component: LoginSignUpPageComponent
+    },
+    {
+      path: 'sing-up',
+      component: LoginSignUpPageComponent
+    },
     {
       path: '',
       redirectTo: 'cars',

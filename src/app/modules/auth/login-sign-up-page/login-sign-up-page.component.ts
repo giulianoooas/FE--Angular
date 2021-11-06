@@ -52,6 +52,7 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   }
 
   private validatePassword(): boolean{
+    console.log(this.password);
     if (this.password.length < 8){
       this.errorMessages.push('Password must have more than 8 letters.');
     }
@@ -69,24 +70,27 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   }
 
   private validateEmail(): boolean{
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (re.test(this.email)){
+    const re = /([a-z]+(.|-|_)?[a-z]*)+@[a-z]+\.[a-z]*/;
+    if (!re.test(this.email)){
       this.errorMessages.push('Is not a valid email.');
-      return true;
+      return false;
     }
-    return false;
+    return true;
   }
 
   public actionOnForm(): void{
     this.errorMessages = [];
-    if (this.validateEmail() && this.validatePassword()){
+    const validation1 = this.validateEmail();
+    const validation2 = this.validatePassword();
+    if (this.action !== 'login'){
+    if (validation1 && validation2){
+      this.userService.createUser({password: this.password, email: this.email}).subscribe(user => {
+        this.authService.setUser(user);
+        this.router.navigateByUrl('cars')
+      })
+      }
       if (this.action == 'login'){
         this.userService.login({email:this.email,password: this.password}).subscribe(user => {
-          this.authService.setUser(user);
-          this.router.navigateByUrl('cars')
-        })
-      } else {
-        this.userService.createUser({password: this.password, email: this.email}).subscribe(user => {
           this.authService.setUser(user);
           this.router.navigateByUrl('cars')
         })
