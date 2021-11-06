@@ -1,3 +1,4 @@
+import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
 import { AfterViewInit, Component, ElementRef, Inject, OnInit, QueryList, ViewChild } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -7,13 +8,13 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./image-zoom.component.scss']
 })
 export class ImageZoomComponent implements OnInit, AfterViewInit {
-  public imageSrc = 'assets/images/sigla.png';
+  imageSrc = 'assets/images/sigla.png';
   public imageSize = 700;
   private image = document.getElementById('image');
 
   public constructor(
     private dialog: MatDialog,
-    @Inject(MAT_DIALOG_DATA) public data: any){}
+    @Inject(MAT_DIALOG_DATA) public data: {imageUrl:string}){}
 
 
   public   ngAfterViewInit(): void {

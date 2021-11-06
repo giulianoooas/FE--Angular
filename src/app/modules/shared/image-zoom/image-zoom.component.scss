@@ -1,10 +1,47 @@
-.image{
-  width:700px;
-  height:700px;
-}
+@import "../../../styles/variables.scss";
 
-.buttons{
+.close_button{
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+
+  .button{
+    border: 0px;
+    background-color: white;
+    outline: none;
+  }
+}
+
+.image{
+  width:600px;
+  height:600px;
+}
+
+.buttons{
+  margin-top:3em;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+
+  .button{
+      background-color: $buttonColor;
+      color:white;
+      font-weight: 500;
+      font-size:16px;
+      margin-right: 1em;
+  }
+}
+
+.image_zoom{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 600px;
+  height: 600px;
+  overflow: auto;
+  background-color: rgb(29, 28, 28);
+  margin-left:1.5em;
+  margin-top: 1em;
+  border:1px solid black;
 }

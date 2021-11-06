@@ -1,17 +1,33 @@
-<img
-  (click)="closeDialog()"
-  [src]="imageSrc"
-  class="image"
-  id="image"
+<div class="close_button">
+  <button
+    class="button"
+    (click)="closeDialog()"
+  >
+    <mat-icon>
+      clear
+    </mat-icon>
+  </button>
+</div>
+
+<div
+  class ="image_zoom"
 >
+  <img
+    [src]="imageSrc"
+    class="image"
+    id="image"
+  >
+</div>
 
 <div
   class="buttons"
 >
   <button mat-button
     (click)="zoomIn()"
-  >Zoom in</button>
+    class="button"
+  >Zoom in <mat-icon>zoom_in</mat-icon></button>
   <button mat-button
     (click)="zoomOut()"
-  >Zoom out</button>
+    class="button"
+  >Zoom out <mat-icon>zoom_out</mat-icon></button>
 </div>
