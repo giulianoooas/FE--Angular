@@ -23,7 +23,7 @@ export class AuthService {
     return Boolean(this.sessionStorage.getItem(this.adminToken));
   }
 
-  public setUserId(user: User): void{
+  public setUser(user: User): void{
     this.sessionStorage.setItem(this.userIdToken,String(user.userId));
     this.sessionStorage.setItem(this.adminToken, String(user.isAdmin));
   }

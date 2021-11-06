@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CarModule } from './modules/car/car.module';
 import { NavbarModule } from './modules/navbar/navbar.module';
 import { CategoryModule } from './modules/category/category.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { CategoryModule } from './modules/category/category.module';
     BrowserAnimationsModule,
     CarModule,
     NavbarModule,
-    CategoryModule
+    CategoryModule,
+    AuthModule
   ],
   providers: [],
   bootstrap: [AppComponent]
