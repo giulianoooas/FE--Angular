@@ -4,6 +4,7 @@ import { Comment } from 'src/app/models/comment.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import {Subscription } from 'rxjs';
 import { MAX_INPUT_CONSTANT_LENGTH_COMMENTS } from 'src/app/constants/input-max-length.constant';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-comment',
@@ -21,12 +22,13 @@ export class CommentComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
   public maxLength = MAX_INPUT_CONSTANT_LENGTH_COMMENTS;
 
+  @Input() userId: number;
   @Output() private deleteComment: EventEmitter<number> = new EventEmitter<number>();
   @Output() private editComment: EventEmitter<Comment>=
     new EventEmitter<Comment>();
   @Input() public comment: Comment;
 
-  public constructor() { }
+  public constructor(private authService: AuthService) { }
 
   public ngOnInit(): void {
     this.setComment();
@@ -43,6 +45,7 @@ export class CommentComponent implements OnInit, OnDestroy {
       commentId: this.commentId,
       message: this.message,
       date: new Date(),
+      userId: this.authService.getUserId()
     }
   }
 

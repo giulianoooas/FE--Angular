@@ -1,12 +1,14 @@
 <div class="comments-list">
   <div class="comments-list__header">
     <app-comment-create
+    *ngIf="userId >= 0"
     (save)="createComment($event)"
     [carId]="carId"
     ></app-comment-create>
   </div>
   <div *ngFor="let comment of comments; let i= index" class="comments-list__comments">
     <app-comment
+      [userId]="userId"
       (editComment)="editComment($event)"
       (deleteComment)="deleteComment($event)"
       [comment]="comment"

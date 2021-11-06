@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MAX_INPUT_CONSTANT_LENGTH_COMMENTS } from 'src/app/constants/input-max-length.constant';
 import { Comment } from 'src/app/models/comment.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-comment-create',
@@ -19,6 +20,8 @@ export class CommentCreateComponent implements OnInit, OnDestroy {
   public maxLength = MAX_INPUT_CONSTANT_LENGTH_COMMENTS;
   @Input()public carId: number;
   @Output()public save: EventEmitter<Comment>= new EventEmitter<Comment>();
+
+  public constructor(private authService: AuthService){}
 
   public ngOnInit(): void {
     this.setCreatedComment();
@@ -39,7 +42,8 @@ export class CommentCreateComponent implements OnInit, OnDestroy {
       commentId: -1,
       carId:this.carId,
       date:new Date(),
-      message: ''
+      message: '',
+      userId: this.authService.getUserId()
     }
   }
 

@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MAX_INPUT_CONSTANT_LENGTH_CATEGORIES } from 'src/app/constants/input-max-length.constant';
 import { Category } from 'src/app/models/category.model';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-category-create',
@@ -16,11 +17,14 @@ export class CategoryCreateComponent implements OnInit, OnDestroy {
   });
   private createdCategory: Category = {
     name: '',
-    categoryId: -1
+    categoryId: -1,
+    userId: this.authService.getUserId()
   }
   @Output() public createCategoryEvent: EventEmitter<Category> =
     new EventEmitter<Category>();
   private subscription: Subscription = new Subscription();
+
+  public constructor(private authService: AuthService){}
 
   public ngOnInit(): void {
     this.subscription.add(

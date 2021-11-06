@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Car } from 'src/app/models/car.model';
 import { Category } from 'src/app/models/category.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { CarService } from 'src/app/services/car.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ImageZoomComponent } from '../../shared/image-zoom/image-zoom.component';
@@ -22,7 +23,8 @@ export class CarCreateComponent implements OnInit, OnDestroy {
     categoryId: -1,
     imageUrl: '',
     description: '',
-    price: -1
+    price: -1,
+    userId: this.authService.getUserId()
   };
   private carId = -1;
   public categories:Category[] = [];
@@ -42,7 +44,8 @@ export class CarCreateComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    public authService: AuthService) { }
 
   public ngOnInit(): void {
     this.setEditMode();

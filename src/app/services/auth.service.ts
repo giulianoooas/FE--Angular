@@ -9,7 +9,9 @@ export class AuthService {
 
   public constructor(private sessionStorage: SessionStorageService) { }
 
-  public getUserId(): number | undefined{
+  public getUserId(): number{
+    if (!this.sessionStorage.getItem(this.userIdToken))
+     return -1;
     return Number(this.sessionStorage.getItem(this.userIdToken));
   }
 

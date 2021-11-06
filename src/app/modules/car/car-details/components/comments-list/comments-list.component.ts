@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Comment } from 'src/app/models/comment.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
@@ -9,15 +10,17 @@ import { CommentService } from 'src/app/services/comment.service';
 })
 export class CommentsListComponent implements OnInit {
   public comments: Comment[] = [];
+  public userId: number;
 
   @Input() public carId: number;
 
-  constructor(private commentService: CommentService) { }
+  constructor(private commentService: CommentService, private authService: AuthService) { }
 
   public ngOnInit(): void {
     this.commentService.getCommentsByCarId(this.carId).subscribe((comments) => {
       this.comments = comments;
     })
+    this.userId = this.authService.getUserId();
   }
 
   public deleteComment(commentId: number): void{
