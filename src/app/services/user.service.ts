@@ -12,8 +12,6 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   public createUser(user: {
-    firstName: string;
-  lastName?: string;
   password: string;
   email: string;
   }): Observable<User>{
