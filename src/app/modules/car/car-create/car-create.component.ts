@@ -156,6 +156,10 @@ export class CarCreateComponent implements OnInit, OnDestroy {
     },)
   }
 
+  public goBack(): void{
+    this.router.navigateByUrl(`cars/${this.carId}`)
+  }
+
   public ngOnDestroy(): void{
     this.subscription.unsubscribe();
   }

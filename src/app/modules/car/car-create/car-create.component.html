@@ -8,6 +8,12 @@
     <form [formGroup]="formGroup"
       class = "form"
     >
+      <div
+        class="filed"
+      >
+        <label class="field-label">
+          Name
+        </label>
         <input matInput
           formControlName="name"
           type="text"
@@ -15,12 +21,18 @@
           [value]="car.name"
           placeholder="Write a name for car"
         >
+      </div>
+
         <textarea
           formControlName="description"
           class="textarea"
           [value]="car.description"
           placeholder="Write a description"
         ></textarea>
+      <div
+        class="filed"
+      >
+        <label class="field-label">Price</label>
         <input
           formControlName="price"
           type="number"
@@ -28,6 +40,11 @@
           [value]="car.price"
           placeholder="Set a price"
         >
+      </div>
+      <div
+        class="filed"
+      >
+        <label class="field-label">Image</label>
         <input matInput
           formControlName="imageUrl"
           type="text"
@@ -35,6 +52,11 @@
           [value]="car.imageUrl"
           placeholder="Set an image url"
         >
+      </div>
+      <div
+        class="filed"
+      >
+        <label class="field-label">Category</label>
         <mat-select
           formControlName="categoryId"
           placeholder="Select a category"
@@ -47,6 +69,7 @@
           </mat-option>
           </ng-container>
         </mat-select>
+      </div>
     </form>
     <div class="buttons">
       <ng-container *ngIf="isEditMode">
@@ -54,6 +77,13 @@
           class="button"
           mat-button
           (click)="editCar()">Edit</button>
+        <button
+          class="button"
+          mat-button
+          (click)="goBack()"
+        >
+          Back
+        </button>
       </ng-container>
       <ng-container *ngIf="!isEditMode">
         <button

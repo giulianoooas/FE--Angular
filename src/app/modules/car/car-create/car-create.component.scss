@@ -5,7 +5,7 @@
   font-weight: 400;
   font-size: 24px;
   font-weight: 500;
-  margin-left: 15em;
+  margin-left: 25em;
 }
 
 .car-create{
@@ -32,6 +32,7 @@
     }
 
     .select{
+      background-color:white;
       width:20em;
       margin-top: 2em;
       text-align: center;
@@ -51,11 +52,18 @@
 
   }
   .buttons{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
     margin-top: 2em;
-    width: 3em;
 
     .button{
+      margin-left: 1em;
       font-size: 18px;
+      background-color: $buttonColor;
+      color:white;
+      font-weight: 500;
+      font-size:16px;
     }
   }
 
@@ -71,3 +79,16 @@
   }
 }
 
+.field{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-label{
+    margin-right: 2em;
+    font-size: 16px;
+
+    &--upper{
+      margin-bottom: 2em;
+    }
+  }
+}
