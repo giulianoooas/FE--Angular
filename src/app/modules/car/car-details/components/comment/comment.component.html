@@ -16,15 +16,17 @@
     </ng-container>
   </div>
   <div class="comment__action">
-    <ng-container *ngIf="!isEditable && (userId == comment.userId || isAdmin)">
+    <ng-container *ngIf="!isEditable">
       <span class="comment__action--date">{{date}}</span>
       <div class="comment__action--delete">
         <button mat-button class="button"
+          *ngIf="userId == comment.userId || isAdmin"
           (click)="delete()"
         >
           Delete <mat-icon>delete</mat-icon>
         </button>
         <button mat-button class="button"
+          *ngIf="userId == comment.userId || isAdmin"
           (click)="makeEditable()"
         >
           Edit <mat-icon>edit</mat-icon>
