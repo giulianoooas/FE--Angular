@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Comment } from 'src/app/models/comment.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { CommentService } from 'src/app/services/comment.service';
@@ -14,12 +14,15 @@ export class CommentsListComponent implements OnInit {
   public isAdmin = false;
 
   @Input() public carId: number;
+  @Output() public showComments: EventEmitter<boolean>=
+    new EventEmitter<boolean>();
 
   constructor(private commentService: CommentService, private authService: AuthService) { }
 
   public ngOnInit(): void {
     this.commentService.getCommentsByCarId(this.carId).subscribe((comments) => {
       this.comments = comments;
+      this.setShowCarComments();
     })
     this.userId = this.authService.getUserId();
     this.isAdmin = this.authService.getIsAdmin();
@@ -58,5 +61,9 @@ export class CommentsListComponent implements OnInit {
         }
       }
     })
+  }
+
+  public setShowCarComments(): void{
+    this.showComments.emit(this.comments.length !== 0);
   }
 }

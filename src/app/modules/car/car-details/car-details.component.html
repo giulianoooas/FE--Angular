@@ -39,7 +39,10 @@
       </div>
     </div>
     <div class="car-details__comments">
-      <app-comments-list [carId]="carId">
+      <app-comments-list
+        *ngIf="userId >= 0 || hasComments"
+        [carId]="carId"
+        (showComments)="setHasComments($event)">
       </app-comments-list>
     </div>
   </div>

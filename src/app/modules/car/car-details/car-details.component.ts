@@ -13,10 +13,9 @@ export class CarDetailsComponent implements OnInit {
   public car: Car;
   public carId: number;
   public categoryName: string;
-  public messagesShowCommentsButton = ['Show', 'Hide'];
-  public optionShowComments = 1;
   public userId: number;
   public isAdmin: boolean;
+  public hasComments = true;
 
   public constructor(
     private carService: CarService,
@@ -52,6 +51,10 @@ export class CarDetailsComponent implements OnInit {
     this.carService.deleteCar(this.carId).subscribe(() => {
       this.goCarsDashboard();
     });
+  }
+
+  public setHasComments(hasComments: boolean): void{
+    this.hasComments = hasComments;
   }
 
   public editCar(): void{
