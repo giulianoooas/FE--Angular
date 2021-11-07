@@ -1,12 +1,24 @@
 <form
   [formGroup]="formGroup"
+  class="car-filter"
 >
-  <input
-    formControlName="name"
-    type="text"
-  >
-  <input
-    formControlName="minPrice"
-    type="number"
-  >
+  <div class="car-filter__element">
+    <mat-icon>
+      commute
+    </mat-icon>
+    <input
+      class="car-filter__element--input"
+      formControlName="name"
+      type="text"
+    >
+  </div>
+  <div class="car-filter__element">
+    <mat-icon>
+      monetization_on
+    </mat-icon>
+    <input
+      class="car-filter__element--input"
+      formControlName="minPrice"
+      type="number">
+    </div>
 </form>
