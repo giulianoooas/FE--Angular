@@ -23,9 +23,9 @@ export class AuthService {
   }
 
   public getIsAdmin(): boolean{
-    if (!this.sessionStorage.getItem(this.adminToken))
+    if (!this.sessionStorage.getItem(this.adminToken) || this.sessionStorage.getItem(this.adminToken) === 'false')
      return false;
-    return Boolean(this.sessionStorage.getItem(this.adminToken));
+    return true;
   }
 
   public setUser(user: User): void{

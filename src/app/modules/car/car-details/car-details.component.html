@@ -9,11 +9,13 @@
           <button (click)="goCarsDashboard()" mat-button>See all cars</button>
           <button mat-button
             (click)="editCar()"
+            *ngIf="isAdmin == true || userId === car.userId"
           >
             Edit car
           </button>
           <button mat-button
             (click)="deleteCar()"
+            *ngIf="isAdmin || userId == car.userId"
           >
             Delete car
           </button>
