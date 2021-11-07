@@ -29,7 +29,7 @@ export class UserService {
   public login(user: {
     email: string,
     password: string
-  }): Observable<User>{
-    return this.http.post<User>(`${this.baseUrl}users/login`, user);
+  }): Observable<User | null>{
+    return this.http.post<User | null>(`${this.baseUrl}users/login`,user);
   }
 }

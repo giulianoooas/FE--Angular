@@ -1,6 +1,26 @@
 <div class="navbar">
-  <div *ngFor="let navbarElement of navbarElements">
-    <app-navbar-element [navbarElement]="navbarElement">
+  <div class="navbar__elements">
+    <div *ngFor="let navbarElement of navbarElements">
+      <app-navbar-element [navbarElement]="navbarElement">
+      </app-navbar-element>
+    </div>
+  </div>
+
+  <div *ngIf="!email" class="navbar__anonymous">
+    <div *ngFor="let navbarElement of authNavbar">
+      <app-navbar-element [navbarElement]="navbarElement">
     </app-navbar-element>
+    </div>
+  </div>
+  <div  *ngIf="email" class="navbar__login">
+    <span class="text">
+      {{email}}
+    </span>
+    <button
+      class="button"
+      (click)="logOut()"
+    >
+      Logout
+    </button>
   </div>
 </div>

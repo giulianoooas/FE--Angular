@@ -1,4 +1,3 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -23,9 +22,10 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   public email = '';
   public password = '';
 
-  public constructor(private router: Router
-    , private authService: AuthService
-    , private userService: UserService) { }
+  public constructor(
+    private router: Router,
+    private authService: AuthService,
+    private userService: UserService){}
 
   public ngOnInit(): void {
     if (this.router.url.includes('login')){
@@ -52,7 +52,6 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   }
 
   private validatePassword(): boolean{
-    console.log(this.password);
     if (this.password.length < 8){
       this.errorMessages.push('Password must have more than 8 letters.');
     }
@@ -82,20 +81,26 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
     this.errorMessages = [];
     const validation1 = this.validateEmail();
     const validation2 = this.validatePassword();
+
     if (this.action !== 'login'){
-    if (validation1 && validation2){
-      this.userService.createUser({password: this.password, email: this.email}).subscribe(user => {
-        this.authService.setUser(user);
-        this.router.navigateByUrl('cars')
-      })
-      }
-      if (this.action == 'login'){
-        this.userService.login({email:this.email,password: this.password}).subscribe(user => {
+      if (validation1 && validation2){
+        this.userService.createUser({password: this.password, email: this.email}).subscribe(user => {
           this.authService.setUser(user);
-          this.router.navigateByUrl('cars')
+          this.router.navigateByUrl('/cars')
         })
       }
     }
+    if (this.action == 'login'){
+      this.userService.login({email:this.email,password: this.password}).subscribe(user => {
+        if (user){
+          this.authService.setUser(user);
+          this.router.navigateByUrl('/cars')
+        } else {
+          this.errorMessages = ['User not found'];
+        }
+      })
+    }
+
   }
 
   public ngOnDestroy(): void{

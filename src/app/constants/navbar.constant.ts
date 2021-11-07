@@ -25,3 +25,14 @@ export const NAVBAR_ANONYMOUS_CONSTANT: Navbar[] = [
     url: '/categories'
   }
 ]
+
+export const NAVBAR_NO_LOGIN_CONSTANT: Navbar[] = [
+  {
+    label: 'Sing up',
+    url: '/sing-up'
+  },
+  {
+    label: 'Login',
+    url: '/login'
+  }
+]
