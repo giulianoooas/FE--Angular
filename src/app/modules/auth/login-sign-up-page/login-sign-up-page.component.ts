@@ -14,13 +14,16 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   public errorMessages: string[] = [];
   public formGroup = new FormGroup({
     email: new FormControl(''),
-    password: new FormControl('')
+    password: new FormControl(''),
+    repeatPassword: new FormControl('')
   });
   public buttonText: string;
-  private action: string;
+  public action: string;
   private subscription: Subscription = new Subscription();
   public email = '';
   public password = '';
+  public repeatPassword = '';
+  public title = 'Create an account';
 
   public constructor(
     private router: Router,
@@ -31,6 +34,7 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
     if (this.router.url.includes('login')){
       this.buttonText = 'Login'
       this.action = 'login';
+      this.title = 'Login';
     } else {
       this.buttonText = 'Sing up';
       this.action = 'singUp';
@@ -46,6 +50,9 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
         }
         if (data.password){
           this.password = data.password;
+        }
+        if (data.repeatPassword){
+          this.repeatPassword = data.repeatPassword;
         }
       })
     );
@@ -83,7 +90,10 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
     const validation2 = this.validatePassword();
 
     if (this.action !== 'login'){
-      if (validation1 && validation2){
+      if (this.repeatPassword !== this.password){
+        this.errorMessages.push('Passwords don` t match.')
+      }
+      if (validation1 && validation2 && this.repeatPassword === this.password){
         this.userService.createUser({password: this.password, email: this.email}).subscribe(user => {
           this.authService.setUser(user);
           this.router.navigateByUrl('/cars')

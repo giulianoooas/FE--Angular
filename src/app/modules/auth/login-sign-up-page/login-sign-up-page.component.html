@@ -1,42 +1,66 @@
-<form class="form"
-  [formGroup]="formGroup"
->
-  <div class="section">
-    <label class="label">
-      Email
-    </label>
-    <input
-      matInput
-      type="email"
-      placeholder="Email"
-      formControlName="email">
+<div class="centred-text">
+  <div class="title">
+    {{title}}
   </div>
-  <div class="section">
-    <label class="label">
-      Email
-    </label>
+  <form class="form"
+    [formGroup]="formGroup"
+  >
+    <div class="section">
+      <mat-icon>
+        perm_identity
+      </mat-icon>
+      <input
+        matInput
+        type="email"
+        placeholder="Email"
+        value=""
+        formControlName="email"
+        class="input">
+    </div>
+    <div class="section">
+      <mat-icon>
+        lock
+      </mat-icon>
+      <input
+        matInput
+        type="password"
+        placeholder="Password"
+        value=""
+        formControlName="password"
+        class="input">
+    </div>
+    <div
+      *ngIf="action !== 'login'"
+      class="section"
+    >
+    <mat-icon>
+      lock
+    </mat-icon>
     <input
       matInput
       type="password"
+      value=""
       placeholder="Password"
-      formControlName="password">
+      formControlName="repeatPassword"
+      class="input">
   </div>
-  <button
-    mat-button
-    (click)="actionOnForm()"
-    class="button"
+    <button
+      mat-button
+      (click)="actionOnForm()"
+      class="button"
+    >
+      {{buttonText}}
+    </button>
+    <mat-error
+    *ngIf="errorMessages.length"
   >
-    {{buttonText}}
-  </button>
-</form>
-<mat-error
-  *ngIf="errorMessages.length"
->
-  <ul>
-    <div *ngFor="let errorMessage of errorMessages">
-      <li>
-        {{errorMessage}}
-      </li>
-    </div>
-  </ul>
-</mat-error>
+    <ul>
+      <div *ngFor="let errorMessage of errorMessages">
+        <li>
+          {{errorMessage}}
+        </li>
+      </div>
+    </ul>
+  </mat-error>
+  </form>
+</div>
