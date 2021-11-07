@@ -17,6 +17,7 @@ import { CarCreateComponent } from './car-create/car-create.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '../shared/shared.module';
+import { CarFilterComponent } from './car-filter/car-filter.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { SharedModule } from '../shared/shared.module';
     CommentsListComponent,
     CommentCreateComponent,
     CarCategoryNameComponent,
-    CarCreateComponent
+    CarCreateComponent,
+    CarFilterComponent
   ],
   imports: [
     CommonModule,

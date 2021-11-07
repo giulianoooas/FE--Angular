@@ -1,5 +1,8 @@
 <div class="cars">
-  <div *ngFor="let car of cars" class= "car">
+  <app-car-filter
+    (setFilter)="setFilter($event)"
+  ></app-car-filter>
+  <div *ngFor="let car of filteredCars" class= "car">
     <app-car [car]="car"></app-car>
   </div>
 </div>

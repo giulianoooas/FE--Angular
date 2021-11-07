@@ -7,3 +7,8 @@ export interface Car{
     categoryId: number;
     userId: number;
 }
+
+export interface CarFilter{
+  minPrice: number,
+  name: string
+}
