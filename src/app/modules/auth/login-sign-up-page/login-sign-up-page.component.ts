@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {  Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
@@ -23,7 +23,7 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   public email = '';
   public password = '';
   public repeatPassword = '';
-  public title = 'Create an account';
+  public title = 'Create account';
 
   public constructor(
     private router: Router,
@@ -88,7 +88,6 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
     this.errorMessages = [];
     const validation1 = this.validateEmail();
     const validation2 = this.validatePassword();
-
     if (this.action !== 'login'){
       if (this.repeatPassword !== this.password){
         this.errorMessages.push('Passwords don` t match.')
