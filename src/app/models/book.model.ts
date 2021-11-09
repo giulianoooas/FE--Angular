@@ -5,6 +5,7 @@ export interface Book{
     price: number;
     description: string;
     categoryId: number;
+    author: string;
     userId: number;
 }
 

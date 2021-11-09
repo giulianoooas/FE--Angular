@@ -23,6 +23,7 @@ export class BookCreateComponent implements OnInit, OnDestroy {
     categoryId: -1,
     imageUrl: '',
     description: '',
+    author: '',
     price: -1,
     userId: this.authService.getUserId()
   };
@@ -33,7 +34,8 @@ export class BookCreateComponent implements OnInit, OnDestroy {
     categoryId: new FormControl(-1),
     description: new FormControl(''),
     price: new FormControl(0),
-    imageUrl: new FormControl('')
+    imageUrl: new FormControl(''),
+    author: new FormControl('')
   });
   public isEditMode = false;
   public subscription: Subscription =
@@ -74,6 +76,7 @@ export class BookCreateComponent implements OnInit, OnDestroy {
         this.book.imageUrl = data.imageUrl;
         this.book.name = data.name;
         this.book.price = data.price;
+        this.book.author = data.author;
       })
     );
   }
@@ -87,6 +90,7 @@ export class BookCreateComponent implements OnInit, OnDestroy {
         this.formGroup.controls['categoryId'].setValue(book.categoryId);
         this.formGroup.controls['description'].setValue(book.description);
         this.formGroup.controls['imageUrl'].setValue(book.imageUrl);
+        this.formGroup.controls['author'].setValue(book.author);
         this.bookId = book.bookId;
         this.book.bookId = book.bookId;
       })
@@ -105,6 +109,9 @@ export class BookCreateComponent implements OnInit, OnDestroy {
     }
     if (this.book.imageUrl.length == 0){
       this.errorMessage.push('  Book must have an image.');
+    }
+    if (this.book.author.length == 0){
+      this.errorMessage.push('  Book must have an author.');
     }
     return this.errorMessage.length == 0;
   }

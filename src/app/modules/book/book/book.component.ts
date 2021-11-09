@@ -13,6 +13,7 @@ export class BookComponent implements OnInit {
   public description: string;
   public price: number;
   public bookId: number;
+  public author: string;
   @Input() public book: Book;
 
   public constructor(
@@ -28,6 +29,7 @@ export class BookComponent implements OnInit {
     this.description= this.book.description;
     this.price = this.book.price;
     this.imageSrc = this.book.imageUrl;
+    this.author = this.book.author;
   }
 
   public visitPage(): void{
