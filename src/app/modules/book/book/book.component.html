@@ -1,0 +1,16 @@
+<div class="book">
+  <div class="book__image">
+    <img [src]="imageSrc" alt="Book image"/>
+  </div>
+  <div class="book__description">
+    <span class="book__description--name">
+      {{name}}
+    </span>
+    <span class="book__description--price">
+      Price: {{price}} <mat-icon>euro</mat-icon>
+    </span>
+    <div  class="book__description--button">
+      <button mat-button (click)="visitPage()">visit</button>
+    </div>
+  </div>
+</div>

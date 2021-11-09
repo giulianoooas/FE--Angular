@@ -1,0 +1,49 @@
+<div class="comment">
+  <div class="comment__message">
+    <ng-container *ngIf="!isEditable">
+      <span>
+        {{message}}
+      </span>
+    </ng-container>
+    <ng-container *ngIf="isEditable">
+      <form [formGroup]="formGroup">
+        <input class="input"
+              type="text"
+              formControlName="message"
+              [maxlength]="maxLength"
+        />
+      </form>
+    </ng-container>
+  </div>
+  <div class="comment__action">
+    <ng-container *ngIf="!isEditable">
+      <span class="comment__action--date">{{date}}</span>
+      <div class="comment__action--delete">
+        <button mat-button class="button"
+          *ngIf="userId == comment.userId || isAdmin"
+          (click)="delete()"
+        >
+          Delete <mat-icon>delete</mat-icon>
+        </button>
+        <button mat-button class="button"
+          *ngIf="userId == comment.userId || isAdmin"
+          (click)="makeEditable()"
+        >
+          Edit <mat-icon>edit</mat-icon>
+        </button>
+        </div>
+      </ng-container>
+    <ng-container *ngIf="isEditable && (userId == comment.userId || isAdmin)">
+      <button class="button" mat-button
+        (click)="edit()"
+      >
+        Save <mat-icon>save</mat-icon>
+      </button>
+      <button class="button" mat-button
+        (click)="makeUnEditable()"
+      >
+        Disbookd <mat-icon>navigate_before</mat-icon>
+      </button>
+    </ng-container>
+  </div>
+</div>

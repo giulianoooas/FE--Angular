@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
-import { CarGuard } from './guards/car.guard';
+import { BookGuard } from './guards/book.guard';
 import { LoginSignUpPageComponent } from './modules/auth/login-sign-up-page/login-sign-up-page.component';
-import { CarCreateComponent } from './modules/car/car-create/car-create.component';
-import { CarDetailsComponent } from './modules/car/car-details/car-details.component';
-import { CarListComponent } from './modules/car/car-list/car-list.component';
+import { BookCreateComponent } from './modules/book/book-create/book-create.component';
+import { BookDetailsComponent } from './modules/book/book-details/book-details.component';
+import { BookListComponent } from './modules/book/book-list/book-list.component';
 import { CategoryListComponent } from './modules/category/category-list/category-list.component';
 
 const routes: Routes = [
@@ -19,32 +19,32 @@ const routes: Routes = [
     },
     {
       path: '',
-      redirectTo: 'cars',
+      redirectTo: 'books',
       pathMatch: 'full',
     },
     {
-      path: 'cars',
+      path: 'books',
       children:[
       {
         path: '',
-        component: CarListComponent
+        component: BookListComponent
       },
       {
         path: 'create',
-        component: CarCreateComponent,
+        component: BookCreateComponent,
         canActivate: [AuthGuard]
       },
       {
-        path: ':carId',
-        canActivate: [CarGuard],
+        path: ':bookId',
+        canActivate: [BookGuard],
         children:[
           {
             path: '',
-            component: CarDetailsComponent,
+            component: BookDetailsComponent,
           },
           {
             path: 'edit',
-            component: CarCreateComponent,
+            component: BookCreateComponent,
             canActivate: [AuthGuard]
           }
         ]

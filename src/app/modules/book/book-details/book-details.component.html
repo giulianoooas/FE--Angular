@@ -1,0 +1,49 @@
+<ng-container *ngIf="!!book">
+  <div class="book-destails">
+    <div class="book-details__content">
+      <div class="book-details__content__image">
+        <div class="book-details__content__image--image">
+          <img [src]="book.imageUrl"/>
+        </div>
+        <div class="book-details__content__image--back">
+          <button (click)="goBooksDashboard()" mat-button>See all books</button>
+          <button mat-button
+            (click)="editBook()"
+            *ngIf="isAdmin == true || userId === book.userId"
+          >
+            Edit book
+          </button>
+          <button mat-button
+            (click)="deleteBook()"
+            *ngIf="isAdmin || userId == book.userId"
+          >
+            Delete book
+          </button>
+        </div>
+      </div>
+      <div class="book-details__content__details">
+        <span class="book-details__content__details--name">
+          Name: {{book.name}}
+        </span>
+        <span class="book-details__content__details--description">
+          Description: {{book.description}}
+        </span>
+        <span class="book-details__content__details--price">
+           Price: {{book.price}} <mat-icon>euro</mat-icon>
+        </span>
+        <div>
+          <app-book-category-name
+            [categoryName]="categoryName"
+          ></app-book-category-name>
+        </div>
+      </div>
+    </div>
+    <div class="book-details__comments">
+      <app-comments-list
+        *ngIf="userId >= 0 || hasComments"
+        [bookId]="bookId"
+        (showComments)="setHasComments($event)">
+      </app-comments-list>
+    </div>
+  </div>
+</ng-container>

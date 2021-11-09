@@ -1,0 +1,56 @@
+@import '../../../styles/variables.scss';
+
+.book{
+  background-color: $backgroundColor;
+  border-radius: 10%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  align-items: center;
+  width: 80em;
+  height:22em;
+  margin-top: 1em;
+
+  &__image{
+    width:35em;
+
+    img{
+      width: 30em;
+      height:20em;
+      border-radius: 10%;
+    }
+  }
+
+  &__description{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width:35em;
+
+    &--name{
+      font-weight: 600;
+      font-size: 20px;
+    }
+
+    &--description{
+      padding: 1em;
+    }
+
+    &--price{
+      font-size: 18px;
+    }
+
+    &--button{
+      margin-top: 1em;
+
+      button{
+        background-color: $buttonColor;
+        color:white;
+        font-weight: 500;
+        font-size:16px;
+      }
+    }
+  }
+}

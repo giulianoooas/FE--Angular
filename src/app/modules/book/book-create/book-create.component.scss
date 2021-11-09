@@ -1,0 +1,94 @@
+@import '../../../styles/variables.scss';
+
+.title{
+  margin-bottom: 2em;
+  font-weight: 400;
+  font-size: 24px;
+  font-weight: 500;
+  margin-left: 25em;
+}
+
+.book-create{
+  display: flex;
+  justify-content: space-around;
+  flex-direction: row;
+  width:100%;
+  margin-left: 6em;
+  height: 40em;
+
+  .form{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: center;
+    align-items: center;
+
+    .input{
+      width:20em;
+      margin-top: 2em;
+      text-align: center;
+      border-radius: 2em;
+      border: 1px solid black;
+    }
+
+    .select{
+      background-color:white;
+      width:20em;
+      margin-top: 2em;
+      text-align: center;
+      border-radius: 2em;
+      border: 1px solid black;
+    }
+
+    .textarea{
+      text-align: center;
+      width:20em;
+      height: 10em;
+      margin-top: 2em;
+      border-radius: 2em;
+      border: 1px solid black;
+      resize: none;
+    }
+
+  }
+  .buttons{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    margin-top: 2em;
+
+    .button{
+      margin-left: 1em;
+      font-size: 18px;
+      background-color: $buttonColor;
+      color:white;
+      font-weight: 500;
+      font-size:16px;
+    }
+  }
+
+  .error{
+    margin-top: 3em;
+  }
+
+  .imageForDisplaying{
+    width:400px;
+    height:400px;
+    border-radius: 20%;
+    margin-left: 6em;
+  }
+}
+
+.field{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &-label{
+    margin-right: 2em;
+    font-size: 16px;
+
+    &--upper{
+      margin-bottom: 2em;
+    }
+  }
+}

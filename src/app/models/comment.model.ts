@@ -1,6 +1,6 @@
 export interface Comment{
   commentId: number;
-  carId: number;
+  bookId: number;
   message: string;
   date: Date;
   userId: number;

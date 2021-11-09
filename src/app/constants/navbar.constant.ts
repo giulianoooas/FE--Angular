@@ -2,12 +2,12 @@ import { Navbar } from "../models/navbar.model";
 
 export const NAVBAR_USER_CONSTANT: Navbar[] = [
   {
-    label: 'Cars',
-    url: '/cars',
+    label: 'Books',
+    url: '/books',
   },
   {
-    label: 'Create car',
-    url: '/cars/create'
+    label: 'Create book',
+    url: '/books/create'
   },
   {
     label: 'Categories',
@@ -17,8 +17,8 @@ export const NAVBAR_USER_CONSTANT: Navbar[] = [
 
 export const NAVBAR_ANONYMOUS_CONSTANT: Navbar[] = [
   {
-    label: 'Cars',
-    url: '/cars',
+    label: 'Books',
+    url: '/books',
   },
   {
     label: 'Categories',

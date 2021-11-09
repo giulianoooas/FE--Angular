@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CarModule } from './modules/car/car.module';
+import { BookModule } from './modules/book/book.module';
 import { NavbarModule } from './modules/navbar/navbar.module';
 import { CategoryModule } from './modules/category/category.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -21,7 +21,7 @@ import { AuthModule } from './modules/auth/auth.module';
     HttpClientModule,
     RouterModule,
     BrowserAnimationsModule,
-    CarModule,
+    BookModule,
     NavbarModule,
     CategoryModule,
     AuthModule

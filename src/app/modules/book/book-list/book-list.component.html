@@ -1,0 +1,8 @@
+<div class="books">
+  <app-book-filter
+    (setFilter)="setFilter($event)"
+  ></app-book-filter>
+  <div *ngFor="let book of filteredBooks" class= "book">
+    <app-book [book]="book"></app-book>
+  </div>
+</div>

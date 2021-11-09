@@ -95,7 +95,7 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
       if (validation1 && validation2 && this.repeatPassword === this.password){
         this.userService.createUser({password: this.password, email: this.email}).subscribe(user => {
           this.authService.setUser(user);
-          this.router.navigateByUrl('/cars')
+          this.router.navigateByUrl('/books')
         })
       }
     }
@@ -103,7 +103,7 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
       this.userService.login({email:this.email,password: this.password}).subscribe(user => {
         if (user){
           this.authService.setUser(user);
-          this.router.navigateByUrl('/cars')
+          this.router.navigateByUrl('/books')
         } else {
           this.errorMessages = ['User not found'];
         }

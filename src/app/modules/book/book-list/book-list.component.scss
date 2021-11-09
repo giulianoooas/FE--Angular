@@ -1,0 +1,15 @@
+.books{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 200em;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 50em;
+
+  .book{
+    padding-left: 12em;
+  }
+}

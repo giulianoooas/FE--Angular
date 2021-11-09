@@ -13,8 +13,8 @@ import { AuthService } from 'src/app/services/auth.service';
 export class CategoryElementComponent implements OnInit, OnDestroy {
   @Input() userId: number;
   @Input() public category: Category;
-  @Input() public showCars = false;
-  @Output() public showCarsEvent: EventEmitter<number>=
+  @Input() public showBooks = false;
+  @Output() public showBooksEvent: EventEmitter<number>=
     new EventEmitter<number>();
   @Output() public deleteCategoryEvent: EventEmitter<number>=
     new EventEmitter<number>();
@@ -45,8 +45,8 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
     this.isAdmin = this.authService.getIsAdmin();
   }
 
-  public requestToShowCars(): void{
-    this.showCarsEvent.emit(this.category.categoryId);
+  public requestToShowBooks(): void{
+    this.showBooksEvent.emit(this.category.categoryId);
   }
 
   public makeEditable(): void{
@@ -60,7 +60,7 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
   }
 
   public deleteCategory(): void{
-    this.showCarsEvent.emit(-1);
+    this.showBooksEvent.emit(-1);
     this.deleteCategoryEvent.emit(this.category.categoryId);
   }
 

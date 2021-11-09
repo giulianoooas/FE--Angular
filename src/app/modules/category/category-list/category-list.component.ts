@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Car } from 'src/app/models/car.model';
+import { Book } from 'src/app/models/book.model';
 import { Category } from 'src/app/models/category.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { CategoryService } from 'src/app/services/category.service';
@@ -11,8 +11,8 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryListComponent implements OnInit {
   public categories: Category[] = [];
-  public categoryIdForShowingCars = -1;
-  public carsToShow: Car[] = [];
+  public categoryIdForShowingBooks = -1;
+  public booksToShow: Book[] = [];
   public userId: number;
 
   public constructor(private categoryService: CategoryService, private authService: AuthService) { }
@@ -24,10 +24,10 @@ export class CategoryListComponent implements OnInit {
     this.userId = this.authService.getUserId();
   }
 
-  public showCars(categoryId: number): void{
-    this.categoryIdForShowingCars = categoryId;
-    this.categoryService.getAllCarOfCategory(categoryId).subscribe((cars) => {
-      this.carsToShow = cars;
+  public showBooks(categoryId: number): void{
+    this.categoryIdForShowingBooks = categoryId;
+    this.categoryService.getAllBookOfCategory(categoryId).subscribe((books) => {
+      this.booksToShow = books;
     })
   }
 

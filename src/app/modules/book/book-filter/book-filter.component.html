@@ -1,0 +1,24 @@
+<form
+  [formGroup]="formGroup"
+  class="book-filter"
+>
+  <div class="book-filter__element">
+    <mat-icon>
+      commute
+    </mat-icon>
+    <input
+      class="book-filter__element--input"
+      formControlName="name"
+      type="text"
+    >
+  </div>
+  <div class="book-filter__element">
+    <mat-icon>
+      monetization_on
+    </mat-icon>
+    <input
+      class="book-filter__element--input"
+      formControlName="minPrice"
+      type="number">
+    </div>
+</form>

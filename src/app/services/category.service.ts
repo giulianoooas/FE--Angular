@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Car } from '../models/car.model';
+import { Book } from '../models/book.model';
 import { Category } from '../models/category.model';
 
 @Injectable({
@@ -16,8 +16,8 @@ export class CategoryService {
     return this.http.get<Category[]>(`${this.baseUrl}categories`);
   }
 
-  public getAllCarOfCategory(categoryId: number): Observable<Car[]>{
-    return this.http.get<Car[]>(`${this.baseUrl}categories/${categoryId}/cars`);
+  public getAllBookOfCategory(categoryId: number): Observable<Book[]>{
+    return this.http.get<Book[]>(`${this.baseUrl}categories/${categoryId}/books`);
   }
 
   public deleteCategory(categoryId: number): Observable<Category[]>{

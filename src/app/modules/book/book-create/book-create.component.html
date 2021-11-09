@@ -1,0 +1,117 @@
+<div class="title">
+  <ng-container *ngIf="isEditMode">Edit {{book.name}} </ng-container>
+  <ng-container *ngIf="!isEditMode">Create a book </ng-container>
+</div>
+
+<div class="book-create">
+  <div>
+    <form [formGroup]="formGroup"
+      class = "form"
+    >
+      <div
+        class="filed"
+      >
+        <label class="field-label">
+          Name
+        </label>
+        <input matInput
+          formControlName="name"
+          type="text"
+          class="input"
+          [value]="book.name"
+          placeholder="Write a name for book"
+        >
+      </div>
+
+        <textarea
+          formControlName="description"
+          class="textarea"
+          [value]="book.description"
+          placeholder="Write a description"
+        ></textarea>
+      <div
+        class="filed"
+      >
+        <label class="field-label">Price</label>
+        <input
+          formControlName="price"
+          type="number"
+          class="input"
+          [value]="book.price"
+          placeholder="Set a price"
+        >
+      </div>
+      <div
+        class="filed"
+      >
+        <label class="field-label">Image</label>
+        <input matInput
+          formControlName="imageUrl"
+          type="text"
+          class="input"
+          [value]="book.imageUrl"
+          placeholder="Set an image url"
+        >
+      </div>
+      <div
+        class="filed"
+      >
+        <label class="field-label">Category</label>
+        <mat-select
+          formControlName="categoryId"
+          placeholder="Select a category"
+          class="select">
+          <ng-container *ngFor="let category of categories">
+            <mat-option
+              [value]="category.categoryId"
+            >
+            {{category.name}}
+          </mat-option>
+          </ng-container>
+        </mat-select>
+      </div>
+    </form>
+    <div class="buttons">
+      <ng-container *ngIf="isEditMode">
+        <button
+          class="button"
+          mat-button
+          (click)="editBook()">Edit</button>
+        <button
+          class="button"
+          mat-button
+          (click)="goBack()"
+        >
+          Back
+        </button>
+      </ng-container>
+      <ng-container *ngIf="!isEditMode">
+        <button
+        class="button"
+          mat-button
+          (click)="createBook()">Create</button>
+      </ng-container>
+    </div>
+    <mat-error *ngIf="errorMessage.length != 0" class="error">
+      <ul>
+        <li *ngFor="let error of errorMessage">
+          <span>{{error}}</span>
+        </li>
+      </ul>
+    </mat-error>
+    </div>
+  <div
+    (click)="openDialog()"
+  >
+    <img
+      *ngIf="book.imageUrl"
+      [src]="book.imageUrl"
+      class="imageForDisplaying"
+    />
+    <img
+      *ngIf="!book.imageUrl"
+      src="assets/images/sigla.png"
+      class="imageForDisplaying"
+    />
+  </div>
+</div>

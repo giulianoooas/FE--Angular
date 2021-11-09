@@ -8,17 +8,17 @@
       class="category"
       [category]="category"
       [userId]="userId"
-      (showCarsEvent)="showCars($event)"
+      (showBooksEvent)="showBooks($event)"
       (deleteCategoryEvent)="deleteCategory($event)"
       (editCategoryEvent)="editCategory($event)"
-      [showCars]="categoryIdForShowingCars==category.categoryId"
+      [showBooks]="categoryIdForShowingBooks==category.categoryId"
     ></app-category-element>
-    <ng-container *ngIf="categoryIdForShowingCars==category.categoryId">
-      <div class="cars">
-        <div *ngFor="let car of carsToShow">
-          <app-car
-            [car]="car"
-          ></app-car>
+    <ng-container *ngIf="categoryIdForShowingBooks==category.categoryId">
+      <div class="books">
+        <div *ngFor="let book of booksToShow">
+          <app-book
+            [book]="book"
+          ></app-book>
         </div>
       </div>
     </ng-container>
