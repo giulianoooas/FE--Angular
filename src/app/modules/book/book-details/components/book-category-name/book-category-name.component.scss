@@ -2,14 +2,15 @@
 
 .category-name{
   margin-top: 1em;
-  width:4em;
+  width:5em;
   background-color: $buttonColor;
   color:aliceblue;
-  height: 4em;
+  height: 5em;
   border-radius: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: center;
   font-weight: 500;
   font-size: 20px;
 }

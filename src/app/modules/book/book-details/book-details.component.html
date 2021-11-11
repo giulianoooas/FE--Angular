@@ -1,4 +1,10 @@
 <ng-container *ngIf="!!book">
+  <span class="name">
+    Book name: {{book.name}}
+  </span>
+  <span class="author">
+    Author name: {{book.author}}
+  </span>
   <div class="book-destails">
     <div class="book-details__content">
       <div class="book-details__content__image">
@@ -28,12 +34,6 @@
         </div>
       </div>
       <div class="book-details__content__details">
-        <span class="book-details__content__details--name">
-          Book name: {{book.name}}
-        </span>
-        <span class="book-details__content__details--author">
-          Author name: {{book.author}}
-        </span>
         <span class="book-details__content__details--description">
           Description: {{book.description}}
         </span>
