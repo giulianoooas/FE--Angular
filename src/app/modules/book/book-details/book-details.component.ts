@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Book } from 'src/app/models/book.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { BookService } from 'src/app/services/book.service';
+import { OrderService } from 'src/app/services/order.service';
+import { Book } from '../../../models/book.model';
+import { AuthService } from '../../../services/auth.service';
+import { BookService } from '../../../services/book.service';
 
 @Component({
   selector: 'app-book-details',
@@ -21,7 +22,8 @@ export class BookDetailsComponent implements OnInit {
     private bookService: BookService,
     private route: ActivatedRoute,
     private router: Router,
-    private authService: AuthService) { }
+    private authService: AuthService,
+    private orderService: OrderService) { }
 
   public ngOnInit(): void {
     this.setBook();
@@ -59,5 +61,12 @@ export class BookDetailsComponent implements OnInit {
 
   public editBook(): void{
     this.router.navigateByUrl(`books/${this.bookId}/edit`);
+  }
+
+  public addToOrderList(): void{
+    this.orderService.increaseOrder({
+      userId: this.userId,
+      bookId: this.bookId
+    }).subscribe();
   }
 }

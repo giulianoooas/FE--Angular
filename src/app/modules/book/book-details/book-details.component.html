@@ -19,6 +19,12 @@
           >
             Delete book
           </button>
+          <button mat-button
+            (click)="addToOrderList()"
+            *ngIf="userId >= 0"
+          >
+            Add to order list
+          </button>
         </div>
       </div>
       <div class="book-details__content__details">
