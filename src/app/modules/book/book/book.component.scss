@@ -45,6 +45,10 @@
     &--button{
       margin-top: 1em;
 
+      &--space{
+        margin-left: 1em;
+      }
+
       button{
         background-color: $buttonColor;
         color:white;

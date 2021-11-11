@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
-import { Book } from 'src/app/models/book.model';
+import { Book } from '../../../models/book.model';
+import { AuthService } from '../../../services/auth.service';
+import { OrderService } from '../../../services/order.service';
 
 @Component({
   selector: 'app-book',
@@ -14,13 +16,17 @@ export class BookComponent implements OnInit {
   public price: number;
   public bookId: number;
   public author: string;
+  public userId: number;
   @Input() public book: Book;
 
   public constructor(
-    private router:Router) {}
+    private router:Router,
+    private orderService: OrderService,
+    private authService: AuthService) {}
 
   public ngOnInit(): void {
     this.setBook();
+    this.userId = this.authService.getUserId();
   }
 
   private setBook(): void {
@@ -34,6 +40,13 @@ export class BookComponent implements OnInit {
 
   public visitPage(): void{
     this.router.navigate([`books/${this.bookId}`]);
+  }
+
+  public addToOrderList(): void{
+    this.orderService.increaseOrder({
+      userId: this.userId,
+      bookId: this.bookId
+    }).subscribe();
   }
 
 }
