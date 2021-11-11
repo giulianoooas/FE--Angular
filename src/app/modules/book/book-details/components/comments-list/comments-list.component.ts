@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Comment } from 'src/app/models/comment.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { CommentService } from 'src/app/services/comment.service';
+import { Comment } from '../../../../../models/comment.model';
+import { AuthService } from '../../../../../services/auth.service';
+import { CommentService } from '../../../../../services/comment.service';
 
 @Component({
   selector: 'app-comments-list',

@@ -1,5 +1,4 @@
-import { StringMap } from '@angular/compiler/src/compiler_facade_interface';
-import { AfterViewInit, Component, ElementRef, Inject, OnInit, QueryList, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({

@@ -1,10 +1,10 @@
 import { formatDate } from '../../../../../utils/format-date';
 import { Component, OnInit, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { Comment } from 'src/app/models/comment.model';
+import { Comment } from '../../../../../models/comment.model';
 import { FormControl, FormGroup } from '@angular/forms';
 import {Subscription } from 'rxjs';
-import { MAX_INPUT_CONSTANT_LENGTH_COMMENTS } from 'src/app/constants/input-max-length.constant';
-import { AuthService } from 'src/app/services/auth.service';
+import { MAX_INPUT_CONSTANT_LENGTH_COMMENTS } from '../../../../../constants/input-max-length.constant';
+import { AuthService } from '../../../../../services/auth.service';
 
 @Component({
   selector: 'app-comment',

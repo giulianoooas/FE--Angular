@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Book } from 'src/app/models/book.model';
-import { Category } from 'src/app/models/category.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { CategoryService } from 'src/app/services/category.service';
+import { Book } from '../../../models/book.model';
+import { Category } from '../../../models/category.model';
+import { AuthService } from '../../../services/auth.service';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-category-list',

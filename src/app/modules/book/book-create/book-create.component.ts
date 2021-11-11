@@ -3,11 +3,11 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { Book } from 'src/app/models/book.model';
-import { Category } from 'src/app/models/category.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { BookService } from 'src/app/services/book.service';
-import { CategoryService } from 'src/app/services/category.service';
+import { Book } from '../../../models/book.model';
+import { Category } from '../../../models/category.model';
+import { AuthService } from '../../../services/auth.service';
+import { BookService } from '../../../services/book.service';
+import { CategoryService } from '../../../services/category.service';
 import { ImageZoomComponent } from '../../shared/image-zoom/image-zoom.component';
 
 @Component({

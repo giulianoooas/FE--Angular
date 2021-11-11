@@ -1,9 +1,9 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { MAX_INPUT_CONSTANT_LENGTH_COMMENTS } from 'src/app/constants/input-max-length.constant';
-import { Comment } from 'src/app/models/comment.model';
-import { AuthService } from 'src/app/services/auth.service';
+import { MAX_INPUT_CONSTANT_LENGTH_COMMENTS } from '../../../../../constants/input-max-length.constant';
+import { Comment } from '../../../../../models/comment.model';
+import { AuthService } from '../../../../../services/auth.service';
 
 @Component({
   selector: 'app-comment-create',

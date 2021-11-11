@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { Navbar } from 'src/app/models/navbar.model';
+import { Navbar } from '../../../models/navbar.model';
 
 @Component({
   selector: 'app-navbar-element',
