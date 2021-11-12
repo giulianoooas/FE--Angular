@@ -32,7 +32,11 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   private setNavbarElements(): void{
     if (this.authService.getUserId() >= 0){
-      this.navbarElements = NAVBAR_USER_CONSTANT;
+      this.navbarElements = [...NAVBAR_USER_CONSTANT];
+      this.navbarElements.push({
+        label: 'Order list',
+        url: `/orders/${this.authService.getUserId()}`
+      })
     } else {
       this.navbarElements = NAVBAR_ANONYMOUS_CONSTANT;
     }

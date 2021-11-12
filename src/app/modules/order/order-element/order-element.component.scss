@@ -1,0 +1,39 @@
+@import '../../../styles/variables.scss';
+
+.order-element{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 100%;
+  height: 33%;
+
+  &__left{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    img{
+      width: 20em;
+      height:15em;
+    }
+  }
+
+  &__right{
+    margin-left: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 16px;
+
+    &--element{
+      margin-top: 1em;
+    }
+
+    .button{
+      background-color: $buttonColor;
+      color:white;
+      font-weight: 500;
+      font-size:16px;
+    }
+  }
+}

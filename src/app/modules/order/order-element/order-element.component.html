@@ -1,0 +1,36 @@
+<div class="order-element">
+  <div class="order-element__left">
+    <img
+      [src]="orderBook.imageUrl"
+    >
+    <button
+      mat-button
+      (click)="decreaseOrderNumber()"
+    >
+    Decrease Order
+  </button>
+  </div>
+  <div class="order-element__right">
+    <span class="order-element__right--element">
+      Order date: {{date}}
+    </span>
+    <span class="order-element__right--element">
+      Book name: {{orderBook.name}}
+    </span>
+    <span class="order-element__right--element">
+      Book author: {{orderBook.author}}
+    </span>
+    <span class="order-element__right--element">
+      Number of elements from order: {{orderBook.numberOfElements}}
+    </span>
+    <div class="order-element__right--element">
+      <button
+        mat-button
+        class="button"
+        (click)="goToAllBooks()"
+      >
+        See all books
+      </button>
+    </div>
+  </div>
+</div>

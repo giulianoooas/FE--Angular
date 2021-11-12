@@ -1,0 +1,15 @@
+<div class="order-list">
+  <ng-container
+    *ngFor="let order of orderBooks; let i=index"
+  >
+  <app-order-element
+    [index]="i"
+    [orderBook]="order"
+    [userId]="userId"
+    (decreaseOrderNumberEvent)="refresh($event)"
+  ></app-order-element>
+  </ng-container>
+  <ng-container *ngIf="orderBooks.length == 0">
+    You have no orders for the moment.
+  </ng-container>
+</div>

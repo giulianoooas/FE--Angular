@@ -7,6 +7,7 @@ import { BookCreateComponent } from './modules/book/book-create/book-create.comp
 import { BookDetailsComponent } from './modules/book/book-details/book-details.component';
 import { BookListComponent } from './modules/book/book-list/book-list.component';
 import { CategoryListComponent } from './modules/category/category-list/category-list.component';
+import { OrderListComponent } from './modules/order/order-list/order-list.component';
 
 const routes: Routes = [
     {
@@ -55,6 +56,11 @@ const routes: Routes = [
   {
     path: 'categories',
     component: CategoryListComponent
+  },
+  {
+    path: 'orders/:userId',
+    component: OrderListComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

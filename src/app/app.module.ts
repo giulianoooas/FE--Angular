@@ -10,6 +10,7 @@ import { BookModule } from './modules/book/book.module';
 import { NavbarModule } from './modules/navbar/navbar.module';
 import { CategoryModule } from './modules/category/category.module';
 import { AuthModule } from './modules/auth/auth.module';
+import { OrderModule } from './modules/order/order.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AuthModule } from './modules/auth/auth.module';
     BookModule,
     NavbarModule,
     CategoryModule,
-    AuthModule
+    AuthModule,
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
