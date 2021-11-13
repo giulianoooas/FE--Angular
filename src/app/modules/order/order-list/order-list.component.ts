@@ -11,6 +11,7 @@ import { OrderService } from '../../../services/order.service';
 export class OrderListComponent implements OnInit {
   public userId: number;
   public orderBooks: OrderBook[] = [];
+  public totalPrice = 0;
 
   public constructor(
     private orderService: OrderService,
@@ -26,12 +27,16 @@ export class OrderListComponent implements OnInit {
     this.orderService.getAllOrderOfUser(this.userId).subscribe(
       (orderBooks) =>{
         this.orderBooks = orderBooks;
+        for (const order of orderBooks){
+          this.totalPrice += order.price * order.numberOfElements;
+        }
       }
     )
   }
 
   public refresh(index: number): void{
     this.orderBooks[index].numberOfElements --;
+    this.totalPrice -= this.orderBooks[index].price;
     if (this.orderBooks[index].numberOfElements <= 0){
       const orders = [];
       for (let i = 0; i < this.orderBooks.length; i ++){

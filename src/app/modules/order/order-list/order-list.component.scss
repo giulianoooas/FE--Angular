@@ -1,4 +1,14 @@
 .order-list{
   margin-left: 33%;
   width: 100%;
+
+  &--price{
+    margin-bottom: 1em;
+    font-size: 20px;
+    border: 1px solid black;
+    width: 30em;
+    background-color: white;
+    border-radius: 20%;
+    text-align: center;
+  }
 }

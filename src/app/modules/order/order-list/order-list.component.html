@@ -1,4 +1,9 @@
 <div class="order-list">
+  <div *ngIf="totalPrice > 0"
+    class="order-list--price"
+  >
+    Total price of order list is {{totalPrice}} <mat-icon>euro</mat-icon>
+  </div>
   <ng-container
     *ngFor="let order of orderBooks; let i=index"
   >

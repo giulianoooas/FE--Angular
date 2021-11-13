@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrderElementComponent } from './order-element/order-element.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 
 
 
@@ -13,7 +14,8 @@ import { MatButtonModule } from '@angular/material/button';
   ],
   imports: [
     CommonModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule
   ]
 })
 export class OrderModule { }
