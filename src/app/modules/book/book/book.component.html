@@ -14,7 +14,7 @@
     </span>
     <div  class="book__description--button">
       <button mat-button (click)="visitPage()">visit</button>
-      <ng-container *ngIf="userId >= 0">
+      <ng-container *ngIf="userId >= 0  && userStatus == 1 || userStatus == 0">
         <button
         mat-button
         (click)="addToOrderList()"

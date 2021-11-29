@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import {  Router } from '@angular/router';
+import { UserStatusArray } from '../../../models/user.model';
 import { Book } from '../../../models/book.model';
 import { AuthService } from '../../../services/auth.service';
 import { OrderService } from '../../../services/order.service';
@@ -18,6 +19,8 @@ export class BookComponent implements OnInit {
   public author: string;
   public userId: number;
   @Input() public book: Book;
+  public userStatus: number;
+  public allUserStatus = UserStatusArray;
 
   public constructor(
     private router:Router,
@@ -27,6 +30,12 @@ export class BookComponent implements OnInit {
   public ngOnInit(): void {
     this.setBook();
     this.userId = this.authService.getUserId();
+    const status = this.authService.getUserStatus();
+    for (let i = 0; i < this.allUserStatus.length; i ++){
+      if (this.allUserStatus[i] === status){
+        this.userStatus = i;
+      }
+    }
   }
 
   private setBook(): void {

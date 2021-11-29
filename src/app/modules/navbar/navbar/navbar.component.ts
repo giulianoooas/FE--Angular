@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { NAVBAR_ANONYMOUS_CONSTANT, NAVBAR_NO_LOGIN_CONSTANT, NAVBAR_USER_CONSTANT } from '../../../constants/navbar.constant';
+import { NAVBAR_ANONYMOUS_CONSTANT, NAVBAR_CUSTOMER_CONSTANT, NAVBAR_LIBRARY_CONSTANT, NAVBAR_NO_LOGIN_CONSTANT } from '../../../constants/navbar.constant';
 import { AuthService } from '../../../services/auth.service';
 import { Navbar } from '../../../models/navbar.model';
 import { Router } from '@angular/router';
@@ -32,11 +32,21 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   private setNavbarElements(): void{
     if (this.authService.getUserId() >= 0){
-      this.navbarElements = [...NAVBAR_USER_CONSTANT];
+      if (this.authService.getIsCustomer()){
+        this.navbarElements = [...NAVBAR_CUSTOMER_CONSTANT];
+        this.navbarElements.push({
+          label: 'Order list',
+          url: `/orders/${this.authService.getUserId()}`
+        })
+     } else if (this.authService.getIsLibrary()){
+       this.navbarElements = [...NAVBAR_LIBRARY_CONSTANT];
+     } else {
+      this.navbarElements = [...NAVBAR_LIBRARY_CONSTANT];
       this.navbarElements.push({
         label: 'Order list',
         url: `/orders/${this.authService.getUserId()}`
       })
+     }
     } else {
       this.navbarElements = NAVBAR_ANONYMOUS_CONSTANT;
     }

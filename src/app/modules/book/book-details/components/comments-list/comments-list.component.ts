@@ -12,6 +12,7 @@ export class CommentsListComponent implements OnInit {
   public comments: Comment[] = [];
   public userId: number;
   public isAdmin = false;
+  public isCustomer = false;
 
   @Input() public bookId: number;
   @Output() public showComments: EventEmitter<boolean>=
@@ -25,6 +26,7 @@ export class CommentsListComponent implements OnInit {
       this.setShowBookComments();
     })
     this.userId = this.authService.getUserId();
+    this.isCustomer = this.authService.getIsCustomer();
     this.isAdmin = this.authService.getIsAdmin();
   }
 

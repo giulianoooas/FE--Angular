@@ -1,6 +1,6 @@
 import { Navbar } from "../models/navbar.model";
 
-export const NAVBAR_USER_CONSTANT: Navbar[] = [
+export const NAVBAR_LIBRARY_CONSTANT: Navbar[] = [
   {
     label: 'Books',
     url: '/books',
@@ -14,6 +14,18 @@ export const NAVBAR_USER_CONSTANT: Navbar[] = [
     url: '/categories'
   }
 ]
+
+export const NAVBAR_CUSTOMER_CONSTANT: Navbar[] = [
+  {
+    label: 'Books',
+    url: '/books',
+  },
+  {
+    label: 'Categories',
+    url: '/categories'
+  }
+]
+
 
 export const NAVBAR_ANONYMOUS_CONSTANT: Navbar[] = [
   {

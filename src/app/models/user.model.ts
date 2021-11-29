@@ -8,5 +8,7 @@ export interface User{
 export enum UserStatus {
   LIBRARY = 'library',
   CUSTOMER = 'customer',
-  ADMIN = 'ADMIN',
+  ADMIN = 'admin',
 }
+
+export const UserStatusArray = [UserStatus.ADMIN, UserStatus.CUSTOMER, UserStatus.LIBRARY];

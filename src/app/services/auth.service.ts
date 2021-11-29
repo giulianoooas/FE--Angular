@@ -18,6 +18,10 @@ export class AuthService {
     return Number(this.sessionStorage.getItem(this.userIdToken));
   }
 
+  public getUserStatus(): string{
+    return this.sessionStorage.getItem(this.statusToken) ?? '';
+  }
+
   public getEmail(): string{
     return this.sessionStorage.getItem(this.emailToken) ?? '';
   }

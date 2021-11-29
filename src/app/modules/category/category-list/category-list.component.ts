@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserStatusArray } from '../../../../app/models/user.model';
 import { Book } from '../../../models/book.model';
 import { Category } from '../../../models/category.model';
 import { AuthService } from '../../../services/auth.service';
@@ -14,6 +15,8 @@ export class CategoryListComponent implements OnInit {
   public categoryIdForShowingBooks = -1;
   public booksToShow: Book[] = [];
   public userId: number;
+  public userStatus: number;
+  public allUserStatus = UserStatusArray;
 
   public constructor(private categoryService: CategoryService, private authService: AuthService) { }
 
@@ -22,6 +25,15 @@ export class CategoryListComponent implements OnInit {
       this.categories = categories;
     });
     this.userId = this.authService.getUserId();
+    const status = this.authService.getUserStatus();
+    for (let i = 0; i < this.allUserStatus.length; i ++){
+      console.log(status,this.allUserStatus[i]);
+
+      if (this.allUserStatus[i] === status){
+        this.userStatus = i;
+        break;
+      }
+    }
   }
 
   public showBooks(categoryId: number): void{

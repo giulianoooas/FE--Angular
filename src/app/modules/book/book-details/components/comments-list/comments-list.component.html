@@ -1,7 +1,7 @@
 <div class="comments-list">
   <div class="comments-list__header">
     <app-comment-create
-    *ngIf="userId >= 0"
+    *ngIf="userId >= 0 && (isAdmin || isCustomer)"
     (save)="createComment($event)"
     [bookId]="bookId"
     ></app-comment-create>

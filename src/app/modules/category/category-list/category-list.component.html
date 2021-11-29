@@ -1,6 +1,6 @@
 <div class="category-list">
   <app-category-create
-    *ngIf="userId >= 0"
+    *ngIf="userId >= 0 && userStatus == 0 || userStatus == 2"
     (createCategoryEvent)="createCategory($event)"
   ></app-category-create>
   <div *ngFor="let category of categories">

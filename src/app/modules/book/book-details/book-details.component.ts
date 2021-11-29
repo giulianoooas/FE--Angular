@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserStatusArray } from 'src/app/models/user.model';
 import { OrderService } from 'src/app/services/order.service';
 import { Book } from '../../../models/book.model';
 import { AuthService } from '../../../services/auth.service';
@@ -17,6 +18,8 @@ export class BookDetailsComponent implements OnInit {
   public userId: number;
   public isAdmin: boolean;
   public hasComments = true;
+  public userStatus: number;
+  public allUserStatus = UserStatusArray;
 
   public constructor(
     private bookService: BookService,
@@ -33,6 +36,12 @@ export class BookDetailsComponent implements OnInit {
   private setUser(): void{
     this.userId = this.authService.getUserId();
     this.isAdmin= this.authService.getIsAdmin();
+    const status = this.authService.getUserStatus();
+    for (let i = 0; i < this.allUserStatus.length; i ++){
+      if (this.allUserStatus[i] === status){
+        this.userStatus = i;
+      }
+    }
   }
 
   private setBook(): void{
