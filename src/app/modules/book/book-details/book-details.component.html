@@ -56,7 +56,7 @@
       </div>
       <div class="book-details__comments">
         <app-comments-list
-          *ngIf="userId >= 0 || hasComments"
+          *ngIf="userId >= 0 && hasComments"
           [bookId]="bookId"
           (showComments)="setHasComments($event)">
         </app-comments-list>
