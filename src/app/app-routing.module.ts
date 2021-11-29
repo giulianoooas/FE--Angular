@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './guards/auth.guard';
 import { BookGuard } from './guards/book.guard';
+import { CustomerGuard } from './guards/customer.guard';
+import { LibraryGuard } from './guards/library.guard';
 import { LoginSignUpPageComponent } from './modules/auth/login-sign-up-page/login-sign-up-page.component';
 import { BookCreateComponent } from './modules/book/book-create/book-create.component';
 import { BookDetailsComponent } from './modules/book/book-details/book-details.component';
@@ -33,7 +35,7 @@ const routes: Routes = [
       {
         path: 'create',
         component: BookCreateComponent,
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard, LibraryGuard]
       },
       {
         path: ':bookId',
@@ -46,7 +48,7 @@ const routes: Routes = [
           {
             path: 'edit',
             component: BookCreateComponent,
-            canActivate: [AuthGuard]
+            canActivate: [AuthGuard, LibraryGuard]
           }
         ]
         }
@@ -60,7 +62,7 @@ const routes: Routes = [
   {
     path: 'orders/:userId',
     component: OrderListComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, CustomerGuard]
   }
 ];
 

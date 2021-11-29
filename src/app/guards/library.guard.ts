@@ -12,7 +12,7 @@ export class LibraryGuard implements CanActivate {
   public canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authService.getIsLibrary();
+    return this.authService.getIsLibrary() || this.authService.getIsAdmin();
   }
 
 }

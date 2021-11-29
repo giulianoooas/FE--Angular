@@ -12,7 +12,7 @@ export class CustomerGuard implements CanActivate {
   public canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.authService.getIsCustomer();
+    return this.authService.getIsCustomer() || this.authService.getIsAdmin();
   }
 
 }
