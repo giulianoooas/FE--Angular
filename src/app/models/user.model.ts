@@ -2,5 +2,11 @@ export interface User{
   userId: number;
   password: string;
   email: string;
-  isAdmin: boolean;
+  userStatus: UserStatus;
+}
+
+export enum UserStatus {
+  LIBRARY = 'library',
+  CUSTOMER = 'customer',
+  ADMIN = 'ADMIN',
 }

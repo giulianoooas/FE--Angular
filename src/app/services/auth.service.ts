@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '../models/user.model';
+import { User, UserStatus } from '../models/user.model';
 import { SessionStorageService } from './session-storage.service';
 
 @Injectable({
@@ -7,7 +7,7 @@ import { SessionStorageService } from './session-storage.service';
 })
 export class AuthService {
   readonly userIdToken = 'TOKEN_FOR_CONNECTION_ID';
-  readonly adminToken = 'TOKEN_FOR_CONNECTION_ADMIN';
+  readonly statusToken = 'TOKEN_FOR_CONNECTION_STATUS';
   readonly emailToken = 'TOKEN_FOR_CONNECTION_EMAIL';
 
   public constructor(private sessionStorage: SessionStorageService) { }
@@ -23,20 +23,32 @@ export class AuthService {
   }
 
   public getIsAdmin(): boolean{
-    if (!this.sessionStorage.getItem(this.adminToken) || this.sessionStorage.getItem(this.adminToken) === 'false')
+    if (!this.sessionStorage.getItem(this.statusToken) || this.sessionStorage.getItem(this.statusToken) !== UserStatus.ADMIN)
+     return false;
+    return true;
+  }
+
+  public getIsCustomer(): boolean{
+    if (!this.sessionStorage.getItem(this.statusToken) || this.sessionStorage.getItem(this.statusToken) !== UserStatus.CUSTOMER)
+     return false;
+    return true;
+  }
+
+  public getIsLibrary(): boolean{
+    if (!this.sessionStorage.getItem(this.statusToken) || this.sessionStorage.getItem(this.statusToken) !== UserStatus.LIBRARY)
      return false;
     return true;
   }
 
   public setUser(user: User): void{
     this.sessionStorage.setItem(this.userIdToken,String(user.userId));
-    this.sessionStorage.setItem(this.adminToken, String(user.isAdmin));
+    this.sessionStorage.setItem(this.statusToken, user.userStatus);
     this.sessionStorage.setItem(this.emailToken, user.email);
   }
 
   public logOut(): void{
     this.sessionStorage.removeItem(this.userIdToken);
-    this.sessionStorage.removeItem(this.adminToken);
+    this.sessionStorage.removeItem(this.statusToken);
     this.sessionStorage.removeItem(this.emailToken);
   }
 }
