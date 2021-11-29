@@ -51,7 +51,7 @@
         flex-direction: column;
         justify-content: flex-start;
         align-items: center;
-        width: 50%;
+        width: 35em;
 
         &--image{
           width: 100%;
@@ -79,6 +79,7 @@
       &__details{
         overflow-y: auto;
         width:40%;
+        margin-left: 2em;
         display:flex;
         flex-direction: column;
         justify-content:space-around;
