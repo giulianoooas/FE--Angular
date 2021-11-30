@@ -1,1 +1,21 @@
-<p>price-predict works!</p>
+<div class="price-predict">
+  <span class="title">
+    {{title}}
+  </span>
+  <form
+    [formGroup]="formGroup"
+    class="price-predict__file-selector"
+  >
+    <input
+      type="file"
+      formControlName="file"
+      accept=".pdf, .txt"
+    >
+    <button class="button" (click)="clearFileSelector()">
+      Remove file
+    </button>
+  </form>
+  <span class="price-predict__price" *ngIf="file !== ''">
+    Your price is {{price}} <mat-icon>euro</mat-icon>
+  </span>
+</div>

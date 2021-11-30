@@ -10,6 +10,7 @@ import { BookDetailsComponent } from './modules/book/book-details/book-details.c
 import { BookListComponent } from './modules/book/book-list/book-list.component';
 import { CategoryListComponent } from './modules/category/category-list/category-list.component';
 import { OrderListComponent } from './modules/order/order-list/order-list.component';
+import { PricePredictComponent } from './modules/shared/price-predict/price-predict.component';
 
 const routes: Routes = [
     {
@@ -24,6 +25,11 @@ const routes: Routes = [
       path: '',
       redirectTo: 'books',
       pathMatch: 'full',
+    },
+    {
+      path: 'price-predict',
+      component: PricePredictComponent,
+      canActivate: [LibraryGuard]
     },
     {
       path: 'books',
