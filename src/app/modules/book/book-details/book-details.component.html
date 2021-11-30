@@ -14,7 +14,7 @@
       <div class="book-details__content">
         <div class="book-details__content__image">
           <div class="book-details__content__image--image">
-            <img [src]="book.imageUrl"/>
+            <img [src]="book.imageUrl" (click)="openDialog()"/>
           </div>
           <div class="book-details__content__image--back">
             <button (click)="goBooksDashboard()" mat-button>See all books</button>

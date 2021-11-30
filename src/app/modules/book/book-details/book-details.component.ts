@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserStatusArray } from 'src/app/models/user.model';
+import { DialogService } from 'src/app/services/dialog.service';
 import { OrderService } from 'src/app/services/order.service';
 import { Book } from '../../../models/book.model';
 import { AuthService } from '../../../services/auth.service';
@@ -26,7 +27,8 @@ export class BookDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private authService: AuthService,
-    private orderService: OrderService) { }
+    private orderService: OrderService,
+    private dialogService: DialogService) { }
 
   public ngOnInit(): void {
     this.setBook();
@@ -77,5 +79,9 @@ export class BookDetailsComponent implements OnInit {
       userId: this.userId,
       bookId: this.bookId
     }).subscribe();
+  }
+
+  public openDialog(): void{
+    this.dialogService.openImageZoom(this.book.imageUrl);
   }
 }

@@ -1,14 +1,13 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { DialogService } from '../../../../app/services/dialog.service';
 import { Book } from '../../../models/book.model';
 import { Category } from '../../../models/category.model';
 import { AuthService } from '../../../services/auth.service';
 import { BookService } from '../../../services/book.service';
 import { CategoryService } from '../../../services/category.service';
-import { ImageZoomComponent } from '../../shared/image-zoom/image-zoom.component';
 
 @Component({
   selector: 'app-book-create',
@@ -46,7 +45,7 @@ export class BookCreateComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
-    private dialog: MatDialog,
+    private dialogService: DialogService,
     public authService: AuthService) { }
 
   public ngOnInit(): void {
@@ -157,13 +156,7 @@ export class BookCreateComponent implements OnInit, OnDestroy {
   }
 
   public openDialog(): void{
-    this.dialog.open(ImageZoomComponent, {
-      height:'800px',
-      width:'700px',
-      data: {
-        imageUrl: this.book.imageUrl
-      }
-    },)
+    this.dialogService.openImageZoom(this.book.imageUrl);
   }
 
   public goBack(): void{
