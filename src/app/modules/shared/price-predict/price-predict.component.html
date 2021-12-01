@@ -17,6 +17,12 @@
       mat-button>
       Remove file
     </button>
+    <button
+      class="button"
+      (click)="predictPrice()"
+      mat-button>
+      Predict price
+    </button>
   </form>
   <span class="price-predict__price" *ngIf="file !== ''">
     Your price is {{price}} <mat-icon>euro</mat-icon>

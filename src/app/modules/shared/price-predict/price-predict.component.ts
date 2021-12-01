@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { PredictService } from 'src/app/services/predict.service';
 
 @Component({
   selector: 'app-price-predict',
@@ -16,7 +17,7 @@ export class PricePredictComponent implements OnInit, OnDestroy {
     file: new FormControl()
   });
 
-  public constructor() { }
+  public constructor(private predictService: PredictService) { }
 
   public ngOnInit(): void {
     this.setSubscription();
@@ -31,13 +32,18 @@ export class PricePredictComponent implements OnInit, OnDestroy {
     );
   }
 
-  public ngOnDestroy(): void{
-    this.subscription.unsubscribe();
-  }
-
-
   public clearFileSelector(): void{
     this.file = '';
     this.formGroup.controls['file'].setValue('');
+  }
+
+  public predictPrice(): void{
+    this.predictService.predictScore().subscribe((price) => {
+      this.price = price;
+    })
+  }
+
+  public ngOnDestroy(): void{
+    this.subscription.unsubscribe();
   }
 }
