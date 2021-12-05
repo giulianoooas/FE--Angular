@@ -42,7 +42,7 @@
       </button>
       <button class="button"
         mat-button
-        *ngIf="userId == category.userId"
+        *ngIf="userId == category.userId || isAdmin"
         (click)="makeEditable()"
       >
         Edit <mat-icon>edit</mat-icon>

@@ -68,7 +68,8 @@
       </button>
       <mat-error
       *ngIf="errorMessages.length"
-    >
+      class="error"
+      >
       <ul>
         <div *ngFor="let errorMessage of errorMessages">
           <li>

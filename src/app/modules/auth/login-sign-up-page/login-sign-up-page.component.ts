@@ -21,7 +21,7 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   public buttonText: string;
   public action: string;
   private subscription: Subscription = new Subscription();
-  public nickname: string;
+  public nickname = '';
   public email = '';
   public password = '';
   public repeatPassword = '';
@@ -64,8 +64,10 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   }
 
   private validateNickname(): boolean{
+    console.log(this.nickname);
+
     if (this.nickname === ''){
-      this.errorMessages.push('NickName must be not null.');
+      this.errorMessages.push('Nickname must be not null.');
       return false;
     }
     return true;
