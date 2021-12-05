@@ -3,6 +3,18 @@
     (setFilter)="setFilter($event)"
   ></app-book-filter>
   <div *ngFor="let book of filteredBooks" class= "book">
-    <app-book [book]="book"></app-book>
+    <app-book
+    [book]="book"
+    (showPanel)="showPanel()"
+    ></app-book>
   </div>
+</div>
+<div class="book-added-order-list"
+  *ngIf="isAdded"
+>
+  <span
+    class="book-added-order-list--message"
+  >
+    {{message}}
+  </span>
 </div>

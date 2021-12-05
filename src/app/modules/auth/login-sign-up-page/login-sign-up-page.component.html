@@ -6,9 +6,23 @@
     <form class="form"
       [formGroup]="formGroup"
     >
+    <div class="section"
+      *ngIf="action !== 'login'"
+    >
+      <mat-icon>
+        perm_identity
+      </mat-icon>
+      <input
+        matInput
+        type="text"
+        placeholder="Nickname"
+        value=""
+        formControlName="nickname"
+        class="input">
+    </div>
       <div class="section">
         <mat-icon>
-          perm_identity
+          public
         </mat-icon>
         <input
           matInput

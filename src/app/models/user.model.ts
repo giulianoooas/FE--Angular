@@ -3,6 +3,8 @@ export interface User{
   password: string;
   email: string;
   userStatus: UserStatus;
+  nickname:string;
+  logoUrl?: string;
 }
 
 export enum UserStatus {

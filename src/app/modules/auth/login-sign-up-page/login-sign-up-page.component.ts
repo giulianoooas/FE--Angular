@@ -13,6 +13,7 @@ import { UserService } from '../../../services/user.service';
 export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   public errorMessages: string[] = [];
   public formGroup = new FormGroup({
+    nickname: new FormControl(''),
     email: new FormControl(''),
     password: new FormControl(''),
     repeatPassword: new FormControl('')
@@ -20,6 +21,7 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   public buttonText: string;
   public action: string;
   private subscription: Subscription = new Subscription();
+  public nickname: string;
   public email = '';
   public password = '';
   public repeatPassword = '';
@@ -54,8 +56,19 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
         if (data.repeatPassword){
           this.repeatPassword = data.repeatPassword;
         }
+        if (data.nickname){
+          this.nickname = data.nickname;
+        }
       })
     );
+  }
+
+  private validateNickname(): boolean{
+    if (this.nickname === ''){
+      this.errorMessages.push('NickName must be not null.');
+      return false;
+    }
+    return true;
   }
 
   private validatePassword(): boolean{
@@ -88,12 +101,13 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
     this.errorMessages = [];
     const validation1 = this.validateEmail();
     const validation2 = this.validatePassword();
+    const validation3 = this.validateNickname();
     if (this.action !== 'login'){
       if (this.repeatPassword !== this.password){
         this.errorMessages.push('Passwords don` t match.')
       }
-      if (validation1 && validation2 && this.repeatPassword === this.password){
-        this.userService.createUser({password: this.password, email: this.email}).subscribe(user => {
+      if (validation1 && validation2 && validation3 && this.repeatPassword === this.password){
+        this.userService.createUser({password: this.password, email: this.email, nickname: this.nickname}).subscribe(user => {
           this.authService.setUser(user);
           this.router.navigateByUrl('/books')
         })

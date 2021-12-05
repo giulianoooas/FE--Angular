@@ -14,6 +14,7 @@ export class UserService {
   public createUser(user: {
   password: string;
   email: string;
+  nickname: string
   }): Observable<User>{
     return this.http.post<User>(`${this.baseUrl}users`, user);
   }

@@ -8,6 +8,8 @@ import { BookService } from '../../../services/book.service';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
+  public message = 'The book was added!';
+  public isAdded = false;
   public books: Book[] = [];
   public filteredBooks: Book[] = [];
   public constructor(private bookService: BookService) { }
@@ -29,4 +31,14 @@ export class BookListComponent implements OnInit {
     }
   }
 
+  public showPanel(): void{
+    let action = setInterval(() => {
+      if (!this.isAdded){
+        this.isAdded = true;
+      } else {
+        this.isAdded = false;
+        clearInterval(action);
+      }
+    },1000);
+  }
 }

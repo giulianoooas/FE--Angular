@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import {  Router } from '@angular/router';
 import { UserStatusArray } from '../../../models/user.model';
 import { Book } from '../../../models/book.model';
@@ -21,6 +21,7 @@ export class BookComponent implements OnInit {
   @Input() public book: Book;
   public userStatus: number;
   public allUserStatus = UserStatusArray;
+  @Output() public showPanel = new EventEmitter<void>();
 
   public constructor(
     private router:Router,
@@ -56,6 +57,7 @@ export class BookComponent implements OnInit {
       userId: this.userId,
       bookId: this.bookId
     }).subscribe();
+    this.showPanel.emit();
   }
 
 }
