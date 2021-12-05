@@ -13,14 +13,26 @@
     </div>
   </div>
   <div  *ngIf="nickname" class="navbar__login">
-    <span class="text">
-      {{nickname}}
-    </span>
-    <button
-      class="button"
-      (click)="logOut()"
+    <div class="text"
+      (click)="setShowActionUser()"
     >
-      Logout
-    </button>
+      {{nickname}}
+    </div>
+    <div
+      *ngIf="showActionsUser"
+    >
+      <button
+        class="button"
+        (click)="logOut()"
+      >
+        Logout
+      </button>
+      <button
+        class="button"
+        (click)="logOut()"
+      >
+        Show profile
+      </button>
+    </div>
   </div>
 </div>

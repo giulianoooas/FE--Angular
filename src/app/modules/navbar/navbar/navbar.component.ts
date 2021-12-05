@@ -12,6 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   public navbarElements: Navbar[];
+  public showActionsUser = false;
   public nickname: string;
   public authNavbar: Navbar[];
   public subscription: Subscription = new Subscription();
@@ -21,6 +22,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.subscription.add(
           this.router.events.subscribe(() => {
             this.setNavbarElements();
+            this.showActionsUser = false;
           })
         )
   }
@@ -51,6 +53,10 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.navbarElements = NAVBAR_ANONYMOUS_CONSTANT;
     }
     this.nickname = this.authService.getNickname();
+  }
+
+  public setShowActionUser(): void{
+    this.showActionsUser = !this.showActionsUser;
   }
 
   public logOut(): void{
