@@ -9,6 +9,8 @@ export class AuthService {
   readonly userIdToken = 'TOKEN_FOR_CONNECTION_ID';
   readonly statusToken = 'TOKEN_FOR_CONNECTION_STATUS';
   readonly emailToken = 'TOKEN_FOR_CONNECTION_EMAIL';
+  readonly nicknameToke = 'TOKEN_FOR_CONNECTION_NICKNAME';
+  readonly logoUrlToken = 'TOKEN_FOR_CONNECTION_LOGO';
 
   public constructor(private sessionStorage: SessionStorageService) { }
 
@@ -24,6 +26,14 @@ export class AuthService {
 
   public getEmail(): string{
     return this.sessionStorage.getItem(this.emailToken) ?? '';
+  }
+
+  public getNickname(): string{
+    return this.sessionStorage.getItem(this.nicknameToke) ?? '';
+  }
+
+  public getLogoUrl(): string | undefined{
+    return this.sessionStorage.getItem(this.logoUrlToken) ?? undefined;
   }
 
   public getIsAdmin(): boolean{
@@ -48,11 +58,17 @@ export class AuthService {
     this.sessionStorage.setItem(this.userIdToken,String(user.userId));
     this.sessionStorage.setItem(this.statusToken, user.userStatus);
     this.sessionStorage.setItem(this.emailToken, user.email);
+    this.sessionStorage.setItem(this.nicknameToke, user.nickname);
+    if (user.logoUrl){
+      this.sessionStorage.setItem(this.logoUrlToken, user.logoUrl);
+    }
   }
 
   public logOut(): void{
     this.sessionStorage.removeItem(this.userIdToken);
     this.sessionStorage.removeItem(this.statusToken);
     this.sessionStorage.removeItem(this.emailToken);
+    this.sessionStorage.removeItem(this.nicknameToke);
+    this.sessionStorage.removeItem(this.logoUrlToken);
   }
 }
