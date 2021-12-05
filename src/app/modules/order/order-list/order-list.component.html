@@ -1,4 +1,6 @@
-<div class="order-list">
+<div class="order-list"
+  [ngClass]="{'bigger-padding':orderBooks.length > 2}"
+>
   <div *ngIf="totalPrice > 0"
     class="order-list--price"
   >

@@ -13,11 +13,11 @@
     </div>
   </div>
   <div  *ngIf="nickname" class="navbar__login">
-    <div class="text"
+    <button class="text"
       (click)="setShowActionUser()"
     >
       {{nickname}}
-    </div>
+    </button>
     <div
       *ngIf="showActionsUser"
     >
