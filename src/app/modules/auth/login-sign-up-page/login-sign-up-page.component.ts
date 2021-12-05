@@ -103,8 +103,8 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
     this.errorMessages = [];
     const validation1 = this.validateEmail();
     const validation2 = this.validatePassword();
-    const validation3 = this.validateNickname();
     if (this.action !== 'login'){
+      const validation3 = this.validateNickname();
       if (this.repeatPassword !== this.password){
         this.errorMessages.push('Passwords don` t match.')
       }
