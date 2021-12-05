@@ -8,7 +8,6 @@ import { BookService } from '../../../services/book.service';
   styleUrls: ['./book-list.component.scss']
 })
 export class BookListComponent implements OnInit {
-  public message = 'The book was added!';
   public isAdded = false;
   public books: Book[] = [];
   public filteredBooks: Book[] = [];

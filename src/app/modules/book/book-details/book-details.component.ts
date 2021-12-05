@@ -13,7 +13,6 @@ import { BookService } from '../../../services/book.service';
   styleUrls: ['./book-details.component.scss']
 })
 export class BookDetailsComponent implements OnInit {
-  public message = 'The book was added!';
   public isAdded = false;
   public book: Book;
   public bookId: number;

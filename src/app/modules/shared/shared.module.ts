@@ -6,13 +6,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { PricePredictComponent } from './price-predict/price-predict.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { OrderListAddedPanelComponent } from './order-list-added-panel/order-list-added-panel.component';
 
 
 
 @NgModule({
   declarations: [
     ImageZoomComponent,
-    PricePredictComponent
+    PricePredictComponent,
+    OrderListAddedPanelComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule
   ],
   exports: [
-    ImageZoomComponent
+    ImageZoomComponent,
+    OrderListAddedPanelComponent
   ]
 })
 export class SharedModule { }
