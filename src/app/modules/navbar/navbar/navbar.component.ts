@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class NavbarComponent implements OnInit, OnDestroy {
   public navbarElements: Navbar[];
-  public email: string;
+  public nickname: string;
   public authNavbar: Navbar[];
   public subscription: Subscription = new Subscription();
 
@@ -50,7 +50,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     } else {
       this.navbarElements = NAVBAR_ANONYMOUS_CONSTANT;
     }
-    this.email = this.authService.getEmail();
+    this.nickname = this.authService.getNickname();
   }
 
   public logOut(): void{

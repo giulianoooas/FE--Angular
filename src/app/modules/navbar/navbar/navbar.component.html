@@ -6,15 +6,15 @@
     </div>
   </div>
 
-  <div *ngIf="!email" class="navbar__anonymous">
+  <div *ngIf="!nickname" class="navbar__anonymous">
     <div *ngFor="let navbarElement of authNavbar">
       <app-navbar-element [navbarElement]="navbarElement">
     </app-navbar-element>
     </div>
   </div>
-  <div  *ngIf="email" class="navbar__login">
+  <div  *ngIf="nickname" class="navbar__login">
     <span class="text">
-      {{email}}
+      {{nickname}}
     </span>
     <button
       class="button"

@@ -13,6 +13,8 @@ import { BookService } from '../../../services/book.service';
   styleUrls: ['./book-details.component.scss']
 })
 export class BookDetailsComponent implements OnInit {
+  public message = 'The book was added!';
+  public isAdded = false;
   public book: Book;
   public bookId: number;
   public categoryName: string;
@@ -78,10 +80,23 @@ export class BookDetailsComponent implements OnInit {
     this.orderService.increaseOrder({
       userId: this.userId,
       bookId: this.bookId
-    }).subscribe();
+    }).subscribe(() => {
+      this.showPanel();
+    });
   }
 
   public openDialog(): void{
     this.dialogService.openImageZoom(this.book.imageUrl);
+  }
+
+  public showPanel(): void{
+    let action = setInterval(() => {
+      if (!this.isAdded){
+        this.isAdded = true;
+      } else {
+        this.isAdded = false;
+        clearInterval(action);
+      }
+    },1000);
   }
 }
