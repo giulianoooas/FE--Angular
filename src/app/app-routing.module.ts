@@ -5,6 +5,7 @@ import { BookGuard } from './guards/book.guard';
 import { CustomerGuard } from './guards/customer.guard';
 import { LibraryGuard } from './guards/library.guard';
 import { LoginSignUpPageComponent } from './modules/auth/login-sign-up-page/login-sign-up-page.component';
+import { UserProfileComponent } from './modules/auth/user-profile/user-profile.component';
 import { BookCreateComponent } from './modules/book/book-create/book-create.component';
 import { BookDetailsComponent } from './modules/book/book-details/book-details.component';
 import { BookListComponent } from './modules/book/book-list/book-list.component';
@@ -13,6 +14,11 @@ import { OrderListComponent } from './modules/order/order-list/order-list.compon
 import { PricePredictComponent } from './modules/shared/price-predict/price-predict.component';
 
 const routes: Routes = [
+    {
+      path: 'user/:userId',
+      component: UserProfileComponent,
+      canActivate: [AuthGuard]
+    },
     {
       path: 'login',
       component: LoginSignUpPageComponent
