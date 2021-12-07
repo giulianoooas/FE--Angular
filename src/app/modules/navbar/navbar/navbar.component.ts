@@ -4,6 +4,7 @@ import { AuthService } from '../../../services/auth.service';
 import { Navbar } from '../../../models/navbar.model';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { EventService } from 'src/app/services/event.service';
 
 @Component({
   selector: 'app-navbar',
@@ -17,7 +18,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public authNavbar: Navbar[];
   public subscription: Subscription = new Subscription();
 
-  public constructor(private authService: AuthService,
+  public constructor(
+        private authService: AuthService,
+        private eventService: EventService,
         private router: Router){
         this.subscription.add(
           this.router.events.subscribe(() => {
@@ -29,7 +32,18 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   public ngOnInit(): void{
     this.setNavbarElements();
+    this.updateNickname();
     this.authNavbar = NAVBAR_NO_LOGIN_CONSTANT;
+  }
+
+  private updateNickname(): void{
+    this.subscription.add(
+      this.eventService.getData().subscribe(
+        (data) => {
+          this.nickname = data;
+        }
+      )
+    );
   }
 
   private setNavbarElements(): void{

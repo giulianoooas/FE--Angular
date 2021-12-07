@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -30,7 +31,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
 
   public constructor(
     private authService: AuthService,
-    private userService: UserService
+    private userService: UserService,
+    private eventService: EventService
   ) { }
 
   public ngOnInit(): void {
@@ -135,6 +137,9 @@ export class UserProfileComponent implements OnInit, OnDestroy {
         (user) => {
           if (user !== null){
             this.authService.setUser(user);
+            if (this.editElement === 'nickname'){
+              this.eventService.sendData(user.nickname);
+            }
             this.setUser();
           } else {
             this.errorMessages = ['Email or nickname is already used!'];
