@@ -119,6 +119,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   private validateUpdate(): boolean{
+    this.errorMessages = [];
     if (this.user.password !== this.password){
       this.errorMessages.push('Passwords are not the same!');
     }
@@ -132,8 +133,12 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     if (this.validateUpdate()){
       this.userService.updateUser(this.changedUser).subscribe(
         (user) => {
-          this.authService.setUser(user);
-          this.setUser();
+          if (user !== null){
+            this.authService.setUser(user);
+            this.setUser();
+          } else {
+            this.errorMessages = ['Email or nickname is already used!'];
+          }
         }
       )
     }
