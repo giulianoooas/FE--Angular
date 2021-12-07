@@ -6,11 +6,12 @@ import { SessionStorageService } from './session-storage.service';
   providedIn: 'root'
 })
 export class AuthService {
-  readonly userIdToken = 'TOKEN_FOR_CONNECTION_ID';
-  readonly statusToken = 'TOKEN_FOR_CONNECTION_STATUS';
-  readonly emailToken = 'TOKEN_FOR_CONNECTION_EMAIL';
-  readonly nicknameToke = 'TOKEN_FOR_CONNECTION_NICKNAME';
-  readonly logoUrlToken = 'TOKEN_FOR_CONNECTION_LOGO';
+  private readonly userIdToken = 'TOKEN_FOR_CONNECTION_ID';
+  private readonly statusToken = 'TOKEN_FOR_CONNECTION_STATUS';
+  private readonly emailToken = 'TOKEN_FOR_CONNECTION_EMAIL';
+  private readonly nicknameToke = 'TOKEN_FOR_CONNECTION_NICKNAME';
+  private readonly logoUrlToken = 'TOKEN_FOR_CONNECTION_LOGO';
+  private readonly userToken = 'TOKEN_FOR_CONNECTION_USER';
 
   public constructor(private sessionStorage: SessionStorageService) { }
 
@@ -54,6 +55,10 @@ export class AuthService {
     return true;
   }
 
+  public getUser(): User{
+    return JSON.parse(this.sessionStorage.getItem(this.userToken) ?? '{}') as User;
+  }
+
   public setUser(user: User): void{
     this.sessionStorage.setItem(this.userIdToken,String(user.userId));
     this.sessionStorage.setItem(this.statusToken, user.userStatus);
@@ -62,6 +67,7 @@ export class AuthService {
     if (user.logoUrl){
       this.sessionStorage.setItem(this.logoUrlToken, user.logoUrl);
     }
+    this.sessionStorage.setItem(this.userToken, JSON.stringify(user));
   }
 
   public logOut(): void{
