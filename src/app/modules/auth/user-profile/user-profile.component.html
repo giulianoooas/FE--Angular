@@ -1,1 +1,26 @@
-
+<div class="user-profile">
+  <div class="user-profile--title">
+    <span class="title">
+      User details
+    </span>
+  </div>
+  <div  class="user-profile__info">
+    <div class="user-profile__info--image">
+      <img
+        class="img"
+        [src]="logoUrl"
+      >
+    </div>
+    <div class="user-profile__info--description">
+      <span class="text">
+        Username: {{user.nickname}}
+      </span>
+      <span class="text">
+        Email: {{user.email}}
+      </span>
+      <span class="text">
+        Account type: {{user.userStatus}}
+      </span>
+    </div>
+  </div>
+</div>
