@@ -64,8 +64,6 @@ export class LoginSignUpPageComponent implements OnInit, OnDestroy {
   }
 
   private validateNickname(): boolean{
-    console.log(this.nickname);
-
     if (this.nickname === ''){
       this.errorMessages.push('Nickname must be not null.');
       return false;

@@ -25,23 +25,149 @@
     <div class="user-profile__info--edit-account">
       <button
         mat-button
-        class="button">
+        class="button"
+        (click)="setEditElement('nickname')"
+        >
         change name
       </button>
       <button
         mat-button
-        class="button">
+        class="button"
+        (click)="setEditElement('email')"
+        >
         change email
       </button>
       <button
         mat-button
-        class="button">
+        class="button"
+        (click)="setEditElement('password')"
+        >
         change password
       </button>
       <button
         mat-button
-        class="button">
+        class="button"
+        (click)="setEditElement('logoUrl')"
+        >
         change image
+      </button>
+    </div>
+  </div>
+  <div
+    class="user-profile__form"
+    [ngClass]="{hidden: editElement === '',
+                flex: editElement !== ''}"
+
+  >
+    <div>
+      <form
+        [formGroup]="formGroup"
+        class="form"
+      >
+      <div class="flex section">
+        <mat-icon>
+          lock
+        </mat-icon>
+        <input
+          matInput
+          type="password"
+          placeholder="Password"
+          value=""
+          formControlName="password"
+          class="input">
+      </div>
+      <div class="section"
+        [ngClass]="{hidden: editElement !== 'password',
+                      flex: editElement === 'password' }"
+      >
+        <mat-icon>
+          lock
+        </mat-icon>
+        <input
+          matInput
+          type="password"
+          placeholder="New password"
+          value=""
+          formControlName="newPassword"
+          class="input"
+          >
+      </div>
+      <div class="section"
+      [ngClass]="{hidden: editElement !== 'email',
+                      flex: editElement === 'email' }"
+      >
+        <mat-icon>
+          public
+        </mat-icon>
+        <input
+          matInput
+          type="email"
+          placeholder="Email"
+          value=""
+          formControlName="email"
+          class="input">
+      </div>
+      <div class="section"
+      [ngClass]="{hidden: editElement !== 'nickname',
+              flex: editElement === 'nickname' }"
+      >
+        <mat-icon>
+          perm_identity
+        </mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder="Nickname"
+          value=""
+          formControlName="nickname"
+          class="input">
+      </div>
+      <div class="section"
+      [ngClass]="{hidden: editElement !== 'logoUrl',
+              flex: editElement === 'logoUrl' }"
+      >
+        <mat-icon>
+          camera
+        </mat-icon>
+        <input
+          matInput
+          type="text"
+          placeholder="Avatar image"
+          value=""
+          formControlName="logoUrl"
+          class="input">
+      </div>
+      </form>
+      <mat-error
+      *ngIf="errorMessages.length"
+      class="error"
+      >
+      <ul>
+        <div *ngFor="let errorMessage of errorMessages">
+          <li>
+            {{errorMessage}}
+          </li>
+        </div>
+      </ul>
+    </mat-error>
+    </div>
+    <div class="user-profile__form--actions"
+     [ngClass]="{hidden: editElement === '',
+        flex: editElement !== ''}"
+    >
+      <button
+        mat-button
+        class="button"
+        (click)="setEditElement('')"
+      >
+        Cancel update
+      </button>
+      <button
+        mat-button
+        class="button"
+        (click)="updateUser()"
+      >
+        Save changes
       </button>
     </div>
   </div>
