@@ -82,6 +82,7 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   }
 
   public setEditElement(element: string): void{
+    this.errorMessages = [];
     this.editElement = element;
     this.changedUser = this.authService.getUser();
     this.setFormGroup();
@@ -142,7 +143,11 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             }
             this.setUser();
           } else {
-            this.errorMessages = ['Email or nickname is already used!'];
+            let invalidItem = 'Email';
+            if (this.editElement === 'nickname'){
+              invalidItem = 'Nickname';
+            }
+            this.errorMessages = [`${invalidItem} is already used!`];
           }
         }
       )
