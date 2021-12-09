@@ -10,6 +10,14 @@
         class="img"
         [src]="logoUrl"
       >
+
+      <button
+        mat-button
+        class="button"
+        (click)="deleteUser()"
+      >
+        Delete account
+      </button>
     </div>
     <div class="user-profile__info--description">
       <span class="text">

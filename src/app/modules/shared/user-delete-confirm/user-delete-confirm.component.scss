@@ -1,0 +1,16 @@
+@import "../../../styles/variables.scss";
+
+.user-delete{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+  align-items: center;
+}
+
+.button{
+  border: 0px;
+  background-color: white;
+  outline: none;
+  margin-left: 2em;
+}

@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { PricePredictComponent } from './price-predict/price-predict.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrderListAddedPanelComponent } from './order-list-added-panel/order-list-added-panel.component';
+import { UserDeleteConfirmComponent } from './user-delete-confirm/user-delete-confirm.component';
 
 
 
@@ -14,7 +15,8 @@ import { OrderListAddedPanelComponent } from './order-list-added-panel/order-lis
   declarations: [
     ImageZoomComponent,
     PricePredictComponent,
-    OrderListAddedPanelComponent
+    OrderListAddedPanelComponent,
+    UserDeleteConfirmComponent
   ],
   imports: [
     CommonModule,

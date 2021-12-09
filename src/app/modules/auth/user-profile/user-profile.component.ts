@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
+import { DialogService } from 'src/app/services/dialog.service';
 import { EventService } from 'src/app/services/event.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -32,7 +33,8 @@ export class UserProfileComponent implements OnInit, OnDestroy {
   public constructor(
     private authService: AuthService,
     private userService: UserService,
-    private eventService: EventService
+    private eventService: EventService,
+    private dialogService: DialogService
   ) { }
 
   public ngOnInit(): void {
@@ -130,6 +132,10 @@ export class UserProfileComponent implements OnInit, OnDestroy {
     this.validateNickname();
     this.validatePassword();
     return this.errorMessages.length === 0;
+  }
+
+  public deleteUser(): void{
+    this.dialogService.openDeleteUser(this.user.userId);
   }
 
   public updateUser(): void{
