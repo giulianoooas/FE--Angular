@@ -14,8 +14,7 @@
   </div>
   <div  *ngIf="nickname" class="navbar__login">
     <button class="text"
-      (mouseenter)="setShowActionUser(true)"
-      (mouseleave)="setShowActionUser(false)"
+      (click)="setShowActionUser()"
     >
       {{nickname}}
     </button>

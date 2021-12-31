@@ -21,6 +21,7 @@ export class BookDetailsComponent implements OnInit {
   public isAdmin: boolean;
   public hasComments = true;
   public userStatus: number;
+  public isCustomer = false;
   public allUserStatus = UserStatusArray;
 
   public constructor(
@@ -39,6 +40,7 @@ export class BookDetailsComponent implements OnInit {
   private setUser(): void{
     this.userId = this.authService.getUserId();
     this.isAdmin= this.authService.getIsAdmin();
+    this.isCustomer = this.authService.getIsCustomer() || this.authService.getIsAdmin();
     const status = this.authService.getUserStatus();
     for (let i = 0; i < this.allUserStatus.length; i ++){
       if (this.allUserStatus[i] === status){

@@ -69,8 +69,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.nickname = this.authService.getNickname();
   }
 
-  public setShowActionUser(flag: boolean): void{
-    this.showActionsUser = flag;
+  public setShowActionUser(): void{
+    this.showActionsUser = !this.showActionsUser;
   }
 
   public logOut(): void{
