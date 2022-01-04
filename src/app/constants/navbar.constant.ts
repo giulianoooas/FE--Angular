@@ -13,10 +13,10 @@ export const NAVBAR_LIBRARY_CONSTANT: Navbar[] = [
     label: 'Categories',
     url: '/categories'
   },
-  {
-    label: 'Price predict',
-    url: '/price-predict'
-  }
+  // {
+  //   label: 'Price predict',
+  //   url: '/price-predict'
+  // }
 ]
 
 export const NAVBAR_CUSTOMER_CONSTANT: Navbar[] = [
