@@ -78,7 +78,6 @@ export class UserProfileComponent implements OnInit, OnDestroy {
             this.changedUser.email = user.email;
             break;
         }
-        console.log(this.changedUser, this.editElement);
       })
     );
   }

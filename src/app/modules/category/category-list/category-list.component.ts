@@ -33,8 +33,6 @@ export class CategoryListComponent implements OnInit {
     this.userId = this.authService.getUserId();
     const status = this.authService.getUserStatus();
     for (let i = 0; i < this.allUserStatus.length; i ++){
-      console.log(status,this.allUserStatus[i]);
-
       if (this.allUserStatus[i] === status){
         this.userStatus = i;
         break;
