@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
-import { CategoryStateService } from 'src/app/services/category-state.service';
 import { MAX_INPUT_CONSTANT_LENGTH_CATEGORIES } from '../../../constants/input-max-length.constant';
 import { Category } from '../../../models/category.model';
 import { AuthService } from '../../../services/auth.service';
