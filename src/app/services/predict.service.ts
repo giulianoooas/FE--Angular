@@ -11,6 +11,6 @@ export class PredictService {
   public constructor(private http: HttpClient) { }
 
   public predictScore(): Observable<number>{
-    return this.http.get<number>(`${this.baseUrl}predict-score`);
+    return this.http.post<number>(`${this.baseUrl}price-predict`, {});
   }
 }
