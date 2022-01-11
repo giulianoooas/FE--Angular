@@ -11,9 +11,10 @@
       (showBooksEvent)="showBooks($event)"
       (deleteCategoryEvent)="deleteCategory($event)"
       (editCategoryEvent)="editCategory($event)"
+      (hideBooksEvent)="setCategoryIdForShowingBooks($event)"
       [showBooks]="categoryIdForShowingBooks==category.categoryId"
     ></app-category-element>
-    <ng-container *ngIf="categoryIdForShowingBooks==category.categoryId">
+    <ng-container *ngIf="categoryIdForShowingBooks===category.categoryId">
       <div class="books">
         <div *ngFor="let book of booksToShow">
           <app-book

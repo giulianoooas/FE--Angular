@@ -65,4 +65,8 @@ export class CategoryListComponent implements OnInit {
       this.categories.push(category);
     })
   }
+
+  public setCategoryIdForShowingBooks(value: number): void{
+    this.categoryIdForShowingBooks = value;
+  }
 }

@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { CategoryStateService } from 'src/app/services/category-state.service';
 import { MAX_INPUT_CONSTANT_LENGTH_CATEGORIES } from '../../../constants/input-max-length.constant';
 import { Category } from '../../../models/category.model';
 import { AuthService } from '../../../services/auth.service';
@@ -20,6 +21,7 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
     new EventEmitter<number>();
   @Output() public editCategoryEvent: EventEmitter<Category>=
     new EventEmitter<Category>();
+  @Output() public hideBooksEvent: EventEmitter<number>= new EventEmitter<number>();
   public isAdmin = false;
 
   public maxLength = MAX_INPUT_CONSTANT_LENGTH_CATEGORIES;
@@ -31,6 +33,7 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
   public constructor(private authService: AuthService){}
 
   public ngOnInit(): void{
+
     this.editedCategory = {...this.category};
     this.formGroup =new FormGroup({
       name: new FormControl(this.category.name)
@@ -47,6 +50,10 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
 
   public requestToShowBooks(): void{
     this.showBooksEvent.emit(this.category.categoryId);
+  }
+
+  public requestToHideBooks(): void{
+    this.hideBooksEvent.emit(-1);
   }
 
   public makeEditable(): void{
