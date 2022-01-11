@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class PredictService {
-  private readonly baseUrl = 'http://127.0.0.1:5000/';
+  private readonly baseUrl = 'http://localhost:3000/';
 
   public constructor(private http: HttpClient) { }
 
