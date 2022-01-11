@@ -34,20 +34,24 @@
       </button>
       </ng-container>
       <ng-container *ngIf="!isEditable">
+        <ng-container
+          *ngIf="showButtonsForBooks"
+        >
+          <button class="button"
+          mat-button
+          (click)="requestToShowBooks()"
+          *ngIf="!showBooks"
+        >
+          Show books <mat-icon>visibility</mat-icon>
+        </button>
         <button class="button"
-        mat-button
-        (click)="requestToShowBooks()"
-        *ngIf="!showBooks"
-      >
-        Show books <mat-icon>visibility</mat-icon>
-      </button>
-      <button class="button"
-        mat-button
-        (click)="requestToHideBooks()"
-        *ngIf="showBooks"
-      >
-        Hide books <mat-icon>visibility</mat-icon>
-      </button>
+          mat-button
+          (click)="requestToHideBooks()"
+          *ngIf="showBooks"
+        >
+          Hide books <mat-icon>visibility</mat-icon>
+        </button>
+      </ng-container>
       <button class="button"
         mat-button
         *ngIf="userId == category.userId || isAdmin"

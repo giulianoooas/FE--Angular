@@ -11,6 +11,7 @@ import { AuthService } from '../../../services/auth.service';
   styleUrls: ['./category-element.component.scss']
 })
 export class CategoryElementComponent implements OnInit, OnDestroy {
+  @Input() showButtonsForBooks = true;
   @Input() userId: number;
   @Input() public category: Category;
   @Input() public showBooks = false;

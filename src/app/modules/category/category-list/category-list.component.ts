@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BookService } from 'src/app/services/book.service';
 import { UserStatusArray } from '../../../../app/models/user.model';
 import { Book } from '../../../models/book.model';
 import { Category } from '../../../models/category.model';
@@ -17,10 +18,15 @@ export class CategoryListComponent implements OnInit {
   public userId: number;
   public userStatus: number;
   public allUserStatus = UserStatusArray;
+  public books: Book[] = [];
+  public showButtonsForBooks= new Map<number,boolean>();
 
-  public constructor(private categoryService: CategoryService, private authService: AuthService) { }
+  public constructor(private categoryService: CategoryService,
+                     private authService: AuthService,
+                     private bookService: BookService) { }
 
   public ngOnInit(): void {
+    this.getAllBooks();
     this.categoryService.getAllCategories().subscribe((categories) => {
       this.categories = categories;
     });
@@ -38,9 +44,12 @@ export class CategoryListComponent implements OnInit {
 
   public showBooks(categoryId: number): void{
     this.categoryIdForShowingBooks = categoryId;
-    this.categoryService.getAllBookOfCategory(categoryId).subscribe((books) => {
-      this.booksToShow = books;
-    })
+    this.booksToShow = [];
+    for (const book of this.books){
+      if (book.categoryId === categoryId){
+        this.booksToShow.push(book);
+      }
+    }
   }
 
   public deleteCategory(categoryId: number): void{
@@ -68,5 +77,14 @@ export class CategoryListComponent implements OnInit {
 
   public setCategoryIdForShowingBooks(value: number): void{
     this.categoryIdForShowingBooks = value;
+  }
+
+  private getAllBooks(): void{
+    this.bookService.getBooks().subscribe((books) => {
+      this.books = books;
+      for (const book of books){
+        this.showButtonsForBooks.set(book.categoryId,true);
+      }
+    })
   }
 }

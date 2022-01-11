@@ -13,6 +13,7 @@
       (editCategoryEvent)="editCategory($event)"
       (hideBooksEvent)="setCategoryIdForShowingBooks($event)"
       [showBooks]="categoryIdForShowingBooks==category.categoryId"
+      [showButtonsForBooks]="!!showButtonsForBooks.get(category.categoryId)"
     ></app-category-element>
     <ng-container *ngIf="categoryIdForShowingBooks===category.categoryId">
       <div class="books">
