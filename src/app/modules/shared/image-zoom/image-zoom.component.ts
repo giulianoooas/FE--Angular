@@ -7,7 +7,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./image-zoom.component.scss']
 })
 export class ImageZoomComponent implements OnInit, AfterViewInit {
-  imageSrc = 'assets/images/sigla.png';
+  imageSrc = "assets/images/GiulianoStore.png";
   public imageSize = 700;
   private image = document.getElementById('image');
 
