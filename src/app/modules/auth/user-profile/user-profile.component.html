@@ -24,7 +24,12 @@
         Username: {{user.nickname}}
       </span>
       <span class="text">
-        Email: {{user.email}}
+        <a
+          href="mailto: {{user.email}}"
+          target="_blank"
+        >
+          Email: {{user.email}}
+        </a>
       </span>
       <span class="text">
         Account type: {{user.userStatus}}
