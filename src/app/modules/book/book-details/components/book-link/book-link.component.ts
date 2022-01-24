@@ -21,7 +21,7 @@ export class BookLinkComponent{
       () =>
        {
          this.changeBookEvent.emit();
-         
+         window.scrollTo(0,0);
       });
   }
 }

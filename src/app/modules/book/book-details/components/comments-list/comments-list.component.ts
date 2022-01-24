@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Comment } from '../../../../../models/comment.model';
 import { AuthService } from '../../../../../services/auth.service';
 import { CommentService } from '../../../../../services/comment.service';
@@ -8,7 +8,7 @@ import { CommentService } from '../../../../../services/comment.service';
   templateUrl: './comments-list.component.html',
   styleUrls: ['./comments-list.component.scss']
 })
-export class CommentsListComponent implements OnInit {
+export class CommentsListComponent implements OnInit, OnChanges {
   public comments: Comment[] = [];
   public userId: number;
   public isAdmin = false;
@@ -19,6 +19,13 @@ export class CommentsListComponent implements OnInit {
     new EventEmitter<boolean>();
 
   constructor(private commentService: CommentService, private authService: AuthService) { }
+
+  public ngOnChanges(changes: SimpleChanges): void {
+    this.commentService.getCommentsByBookId(this.bookId).subscribe((comments) => {
+      this.comments = comments;
+      this.setShowBookComments();
+    })
+  }
 
   public ngOnInit(): void {
     this.commentService.getCommentsByBookId(this.bookId).subscribe((comments) => {
