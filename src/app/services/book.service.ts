@@ -15,6 +15,10 @@ export class BookService {
     return this.http.get<{book:Book,categoryName:string}>(`${this.baseUrl}books/${bookId}`);
   }
 
+  public getSeeAlsoBooks(bookId: number): Observable<Book[]>{
+    return this.http.get<Book[]>(`${this.baseUrl}books/${bookId}/see-also`);
+  }
+
   public getBooks(): Observable<Book[]>{
     return this.http.get<Book[]>(`${this.baseUrl}books`);
   }

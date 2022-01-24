@@ -61,6 +61,23 @@
           (showComments)="setHasComments($event)">
         </app-comments-list>
       </div>
+  <div class="others-book">
+    <span>
+      See other books
+    </span>
+    <div
+      class="links"
+    >
+      <ng-container
+        *ngFor="let book of seeAlsoBooks"
+      >
+        <app-book-link
+          [book]="book"
+          [bookId]="book.bookId"
+        ></app-book-link>
+      </ng-container>
+    </div>
+  </div>
     </div>
   </div>
 </ng-container>

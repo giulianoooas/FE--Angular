@@ -1,0 +1,27 @@
+<div
+  class="book-link"
+  (click)="redirectToBook()"
+>
+  <div
+    class="book-link--image"
+  >
+    <img
+      [src]="book.imageUrl"
+    >
+  </div>
+  <div
+    class="book-link--author"
+  >
+    Author: {{book.author}}
+  </div>
+  <div
+    class="book-link--name"
+  >
+    Book: {{book.name}}
+  </div>
+  <div
+    class="book-link--price"
+  >
+    Price: {{book.price}}
+  </div>
+</div>

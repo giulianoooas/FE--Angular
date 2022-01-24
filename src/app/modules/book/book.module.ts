@@ -18,6 +18,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '../shared/shared.module';
 import { BookFilterComponent } from './book-filter/book-filter.component';
+import { BookLinkComponent } from './book-details/components/book-link/book-link.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { BookFilterComponent } from './book-filter/book-filter.component';
     CommentCreateComponent,
     BookCategoryNameComponent,
     BookCreateComponent,
-    BookFilterComponent
+    BookFilterComponent,
+    BookLinkComponent
   ],
   imports: [
     CommonModule,

@@ -23,6 +23,7 @@ export class BookDetailsComponent implements OnInit {
   public userStatus: number;
   public isCustomer = false;
   public allUserStatus = UserStatusArray;
+  public seeAlsoBooks: Book[] = [];
 
   public constructor(
     private bookService: BookService,
@@ -34,7 +35,16 @@ export class BookDetailsComponent implements OnInit {
 
   public ngOnInit(): void {
     this.setBook();
+    this.setSeeAlsoBooks();
     this.setUser();
+  }
+
+  private setSeeAlsoBooks(): void{
+    this.bookService.getSeeAlsoBooks(this.bookId).subscribe(
+      (books) => {
+        this.seeAlsoBooks = books;
+      }
+    );
   }
 
   private setUser(): void{
