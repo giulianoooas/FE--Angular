@@ -83,27 +83,6 @@
         </mat-select>
       </div>
     </form>
-    <div class="buttons">
-      <ng-container *ngIf="isEditMode">
-        <button
-          class="button"
-          mat-button
-          (click)="editBook()">Edit</button>
-        <button
-          class="button"
-          mat-button
-          (click)="goBack()"
-        >
-          Back
-        </button>
-      </ng-container>
-      <ng-container *ngIf="!isEditMode">
-        <button
-        class="button"
-          mat-button
-          (click)="createBook()">Create</button>
-      </ng-container>
-    </div>
     <mat-error *ngIf="errorMessage.length != 0" class="error">
       <ul>
         <li *ngFor="let error of errorMessage">
@@ -125,5 +104,26 @@
       src="assets/images/GiulianoStore.png"
       class="imageForDisplaying"
     />
+    <div class="buttons">
+      <ng-container *ngIf="isEditMode">
+        <button
+          class="button"
+          mat-button
+          (click)="editBook()">Edit</button>
+        <button
+          class="button"
+          mat-button
+          (click)="goBack()"
+        >
+          Back
+        </button>
+      </ng-container>
+      <ng-container *ngIf="!isEditMode">
+        <button
+        class="button"
+          mat-button
+          (click)="createBook()">Create</button>
+      </ng-container>
+    </div>
   </div>
 </div>

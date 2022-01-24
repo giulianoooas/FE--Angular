@@ -2,7 +2,7 @@
   display: flex;
   justify-content: flex-start;
   flex-direction: row;
-  margin-left: 2em;
+  margin-left: 12em;
 
   &__element{
     margin-left: 2em;
@@ -10,7 +10,7 @@
     background-color: white;
     font-size: 16px;
     width:20em;
-    border-radius: 2em;
+    border-radius: 8px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -21,7 +21,7 @@
     &--input{
       border: 0px;
       outline: none;
-      border-radius: 2em;
+      border-radius: 8px;
       width:15em;
       margin-left: 1em;
     }

@@ -2,12 +2,12 @@
 
 .book{
   background-color: $backgroundColor;
-  border-radius: 10%;
   border: 1px solid black;
   display: flex;
   justify-content: space-around;
   flex-direction: row;
   align-items: center;
+  border-radius: 8px;
   width: 80em;
   height:22em;
   margin-top: 1em;
@@ -16,9 +16,9 @@
     width:35em;
 
     img{
+      border-radius: 8px;
       width: 30em;
       height:20em;
-      border-radius: 10%;
     }
   }
 

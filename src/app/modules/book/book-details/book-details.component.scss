@@ -61,7 +61,7 @@
           img{
             width: 30em;
             height:30em;
-            border-radius: 20%;
+            border-radius: 8px;
           }
         }
 
@@ -78,13 +78,19 @@
       }
 
       &__details{
+        max-width: 45em;
+        min-width: 30em;
+        height:30em;
+        background-color: $backgroundColor;
+        border-radius: 8px;
+        border: 1px solid black;
         overflow-y: auto;
-        width:40%;
         margin-left: 2em;
+        margin-bottom: 4em;
         display:flex;
         flex-direction: column;
         justify-content:space-around;
-        align-items: flex-start;
+        align-items: space-around;
 
         &--description{
           padding-top: 2em;
