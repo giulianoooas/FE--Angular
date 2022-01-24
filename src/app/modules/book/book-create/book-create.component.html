@@ -34,13 +34,18 @@
         placeholder="Write name of the author"
       >
     </div>
-
-        <textarea
-          formControlName="description"
-          class="textarea"
+      <div>
+        <label class="field-label">
+          Description
+        </label>
+        <input matInput
+        formControlName="description"
+          type="text"
+          class="input"
           [value]="book.description"
-          placeholder="Write a description"
-        ></textarea>
+          placeholder="Write a description for book."
+        >
+      </div>
       <div
         class="filed"
       >
@@ -83,27 +88,6 @@
         </mat-select>
       </div>
     </form>
-    <mat-error *ngIf="errorMessage.length != 0" class="error">
-      <ul>
-        <li *ngFor="let error of errorMessage">
-          <span>{{error}}</span>
-        </li>
-      </ul>
-    </mat-error>
-    </div>
-  <div
-    (click)="openDialog()"
-  >
-    <img
-      *ngIf="book.imageUrl"
-      [src]="book.imageUrl"
-      class="imageForDisplaying"
-    />
-    <img
-      *ngIf="!book.imageUrl"
-      src="assets/images/GiulianoStore.png"
-      class="imageForDisplaying"
-    />
     <div class="buttons">
       <ng-container *ngIf="isEditMode">
         <button
@@ -125,5 +109,26 @@
           (click)="createBook()">Create</button>
       </ng-container>
     </div>
+    <mat-error *ngIf="errorMessage.length != 0" class="error">
+      <ul>
+        <li *ngFor="let error of errorMessage">
+          <span>{{error}}</span>
+        </li>
+      </ul>
+    </mat-error>
+    </div>
+  <div
+    (click)="openDialog()"
+  >
+    <img
+      *ngIf="book.imageUrl"
+      [src]="book.imageUrl"
+      class="imageForDisplaying"
+    />
+    <img
+      *ngIf="!book.imageUrl"
+      src="assets/images/GiulianoStore.png"
+      class="imageForDisplaying"
+    />
   </div>
 </div>
