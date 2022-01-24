@@ -74,6 +74,7 @@
         <app-book-link
           [book]="book"
           [bookId]="book.bookId"
+          (changeBookEvent)="setBook()"
         ></app-book-link>
       </ng-container>
     </div>

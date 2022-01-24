@@ -59,7 +59,7 @@ export class BookDetailsComponent implements OnInit {
     }
   }
 
-  private setBook(): void{
+  public setBook(): void{
     this.bookId = Number(this.route.snapshot.paramMap.get('bookId'));
     this.bookService.getBookById(this.bookId).subscribe((book) => {
       if (!!book){
@@ -67,6 +67,7 @@ export class BookDetailsComponent implements OnInit {
         this.categoryName = book.categoryName;
       }
     })
+    this.setSeeAlsoBooks();
   }
 
   public goBooksDashboard(): void{
