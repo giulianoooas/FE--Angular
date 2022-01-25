@@ -45,7 +45,6 @@ export class BookCreateComponent implements OnInit, OnDestroy {
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
-    private dialogService: DialogService,
     public authService: AuthService) { }
 
   public ngOnInit(): void {
@@ -153,10 +152,6 @@ export class BookCreateComponent implements OnInit, OnDestroy {
       this.bookService.editBook(this.book).subscribe((book) => {
         this.router.navigateByUrl(`books/${book.bookId}`);
       })
-  }
-
-  public openDialog(): void{
-    this.dialogService.openImageZoom(this.book.imageUrl);
   }
 
   public goBack(): void{
