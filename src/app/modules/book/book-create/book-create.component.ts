@@ -69,6 +69,10 @@ export class BookCreateComponent implements OnInit, OnDestroy {
   private createFormSubscription(): void{
     this.subscription.add(
       this.formGroup.valueChanges.subscribe((data) => {
+        if (data.price < 0){
+          data.price = 0;
+          this.formGroup.controls['price'].setValue(0);
+        }
         this.book.categoryId = data.categoryId;
         this.book.description = data.description;
         this.book.imageUrl = data.imageUrl;
