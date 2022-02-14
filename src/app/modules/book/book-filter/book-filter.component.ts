@@ -29,6 +29,9 @@ export class BookFilterComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.formGroup.valueChanges.subscribe((data) => {
         this.filter.name = data.name;
+        if (data.minPrice < 0){
+          this.formGroup.controls['minPrice'].setValue(0);
+        }
         this.filter.minPrice = data.minPrice;
         this.setFilterEmit();
       })
