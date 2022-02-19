@@ -1,7 +1,7 @@
 export const formatDate = (date: Date): string => {
   try{
     const year = String(date.getFullYear());
-    const months = String(date.getMonth());
+    const months = String(date.getMonth() + 1);
     const day = String(date.getDate());
     const minutes = String(date.getMinutes());
     const hours =  String(date.getHours());
