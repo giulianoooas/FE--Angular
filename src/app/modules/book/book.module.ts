@@ -19,6 +19,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '../shared/shared.module';
 import { BookFilterComponent } from './book-filter/book-filter.component';
 import { BookLinkComponent } from './book-details/components/book-link/book-link.component';
+import { OrderListAddedPanelComponent } from '../shared/order-list-added-panel/order-list-added-panel.component';
 
 
 @NgModule({
@@ -47,6 +48,6 @@ import { BookLinkComponent } from './book-details/components/book-link/book-link
     MatDialogModule,
     SharedModule
     ],
-  exports: [BookComponent]
+  exports: [BookComponent, OrderListAddedPanelComponent]
 })
 export class BookModule { }

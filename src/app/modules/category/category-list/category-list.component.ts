@@ -20,6 +20,7 @@ export class CategoryListComponent implements OnInit {
   public allUserStatus = UserStatusArray;
   public books: Book[] = [];
   public showButtonsForBooks= new Map<number,boolean>();
+  public isAdded = false;
 
   public constructor(private categoryService: CategoryService,
                      private authService: AuthService,
@@ -84,5 +85,16 @@ export class CategoryListComponent implements OnInit {
         this.showButtonsForBooks.set(book.categoryId,true);
       }
     })
+  }
+
+  public showPanel(): void{
+    let action = setInterval(() => {
+      if (!this.isAdded){
+        this.isAdded = true;
+      } else {
+        this.isAdded = false;
+        clearInterval(action);
+      }
+    },1000);
   }
 }

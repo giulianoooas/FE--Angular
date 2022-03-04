@@ -20,9 +20,13 @@
         <div *ngFor="let book of booksToShow">
           <app-book
             [book]="book"
+            (showPanel)="showPanel()"
           ></app-book>
         </div>
       </div>
     </ng-container>
   </div>
 </div>
+<app-order-list-added-panel
+  *ngIf="isAdded"
+></app-order-list-added-panel>
