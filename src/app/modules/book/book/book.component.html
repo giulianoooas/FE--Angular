@@ -13,12 +13,12 @@
       Author: {{author}}
     </span>
     <div  class="book__description--button">
-      <button mat-button (click)="visitPage()">visit</button>
+      <button mat-button (click)="visitPage()">Details</button>
       <ng-container *ngIf="userId >= 0  && userStatus == 1 || userStatus == 0">
         <button
         mat-button
         (click)="addToOrderList()"
-        class="book__description--button--space">Add to order</button>
+        class="book__description--button--space">Buy</button>
       </ng-container>
     </div>
   </div>
