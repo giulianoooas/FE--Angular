@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { ForumComment, ForumCommentEdit } from '../models/forum-comment.model';
 import { ForumText, ForumTextEdit } from '../models/forum-text.model';
 
-//TODO: Sa adaug un model care sterge comentariile urate
+//TODO: Sa adaug un model care verifica comentariile urate
 
 @Injectable({
   providedIn: 'root'
