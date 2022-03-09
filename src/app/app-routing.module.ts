@@ -10,6 +10,7 @@ import { BookCreateComponent } from './modules/book/book-create/book-create.comp
 import { BookDetailsComponent } from './modules/book/book-details/book-details.component';
 import { BookListComponent } from './modules/book/book-list/book-list.component';
 import { CategoryListComponent } from './modules/category/category-list/category-list.component';
+import { ForumComponent } from './modules/forum/forum.component';
 import { OrderListComponent } from './modules/order/order-list/order-list.component';
 import { PricePredictComponent } from './modules/shared/price-predict/price-predict.component';
 
@@ -22,6 +23,10 @@ const routes: Routes = [
     {
       path: 'login',
       component: LoginSignUpPageComponent
+    },
+    {
+      path: 'forum',
+      component: ForumComponent
     },
     {
       path: 'sing-up',

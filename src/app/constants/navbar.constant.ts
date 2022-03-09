@@ -13,10 +13,10 @@ export const NAVBAR_LIBRARY_CONSTANT: Navbar[] = [
     label: 'Categories',
     url: '/categories'
   },
-  // {
-  //   label: 'Price predict',
-  //   url: '/price-predict'
-  // }
+  {
+    label: 'Forum',
+    url: '/forum'
+  }
 ]
 
 export const NAVBAR_CUSTOMER_CONSTANT: Navbar[] = [
@@ -27,6 +27,10 @@ export const NAVBAR_CUSTOMER_CONSTANT: Navbar[] = [
   {
     label: 'Categories',
     url: '/categories'
+  },
+  {
+    label: 'Forum',
+    url: '/forum'
   }
 ]
 
@@ -39,6 +43,10 @@ export const NAVBAR_ANONYMOUS_CONSTANT: Navbar[] = [
   {
     label: 'Categories',
     url: '/categories'
+  },
+  {
+    label: 'Forum',
+    url: '/forum'
   }
 ]
 
