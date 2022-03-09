@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from 'src/app/models/user.model';
+import { ForumText } from 'src/app/models/forum-text.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ForumService } from 'src/app/services/forum.service';
 
@@ -10,6 +10,8 @@ import { ForumService } from 'src/app/services/forum.service';
 })
 export class ForumComponent implements OnInit {
   public userId: number;
+  public isAdmin = false;
+  public forumTexts: ForumText[] = [];
 
   constructor(
     private readonly authService: AuthService,
@@ -18,10 +20,20 @@ export class ForumComponent implements OnInit {
 
   public ngOnInit(): void {
     this.setUserId();
+    this.setFormTexts();
+  }
+
+  private setFormTexts(): void{
+    this.forumService.getAllForumTexts().subscribe(
+      (res) =>{
+        this.forumTexts = res;
+      }
+    );
   }
 
   private setUserId(): void{
     this.userId = this.authService.getUserId();
+    this.isAdmin = this.authService.getIsAdmin();
   }
 
   public createForumComment(forumText: string): void{
@@ -29,6 +41,8 @@ export class ForumComponent implements OnInit {
       text: forumText,
       userId: this.userId,
       date: new Date(),
-    }).subscribe();
+    }).subscribe((res) => {
+      this.forumTexts.push(res);
+    });
   }
 }

@@ -2,7 +2,7 @@
   class="forum"
 >
   <app-create-forum-text
-    *ngIf="userId"
+    *ngIf="userId >= 0"
     (createForumTextEvent)="createForumComment($event)"
   ></app-create-forum-text>
 </div>
