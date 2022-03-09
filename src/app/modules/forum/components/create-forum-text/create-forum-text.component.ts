@@ -2,8 +2,6 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
-import { AuthService } from 'src/app/services/auth.service';
-import { ForumService } from 'src/app/services/forum.service';
 
 @Component({
   selector: 'app-create-forum-text',

@@ -33,4 +33,14 @@ export class UserService {
   }): Observable<User | null>{
     return this.http.post<User | null>(`${this.baseUrl}users/login`,user);
   }
+
+  public getUserInfo(userId: number): Observable<{
+    name: string;
+    imageSrc: string;
+  }| null>{
+    return this.http.get<{
+      name: string;
+      imageSrc: string;
+    } | null>(`${this.baseUrl}users/${userId}/info`);
+  }
 }

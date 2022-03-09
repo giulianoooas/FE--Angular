@@ -1,8 +1,19 @@
 <div
   class="forum"
 >
-  <app-create-forum-text
-    *ngIf="userId >= 0"
-    (createForumTextEvent)="createForumComment($event)"
-  ></app-create-forum-text>
+  <div class="forum__create">
+    <app-create-forum-text
+      *ngIf="userId >= 0"
+      (createForumTextEvent)="createForumComment($event)"
+    ></app-create-forum-text>
+  </div>
+  <div class="forum__texts">
+    <ng-container *ngFor="let forumText of forumTexts">
+      <app-forum-text
+        [userId]="userId"
+        [forumText]="forumText"
+        [isAdmin]="isAdmin"
+      ></app-forum-text>
+    </ng-container>
+  </div>
 </div>
