@@ -1,0 +1,28 @@
+@import "../../../..//styles/variables.scss";
+
+.forum-create{
+  width:50em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #E0E0E0;
+  border-radius: 8px;
+  border: 1px black solid;
+  margin-left: 1em;
+
+  .input{
+    font-size: 20px;
+    width: 30em;
+    outline: 0;
+    text-align: center;
+  }
+
+  .button{
+    font-size: 16px;
+  }
+}
+
+.invalid{
+  border: 2px rgb(197, 102, 102) solid;
+}

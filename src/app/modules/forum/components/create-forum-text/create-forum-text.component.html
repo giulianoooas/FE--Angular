@@ -1,0 +1,29 @@
+<div class="forum-create">
+  <div class="forum-create__clear">
+    <button mat-button
+      class="button"
+      (click)="clearText()"
+    >
+        Clear <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+  <div class="forum-create__input">
+    <form [formGroup]="formGroup">
+      <input
+        class="input"
+        [ngClass]="{invalid: !valid}"
+        formControlName="text"
+        type="text"
+        placeholder="Forum text content"
+      />
+    </form>
+  </div>
+  <div class="forum-create__save">
+    <button mat-button
+      class="button"
+      (click)="createForum()"
+    >
+        Create <mat-icon>create</mat-icon>
+    </button>
+  </div>
+</div>

@@ -11,6 +11,7 @@ import { NavbarModule } from './modules/navbar/navbar.module';
 import { CategoryModule } from './modules/category/category.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { OrderModule } from './modules/order/order.module';
+import { ForumModule } from './modules/forum/forum.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { OrderModule } from './modules/order/order.module';
     NavbarModule,
     CategoryModule,
     AuthModule,
-    OrderModule
+    OrderModule,
+    ForumModule
   ],
   providers: [],
   bootstrap: [AppComponent]
