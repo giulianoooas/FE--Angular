@@ -1,3 +1,8 @@
-<div>
-  <app-create-forum-text></app-create-forum-text>
+<div
+  class="forum"
+>
+  <app-create-forum-text
+    *ngIf="userId"
+    (createForumTextEvent)="createForumComment($event)"
+  ></app-create-forum-text>
 </div>

@@ -5,7 +5,7 @@ export interface ForumText{
   text: string;
   date: string;
   userId?: number;
-  forumComments: ForumComment[];
+  forumComments?: ForumComment[];
 }
 
 export interface ForumTextEdit{
@@ -13,5 +13,5 @@ export interface ForumTextEdit{
   text: string;
   date: Date;
   userId?: number;
-  forumComments: ForumCommentEdit[];
+  forumComments?: ForumCommentEdit[];
 }
