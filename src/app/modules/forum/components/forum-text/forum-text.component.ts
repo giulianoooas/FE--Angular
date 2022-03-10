@@ -22,6 +22,7 @@ export class ForumTextComponent implements OnInit, OnDestroy {
   public formGroup= new FormGroup({
     text: new FormControl('')
   });
+  public showCommentCreate = false;
   @Output() public deleteForumTextEvent = new EventEmitter<number>();
   @Output() public editForumTextEvent = new EventEmitter<{index: number, text: ForumText}>();
   private editedText: string;
@@ -86,5 +87,13 @@ export class ForumTextComponent implements OnInit, OnDestroy {
        this.editForumTextEvent.emit({index: this.index, text: forumText});
       }
     this.setViewMode();
+  }
+
+  public openCreateComment(): void{
+    this.showCommentCreate = true;
+  }
+
+  public closeCreateCreate(): void{
+    this.showCommentCreate = false;
   }
 }
