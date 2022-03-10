@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ForumTextComponent } from './components/forum-text/forum-text.component';
+import { ForumCommentComponent } from './components/forum-comment/forum-comment.component';
 
 
 
@@ -15,7 +16,8 @@ import { ForumTextComponent } from './components/forum-text/forum-text.component
     ForumComponent,
     CreateForumTextComponent,
     CreateForumCommentComponent,
-    ForumTextComponent
+    ForumTextComponent,
+    ForumCommentComponent
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../models/user.model';
@@ -42,5 +42,16 @@ export class UserService {
       name: string;
       imageSrc: string;
     } | null>(`${this.baseUrl}users/${userId}/info`);
+  }
+
+  public getUsersInfo(userIds: number[]): Observable<{
+    name: string;
+    imageSrc: string;
+  } []>{
+    const params = new HttpParams().set('userIds', '' + userIds);
+    return this.http.get<{
+      name: string;
+      imageSrc: string;
+    } []>(`${this.baseUrl}users/all/info`);
   }
 }

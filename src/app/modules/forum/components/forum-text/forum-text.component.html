@@ -35,8 +35,14 @@
         <button
           mat-button
           class="button"
+          (click)="setShowComments(!showComments)"
         >
-          Show comments
+          <ng-container *ngIf="showComments">
+            Hide
+          </ng-container>
+          <ng-container *ngIf="!showComments">
+            Show
+          </ng-container> comments
         </button>
         <ng-container
           *ngIf="canDelete"

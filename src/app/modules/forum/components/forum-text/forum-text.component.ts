@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { ForumComment, ForumCommentEdit } from 'src/app/models/forum-comment.model';
 import { ForumText } from 'src/app/models/forum-text.model';
 import { ForumService } from 'src/app/services/forum.service';
 import { UserService } from 'src/app/services/user.service';
@@ -15,6 +16,8 @@ export class ForumTextComponent implements OnInit, OnDestroy {
   @Input() public isAdmin: boolean;
   @Input() public forumText: ForumText;
   @Input() public index: number;
+  public comments: ForumComment[] | undefined = undefined;
+  public showingComments: ForumComment[] = [];
   public canDelete = false;
   public imageSrc= './assets/images/user-icon.png';
   public name = 'Anonymous user';
@@ -22,6 +25,7 @@ export class ForumTextComponent implements OnInit, OnDestroy {
   public formGroup= new FormGroup({
     text: new FormControl('')
   });
+  public showComments = false;
   public showCommentCreate = false;
   @Output() public deleteForumTextEvent = new EventEmitter<number>();
   @Output() public editForumTextEvent = new EventEmitter<{index: number, text: ForumText}>();
@@ -89,11 +93,44 @@ export class ForumTextComponent implements OnInit, OnDestroy {
     this.setViewMode();
   }
 
+  public setShowComments(value: boolean): void{
+    if (value  && !this.comments){
+      this.forumService.getAllForumTextComments(this.forumText.forumTextId ?? -1).subscribe(
+        (comments) => {
+          this.comments = comments;
+          this.showingComments = comments;
+        }
+      );
+    }
+    if (value){
+      this.showingComments = this.comments ?? [];
+    } else {
+      this.showingComments = [];
+    }
+    this.showComments = value;
+  }
+
   public openCreateComment(): void{
     this.showCommentCreate = true;
   }
 
   public closeCreateComment(): void{
     this.showCommentCreate = false;
+  }
+
+  public createComment(text: string): void{
+    const comment: ForumCommentEdit = {
+      forumTextId: this.forumText.forumTextId ?? -1,
+      userId: this.userId,
+      text: text,
+      date: new Date()
+    };
+    this.forumService.createForumComment(comment).subscribe((data) => {
+      if (this.comments){
+        this.comments.push(data);
+      }
+      this.showingComments.push(data);
+      this.showComments = true;
+    });
   }
 }
