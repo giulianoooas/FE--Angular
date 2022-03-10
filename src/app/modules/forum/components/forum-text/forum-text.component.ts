@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ForumText } from 'src/app/models/forum-text.model';
 import { ForumService } from 'src/app/services/forum.service';
 import { UserService } from 'src/app/services/user.service';
@@ -12,9 +12,11 @@ export class ForumTextComponent implements OnInit {
   @Input() public userId: number;
   @Input() public isAdmin: boolean;
   @Input() public forumText: ForumText;
+  @Input() public index: number;
   public canDelete = false;
   public imageSrc= './assets/images/user-icon.png';
   public name = 'Anonymous user';
+  @Output() deleteForumTextEvent = new EventEmitter<number>();
 
   public constructor(
     private readonly forumService: ForumService,
@@ -37,5 +39,9 @@ export class ForumTextComponent implements OnInit {
       }
     )
     this.canDelete = this.isAdmin || this.userId == this.forumText.userId;
+  }
+
+  public deleteForumText():void{
+    this.deleteForumTextEvent.emit(this.index);
   }
 }

@@ -17,7 +17,29 @@
       {{forumText.text}}
     </div>
     <div class="forum-text__content--buttons">
-
+      <button
+        mat-button
+        class="button"
+      >
+        Show comments
+      </button>
+      <ng-container
+        *ngIf="canDelete"
+      >
+        <button
+          mat-button
+          class="button"
+        >
+          Edit
+        </button>
+        <button
+          mat-button
+          class="button"
+          (click)="deleteForumText()"
+        >
+          Delete
+        </button>
+    </ng-container>
     </div>
   </div>
 </div>

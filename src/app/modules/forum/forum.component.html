@@ -8,11 +8,13 @@
     ></app-create-forum-text>
   </div>
   <div class="forum__texts">
-    <ng-container *ngFor="let forumText of forumTexts">
+    <ng-container *ngFor="let forumText of forumTexts; let i=index">
       <app-forum-text
         [userId]="userId"
         [forumText]="forumText"
         [isAdmin]="isAdmin"
+        [index]="i"
+        (deleteForumTextEvent)="deleteForumText($event)"
       ></app-forum-text>
     </ng-container>
   </div>

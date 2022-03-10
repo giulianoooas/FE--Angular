@@ -45,4 +45,19 @@ export class ForumComponent implements OnInit {
       this.forumTexts.push(res);
     });
   }
+
+  public deleteForumText(index: number): void{
+    const forumTextId = this.forumTexts[index].forumTextId ?? -1;
+    this.forumService.deleteForumText(forumTextId).subscribe(
+      () => {
+        const newForumTexts = [];
+        for (let i = 0; i < this.forumTexts.length; i ++){
+          if (i != index){
+            newForumTexts.push(this.forumTexts[i]);
+          }
+        }
+        this.forumTexts = newForumTexts;
+      }
+    );
+  }
 }
