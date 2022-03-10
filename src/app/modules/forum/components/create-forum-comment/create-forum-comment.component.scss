@@ -1,0 +1,38 @@
+@import "../../../..//styles/variables.scss";
+
+.button{
+  margin-left: 2em;
+  background-color: $buttonColor;
+  color:whitesmoke;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.forum-comment-create{
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  text-align: center;
+  margin-top: 1em;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 2.7em;
+  padding: 0.2em;
+
+
+    input{
+      outline: 0;
+      border: 0;
+      border-radius: 8px;
+      width: 40em;
+      margin-left: 2em;
+      text-align: center;
+      margin-top: 0.2em;
+  }
+}
+
+.invalid{
+  border: 1px rgb(197, 102, 102) solid;
+}
+

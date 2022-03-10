@@ -85,5 +85,6 @@
 </div>
 <app-create-forum-comment
   *ngIf="showCommentCreate"
+  (closeCommentEvent)="closeCreateComment()"
 >
 </app-create-forum-comment>

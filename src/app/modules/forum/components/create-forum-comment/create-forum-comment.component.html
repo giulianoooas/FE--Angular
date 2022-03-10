@@ -1,0 +1,25 @@
+<div class="forum-comment-create"
+  [ngClass]="{invalid: !valid}"
+>
+  <button
+  (click)="closeComment()"
+  class="button"
+  mat-button
+>
+  Close
+</button>
+    <form [formGroup]="formGroup">
+      <input
+        type="text"
+        formControlName="text"
+        placeholder="Forum Comment"
+      >
+    </form>
+    <button
+      (click)="save()"
+      class="button"
+      mat-button
+    >
+      Save
+    </button>
+</div>

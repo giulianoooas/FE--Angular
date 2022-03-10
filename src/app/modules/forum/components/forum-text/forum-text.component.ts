@@ -93,7 +93,7 @@ export class ForumTextComponent implements OnInit, OnDestroy {
     this.showCommentCreate = true;
   }
 
-  public closeCreateCreate(): void{
+  public closeCreateComment(): void{
     this.showCommentCreate = false;
   }
 }
