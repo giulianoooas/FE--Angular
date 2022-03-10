@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ForumText } from 'src/app/models/forum-text.model';
+import { ForumText, ForumTextEdit } from 'src/app/models/forum-text.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ForumService } from 'src/app/services/forum.service';
 
@@ -57,6 +57,23 @@ export class ForumComponent implements OnInit {
           }
         }
         this.forumTexts = newForumTexts;
+      }
+    );
+  }
+
+  public editForumText(params: {index: number, text: ForumText}): void{
+    console.log(params);
+
+    const {index, text} = params;
+    const editedForumText: ForumTextEdit = {
+      forumTextId: text.forumTextId,
+      date: new Date(),
+      text: text.text,
+      userId: this.userId
+    }
+    this.forumService.editForumText(editedForumText).subscribe(
+      (data) => {
+        this.forumTexts[index] = data;
       }
     );
   }

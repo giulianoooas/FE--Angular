@@ -14,32 +14,65 @@
     <div
       class="forum-text__content--text"
     >
-      {{forumText.text}}
+      <span
+        *ngIf="!isEdit"
+      >
+        {{forumText.text}}
+      </span>
+      <form
+        *ngIf="isEdit"
+        [formGroup]="formGroup"
+      >
+        <input
+          class="input"
+          type="text"
+          formControlName="text"
+        >
+      </form>
     </div>
     <div class="forum-text__content--buttons">
-      <button
-        mat-button
-        class="button"
-      >
-        Show comments
-      </button>
-      <ng-container
-        *ngIf="canDelete"
-      >
+      <ng-container *ngIf="!isEdit">
         <button
           mat-button
           class="button"
         >
-          Edit
+          Show comments
+        </button>
+        <ng-container
+          *ngIf="canDelete"
+        >
+          <button
+            mat-button
+            class="button"
+            (click)="setEditMode()"
+          >
+            Edit
+          </button>
+          <button
+            mat-button
+            class="button"
+            (click)="deleteForumText()"
+          >
+            Delete
+          </button>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="isEdit">
+        <button
+          mat-button
+          class="button"
+          (click)="setViewMode()"
+        >
+          Undo
         </button>
         <button
           mat-button
           class="button"
-          (click)="deleteForumText()"
+          (click)="save()"
         >
-          Delete
+          Save
         </button>
-    </ng-container>
+      </ng-container>
     </div>
   </div>
 </div>
