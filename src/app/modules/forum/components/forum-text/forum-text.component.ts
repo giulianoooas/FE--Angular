@@ -148,4 +148,30 @@ export class ForumTextComponent implements OnInit, OnDestroy {
   public deleteComment(id: number): void{
     this.forumService.deleteForumComment(id).subscribe();
   }
+
+  public updateForumComment(params: {id: number, text: string, index: number}): void{
+    const {id, text, index} = params;
+    const comment: ForumCommentEdit = {
+      forumTextId: this.forumText.forumTextId ?? -1,
+      userId: this.userId,
+      text: text,
+      date: new Date(),
+      forumCommentId: id
+    };
+    this.forumService.editForumComment(comment).subscribe((data) => {
+      if (this.comments){
+        this.comments.push(data);
+      }
+      this.showingComments.push(data);
+      this.forumService.sendData({
+        text,
+        name: this.authService.getNickname(),
+        date: data.date,
+        userId: this.userId,
+        commentId: data.forumCommentId,
+        index
+      })
+      this.showComments = true;
+    });
+  }
 }

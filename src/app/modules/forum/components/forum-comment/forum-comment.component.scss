@@ -40,6 +40,13 @@
       justify-content: flex-start;
       align-items: center;
       width:40em;
+
+      .input{
+        outline: 0;
+        border: 0;
+        width: 30em;
+        text-align: center;
+      }
     }
 
     &--buttons{

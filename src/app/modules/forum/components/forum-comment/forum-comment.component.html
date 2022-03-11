@@ -12,14 +12,25 @@
           </span>
         </div>
         <div class="forum-comment-element--text">
-          <span>{{data.text}}</span>
+          <span *ngIf="!isEditMode[i]">{{data.text}}</span>
+          <form
+            *ngIf="isEditMode[i]"
+            [formGroup]="formGroups[i]"
+          >
+            <input
+              class="input"
+              type="text"
+              formControlName="text"
+            >
+          </form>
         </div>
         <div class="forum-comment-element--buttons"
-          *ngIf="data.userId == userId || isMainAdmin"
+          *ngIf="(data.userId == userId || isMainAdmin) && !isEditMode[i]"
         >
           <button
             mat-button
             class="button"
+            (click)="makeEditMode(i)"
           >
             Edit
           </button>
@@ -29,6 +40,24 @@
             (click)="deleteComment(i)"
           >
             Delete
+          </button>
+          </div>
+          <div class="forum-comment-element--buttons"
+          *ngIf="(data.userId == userId || isMainAdmin) && isEditMode[i]"
+        >
+          <button
+            mat-button
+            class="button"
+            (click)="makeUnEditMode(i)"
+          >
+            Cancel
+          </button>
+          <button
+            mat-button
+            class="button"
+            (click)="save(i)"
+          >
+            Save
           </button>
         </div>
       </div>
