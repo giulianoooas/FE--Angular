@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ForumComment, ForumCommentEdit } from 'src/app/models/forum-comment.model';
 import { ForumText } from 'src/app/models/forum-text.model';
+import { AuthService } from 'src/app/services/auth.service';
 import { ForumService } from 'src/app/services/forum.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -34,7 +35,8 @@ export class ForumTextComponent implements OnInit, OnDestroy {
 
   public constructor(
     private readonly forumService: ForumService,
-    private readonly userService: UserService
+    private readonly userService: UserService,
+    private readonly authService: AuthService
   ) { }
 
   public ngOnInit(): void {
@@ -132,6 +134,11 @@ export class ForumTextComponent implements OnInit, OnDestroy {
         this.comments.push(data);
       }
       this.showingComments.push(data);
+      this.forumService.sendData({
+        text,
+        name: this.authService.getNickname(),
+        date: data.date
+      })
       this.showComments = true;
     });
   }

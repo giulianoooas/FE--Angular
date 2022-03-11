@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { ForumComment, ForumCommentEdit } from '../models/forum-comment.model';
 import { ForumText, ForumTextEdit } from '../models/forum-text.model';
 
@@ -11,6 +11,21 @@ import { ForumText, ForumTextEdit } from '../models/forum-text.model';
 })
 export class ForumService {
   private baseUrl = 'http://localhost:3000/forum';
+
+  private data = new Subject<string>();
+
+  public getData(): Observable<string>{
+    return this.data.asObservable();
+  }
+
+  public sendData(data: {
+    name: string,
+    date: string,
+    text: string,
+    index?: number
+  }): void{
+    this.data.next(JSON.stringify(data));
+  }
 
   public constructor(private http: HttpClient) { }
 

@@ -1,1 +1,22 @@
-<p>forum-comment works!</p>
+<div class="forum-comment"
+  *ngIf="showData"
+>
+  <ng-container *ngFor="let data of showingData; let i = index">
+    <div  class="forum-comment-element">
+        <div class="forum-comment-element--info">
+          <span>
+            {{data.name}}
+          </span>
+          <span>
+            {{data.date}}
+          </span>
+        </div>
+        <div class="forum-comment-element--text">
+          {{data.text}}
+        </div>
+        <div class="forum-comment-element--buttons">
+
+        </div>
+      </div>
+  </ng-container>
+</div>

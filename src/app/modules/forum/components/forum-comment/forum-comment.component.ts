@@ -1,5 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ForumComment } from 'src/app/models/forum-comment.model';
+import { ForumService } from 'src/app/services/forum.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -7,27 +9,75 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './forum-comment.component.html',
   styleUrls: ['./forum-comment.component.scss']
 })
-export class ForumCommentComponent implements OnInit {
+export class ForumCommentComponent implements OnInit, OnDestroy {
 
   @Input() public comments: ForumComment[] = [];
   public userNames= new Map<number, string>();
+  public showingData: any[] = [];
+  public showData = false;
   private existsUsers = new Map<number, boolean>();
+  private subscription = new Subscription();
 
-  public constructor(private readonly userService: UserService) {}
+  public constructor(private readonly userService: UserService,
+      private readonly forumService: ForumService
+    ) {}
+
+  public ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
 
   public ngOnInit(): void {
     this.setUsers();
+    this.subscribeToAddData();
   }
 
   private setUsers(): void{
     this.existsUsers.set(-1,true);
+    const userIds = [-1];
     for (const comment of this.comments){
       if (comment.userId && !this.existsUsers.get(comment.userId)){
         this.existsUsers.set(comment.userId,true);
+        userIds.push(+comment.userId);
       }
     }
-    const userIds = Object.keys(this.existsUsers);
-    console.log(this.comments);
+    this.setUsersNames(userIds);
+  }
 
+  private setUsersNames(userIds: number[]): void{
+    this.userNames.set(-1,'Anonymous');
+    this.userService.getUsersInfo(userIds).subscribe((users) => {
+      for (const user of users){
+        this.userNames.set(user.userId, user.name);
+      }
+      this.generateDataForShowing();
+    })
+  }
+
+  private generateDataForShowing(): void{
+    for (const comment of this.comments){
+      this.showingData.push({
+        name: this.userNames.get(comment.userId ?? -1) ?? 'Anonymous',
+        text: comment.text,
+        date: comment.date
+      });
+    }
+    this.showData = true;
+  }
+
+  private subscribeToAddData(): void{
+    this.subscription.add(
+      this.forumService.getData().subscribe(
+        (data) => {
+          const jsonData = JSON.parse(data);
+          const index = jsonData.index;
+          if (index){
+            this.showingData[index].push(jsonData);
+          }
+          else {
+            this.showingData.push(jsonData);
+          }
+        }
+      )
+    );
   }
 }

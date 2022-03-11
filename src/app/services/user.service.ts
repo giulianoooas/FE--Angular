@@ -49,11 +49,10 @@ export class UserService {
     imageSrc: string;
     userId: number;
   } []>{
-    const params = new HttpParams().set('userIds', '' + userIds);
-    return this.http.get<{
+    return this.http.post<{
       name: string;
       imageSrc: string;
       userId: number;
-    } []>(`${this.baseUrl}users/all/info`);
+    } []>(`${this.baseUrl}users/all/info`, userIds);
   }
 }
