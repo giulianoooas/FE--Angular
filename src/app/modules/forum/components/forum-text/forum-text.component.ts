@@ -99,8 +99,10 @@ export class ForumTextComponent implements OnInit, OnDestroy {
         (comments) => {
           this.comments = comments;
           this.showingComments = comments;
+          this.showComments = value;
         }
       );
+      return;
     }
     if (value){
       this.showingComments = this.comments ?? [];

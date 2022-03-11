@@ -26,7 +26,8 @@ export class ForumCommentComponent implements OnInit {
         this.existsUsers.set(comment.userId,true);
       }
     }
-    const userIds = [];
+    const userIds = Object.keys(this.existsUsers);
+    console.log(this.comments);
 
   }
 }

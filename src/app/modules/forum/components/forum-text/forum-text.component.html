@@ -91,6 +91,12 @@
 </div>
 <app-create-forum-comment
   *ngIf="showCommentCreate"
+  (createCommentEvent)="createComment($event)"
   (closeCommentEvent)="closeCreateComment()"
 >
 </app-create-forum-comment>
+<app-forum-comment
+  [comments]="showingComments"
+  *ngIf="showComments"
+>
+</app-forum-comment>

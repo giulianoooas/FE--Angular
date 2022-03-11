@@ -47,11 +47,13 @@ export class UserService {
   public getUsersInfo(userIds: number[]): Observable<{
     name: string;
     imageSrc: string;
+    userId: number;
   } []>{
     const params = new HttpParams().set('userIds', '' + userIds);
     return this.http.get<{
       name: string;
       imageSrc: string;
+      userId: number;
     } []>(`${this.baseUrl}users/all/info`);
   }
 }
