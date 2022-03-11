@@ -138,9 +138,14 @@ export class ForumTextComponent implements OnInit, OnDestroy {
         text,
         name: this.authService.getNickname(),
         date: data.date,
-        userId: this.userId
+        userId: this.userId,
+        commentId: data.forumCommentId
       })
       this.showComments = true;
     });
+  }
+
+  public deleteComment(id: number): void{
+    this.forumService.deleteForumComment(id).subscribe();
   }
 }

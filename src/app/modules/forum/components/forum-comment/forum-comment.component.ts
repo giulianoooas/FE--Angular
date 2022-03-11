@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnDestroy, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ForumComment } from 'src/app/models/forum-comment.model';
 import { ForumService } from 'src/app/services/forum.service';
@@ -19,6 +19,7 @@ export class ForumCommentComponent implements OnInit, OnDestroy {
   public showData = false;
   private existsUsers = new Map<number, boolean>();
   private subscription = new Subscription();
+  @Output() deleteCommentEvent = new EventEmitter<number>();
 
   public constructor(private readonly userService: UserService,
       private readonly forumService: ForumService
@@ -58,6 +59,7 @@ export class ForumCommentComponent implements OnInit, OnDestroy {
   private generateDataForShowing(): void{
     for (const comment of this.comments){
       this.showingData.push({
+        commentId: comment.forumCommentId,
         name: this.userNames.get(comment.userId ?? -1) ?? 'Anonymous',
         text: comment.text,
         date: comment.date,
@@ -82,5 +84,18 @@ export class ForumCommentComponent implements OnInit, OnDestroy {
         }
       )
     );
+  }
+
+  public deleteComment(index: number): void{
+    const comment = this.showingData[index];
+    this.deleteCommentEvent.emit(comment.commentId);
+    const newComments = [];
+    for (let i = 0; i <  this.showingData.length; i ++){
+      if (i == index){
+        continue;
+      }
+      newComments.push(this.showingData[i]);
+    }
+    this.showingData = newComments;
   }
 }

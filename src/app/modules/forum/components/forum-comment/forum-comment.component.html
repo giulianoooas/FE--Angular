@@ -1,5 +1,5 @@
 <div class="forum-comment"
-  *ngIf="showData"
+  *ngIf="showData && showingData && showingData.length"
 >
   <ng-container *ngFor="let data of showingData; let i = index">
     <div  class="forum-comment-element">
@@ -26,6 +26,7 @@
           <button
             mat-button
             class="button"
+            (click)="deleteComment(i)"
           >
             Delete
           </button>

@@ -99,6 +99,7 @@
   [comments]="showingComments"
   [userId]="userId"
   [isMainAdmin]="isAdmin"
+  (deleteCommentEvent)="deleteComment($event)"
   *ngIf="showComments"
 >
 </app-forum-comment>
