@@ -97,6 +97,8 @@
 </app-create-forum-comment>
 <app-forum-comment
   [comments]="showingComments"
+  [userId]="userId"
+  [isMainAdmin]="isAdmin"
   *ngIf="showComments"
 >
 </app-forum-comment>

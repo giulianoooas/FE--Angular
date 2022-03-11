@@ -22,6 +22,7 @@ export class ForumService {
     name: string,
     date: string,
     text: string,
+    userId: number,
     index?: number
   }): void{
     this.data.next(JSON.stringify(data));

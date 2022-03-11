@@ -12,6 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 export class ForumCommentComponent implements OnInit, OnDestroy {
 
   @Input() public comments: ForumComment[] = [];
+  @Input() public userId: number;
+  @Input() public isMainAdmin = false;
   public userNames= new Map<number, string>();
   public showingData: any[] = [];
   public showData = false;
@@ -58,7 +60,8 @@ export class ForumCommentComponent implements OnInit, OnDestroy {
       this.showingData.push({
         name: this.userNames.get(comment.userId ?? -1) ?? 'Anonymous',
         text: comment.text,
-        date: comment.date
+        date: comment.date,
+        userId: comment.userId
       });
     }
     this.showData = true;

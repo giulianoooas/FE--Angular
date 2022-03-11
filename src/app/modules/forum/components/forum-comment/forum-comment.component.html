@@ -7,15 +7,28 @@
           <span>
             {{data.name}}
           </span>
-          <span>
+          <span class="space">
             {{data.date}}
           </span>
         </div>
         <div class="forum-comment-element--text">
-          {{data.text}}
+          <span>{{data.text}}</span>
         </div>
-        <div class="forum-comment-element--buttons">
-
+        <div class="forum-comment-element--buttons"
+          *ngIf="data.userId == userId || isMainAdmin"
+        >
+          <button
+            mat-button
+            class="button"
+          >
+            Edit
+          </button>
+          <button
+            mat-button
+            class="button"
+          >
+            Delete
+          </button>
         </div>
       </div>
   </ng-container>
