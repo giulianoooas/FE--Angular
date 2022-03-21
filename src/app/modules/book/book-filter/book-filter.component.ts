@@ -12,10 +12,12 @@ export class BookFilterComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
   public formGroup: FormGroup = new FormGroup({
     name: new FormControl(''),
-    minPrice: new FormControl(0)
+    minPrice: new FormControl(),
+    maxPrice: new FormControl()
   });
   private filter: BookFilter = {
     minPrice: 0,
+    maxPrice: 0,
     name: ''
   }
   @Output() public setFilter: EventEmitter<BookFilter>=
@@ -30,9 +32,15 @@ export class BookFilterComponent implements OnInit, OnDestroy {
       this.formGroup.valueChanges.subscribe((data) => {
         this.filter.name = data.name;
         if (data.minPrice < 0){
+          data.minPrice = 0;
           this.formGroup.controls['minPrice'].setValue(0);
         }
+        if (!!data.minPrice && data.maxPrice <=  data.minPrice){
+          data.maxPrice = data.minPrice + 1;
+          this.formGroup.controls['maxPrice'].setValue(data.maxPrice);
+        }
         this.filter.minPrice = data.minPrice;
+        this.filter.maxPrice = data.maxPrice;
         this.setFilterEmit();
       })
     );

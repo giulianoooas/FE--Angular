@@ -28,7 +28,8 @@ export class BookListComponent implements OnInit {
         book.name.toLowerCase().includes(filter.name.toLowerCase()) ||
         Math.abs(min - this.computeDistanceNamesDP(book.name,filter.name)) < 2 // are aproape toate caracterele la fel
       )
-        && book.price >= filter.minPrice){
+        && book.price >= (filter.minPrice ?? 0) &&
+        (!filter.maxPrice || book.price <= filter.maxPrice)){
         this.filteredBooks.push(book);
       }
     }
