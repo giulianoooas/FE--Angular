@@ -46,7 +46,7 @@ export class BookListComponent implements OnInit {
     },1000);
   }
 
-  public computeDistanceNamesDP(str1: string, str2: string): number{
+  private computeDistanceNamesDP(str1: string, str2: string): number{
     const matrix = [];
     str1 = str1.toLowerCase();
     str2 = str2.toLowerCase();
@@ -69,21 +69,5 @@ export class BookListComponent implements OnInit {
     }
 
     return matrix[str1.length][str2.length];
-  }
-
-  private lev(str1: string, str2: string): number{ //https://en.wikipedia.org/wiki/Levenshtein_distance
-    if (str1 === '' || str2 === ''){
-      return Math.max(str1.length, str2.length);
-    }
-
-    if (str1[0] === str2[0]){
-      return this.lev(str1.substring(1,str1.length) , str2.substring(1,str2.length));
-    }
-
-    return 1 + Math.min(
-      this.lev(str1.substring(1,str1.length) , str2.substring(1,str2.length)),
-      this.lev(str1 , str2.substring(1,str2.length)),
-      this.lev(str1.substring(1,str1.length) , str2)
-    );
   }
 }
