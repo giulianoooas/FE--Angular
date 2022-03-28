@@ -163,14 +163,6 @@ export class ForumTextComponent implements OnInit, OnDestroy {
         this.comments.push(data);
       }
       this.showingComments.push(data);
-      this.forumService.sendData({
-        text,
-        name: this.authService.getNickname(),
-        date: data.date,
-        userId: this.userId,
-        commentId: data.forumCommentId,
-        index
-      })
       this.showComments = true;
     });
   }

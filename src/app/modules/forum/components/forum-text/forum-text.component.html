@@ -44,6 +44,15 @@
             Show
           </ng-container> comments
         </button>
+
+        <button
+            *ngIf="userId >= 0"
+            mat-button
+            class="button"
+            (click)="openCreateComment()"
+          >
+            Comment
+          </button>
         <ng-container
           *ngIf="canDelete"
         >
@@ -60,13 +69,6 @@
             (click)="deleteForumText()"
           >
             Delete
-          </button>
-          <button
-            mat-button
-            class="button"
-            (click)="openCreateComment()"
-          >
-            Comment
           </button>
         </ng-container>
       </ng-container>

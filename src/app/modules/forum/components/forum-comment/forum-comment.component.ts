@@ -111,6 +111,8 @@ export class ForumCommentComponent implements OnInit, OnDestroy {
   public save(index: number): void{
     const value = this.formGroups[index].controls['text'].value;
     if (value){
+
+      this.showingData[index].text = value;
       this.saveCommentEvent.emit({
         id: this.showingData[index].commentId,
         text: value,
