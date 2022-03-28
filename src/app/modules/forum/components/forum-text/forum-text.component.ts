@@ -5,6 +5,7 @@ import { ForumComment, ForumCommentEdit } from 'src/app/models/forum-comment.mod
 import { ForumText } from 'src/app/models/forum-text.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { ForumService } from 'src/app/services/forum.service';
+import { TextValidatorAPI } from 'src/app/services/text-validator.api.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -36,7 +37,8 @@ export class ForumTextComponent implements OnInit, OnDestroy {
   public constructor(
     private readonly forumService: ForumService,
     private readonly userService: UserService,
-    private readonly authService: AuthService
+    private readonly authService: AuthService,
+    private readonly textValidationService: TextValidatorAPI
   ) { }
 
   public ngOnInit(): void {
@@ -88,9 +90,13 @@ export class ForumTextComponent implements OnInit, OnDestroy {
 
   public save(): void{
     if (this.editedText !== ''){
-      const forumText = {...this.forumText};
-      forumText.text = this.editedText;
-       this.editForumTextEvent.emit({index: this.index, text: forumText});
+      this.textValidationService.getTextStatus(this.editedText).subscribe((status) =>{
+         if (status == '1'){
+          const forumText = {...this.forumText};
+          forumText.text = this.editedText;
+          this.editForumTextEvent.emit({index: this.index, text: forumText});
+          }
+        });
       }
     this.setViewMode();
   }

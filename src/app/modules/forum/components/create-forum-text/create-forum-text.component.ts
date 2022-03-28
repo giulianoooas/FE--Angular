@@ -2,6 +2,7 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { FormGroup, FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { User } from 'src/app/models/user.model';
+import { TextValidatorAPI } from 'src/app/services/text-validator.api.service';
 
 @Component({
   selector: 'app-create-forum-text',
@@ -18,6 +19,8 @@ export class CreateForumTextComponent implements OnInit, OnDestroy {
   private subscription = new Subscription();
   private text = '';
   @Output() public createForumTextEvent = new EventEmitter<string>();
+
+  public constructor(private readonly textValidationService: TextValidatorAPI){}
 
   public ngOnInit(): void {
     this.subscribeFormGroup();
@@ -44,8 +47,14 @@ export class CreateForumTextComponent implements OnInit, OnDestroy {
 
   public createForum(): void{
     if (this.text){
-      this.createForumTextEvent.emit(this.text);
-      this.clearText();
+      this.textValidationService.getTextStatus(this.text).subscribe((status) =>{
+        if (status == '1'){
+          this.createForumTextEvent.emit(this.text);
+          this.clearText();
+        } else {
+          this.valid =false;
+        }
+      });
       return;
     }
     this.valid = false;

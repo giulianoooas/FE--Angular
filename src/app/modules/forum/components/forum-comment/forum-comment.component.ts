@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { ForumComment } from 'src/app/models/forum-comment.model';
 import { ForumService } from 'src/app/services/forum.service';
+import { TextValidatorAPI } from 'src/app/services/text-validator.api.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class ForumCommentComponent implements OnInit, OnDestroy {
   @Output() saveCommentEvent = new EventEmitter<{id: number, text: string, index: number}>();
 
   public constructor(private readonly userService: UserService,
-      private readonly forumService: ForumService
+      private readonly forumService: ForumService,
+      private readonly textValidationService: TextValidatorAPI
     ) {}
 
   public ngOnDestroy(): void {
@@ -111,16 +113,18 @@ export class ForumCommentComponent implements OnInit, OnDestroy {
   public save(index: number): void{
     const value = this.formGroups[index].controls['text'].value;
     if (value){
-
-      this.showingData[index].text = value;
-      this.saveCommentEvent.emit({
-        id: this.showingData[index].commentId,
-        text: value,
-        index: index
+      this.textValidationService.getTextStatus(value).subscribe((status) =>{
+        if (status == '1'){
+          this.showingData[index].text = value;
+          this.saveCommentEvent.emit({
+            id: this.showingData[index].commentId,
+            text: value,
+            index: index
+          });
+        }
       });
     }
     this.makeUnEditMode(index);
-
   }
 
   public deleteComment(index: number): void{

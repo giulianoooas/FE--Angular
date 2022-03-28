@@ -13,8 +13,8 @@ export class TextValidatorAPI{
   ){}
 
   public getTextStatus(text: string): Observable<string>{ // 0-> bad, 1 -> good
-    return this.http.post<string>(this.endpoint, {
-      comment: text
+    return this.http.get<string>(this.endpoint, {
+      params: new HttpParams().append('comment', text)
     })
   }
 }
