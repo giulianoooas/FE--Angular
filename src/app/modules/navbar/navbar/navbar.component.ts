@@ -25,6 +25,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.subscription.add(
           this.router.events.subscribe(() => {
             this.setNavbarElements();
+            this.setHighlightNavbar();
             this.showActionsUser = false;
           })
         )
@@ -67,6 +68,57 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.navbarElements = NAVBAR_ANONYMOUS_CONSTANT;
     }
     this.nickname = this.authService.getNickname();
+  }
+
+  private setHighlightNavbar(): void{
+    if (this.router.url.includes('forum')){
+      for (const navbar of this.navbarElements){
+        if (navbar.label === 'Forum'){
+          navbar.highlight = true;
+        } else {
+          navbar.highlight = false;
+        }
+      }
+    }
+
+    if (this.router.url.includes('books')){
+      const isCreate = this.router.url.includes('create');
+      for (const navbar of this.navbarElements){
+        if (!isCreate){
+          if (navbar.label === 'Books'){
+            navbar.highlight = true;
+          } else {
+            navbar.highlight = false;
+          }
+        } else {
+          if (navbar.label === 'Create book'){
+            navbar.highlight = true;
+          } else {
+            navbar.highlight = false;
+          }
+        }
+      }
+    }
+
+    if (this.router.url.includes('categories')){
+      for (const navbar of this.navbarElements){
+        if (navbar.label === 'Categories'){
+          navbar.highlight = true;
+        } else {
+          navbar.highlight = false;
+        }
+      }
+    }
+
+    if (this.router.url.includes('orders')){
+      for (const navbar of this.navbarElements){
+        if (navbar.label === 'Order list'){
+          navbar.highlight = true;
+        } else {
+          navbar.highlight = false;
+        }
+      }
+    }
   }
 
   public setShowActionUser(): void{

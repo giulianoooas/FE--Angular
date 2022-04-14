@@ -1,6 +1,7 @@
 <button mat-button
     (click)="navigate()"
     class="navbar-element"
+    [ngClass]="{ highlight: navbarElement.highlight ?? false }"
 >
   <span class="navbar-element__label">
     {{navbarElement.label}}
