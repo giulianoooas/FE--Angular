@@ -71,10 +71,12 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   private setHighlightNavbar(): void{
+    let ok = false;
     if (this.router.url.includes('forum')){
       for (const navbar of this.navbarElements){
         if (navbar.label === 'Forum'){
           navbar.highlight = true;
+          ok = true;
         } else {
           navbar.highlight = false;
         }
@@ -87,12 +89,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
         if (!isCreate){
           if (navbar.label === 'Books'){
             navbar.highlight = true;
+            ok = true;
           } else {
             navbar.highlight = false;
           }
         } else {
           if (navbar.label === 'Create book'){
             navbar.highlight = true;
+            ok = true;
           } else {
             navbar.highlight = false;
           }
@@ -104,6 +108,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
       for (const navbar of this.navbarElements){
         if (navbar.label === 'Categories'){
           navbar.highlight = true;
+          ok = true;
         } else {
           navbar.highlight = false;
         }
@@ -114,9 +119,16 @@ export class NavbarComponent implements OnInit, OnDestroy {
       for (const navbar of this.navbarElements){
         if (navbar.label === 'Order list'){
           navbar.highlight = true;
+          ok = true;
         } else {
           navbar.highlight = false;
         }
+      }
+    }
+
+    if (!ok){
+      for (const navbar of this.navbarElements){
+        navbar.highlight = false;
       }
     }
   }

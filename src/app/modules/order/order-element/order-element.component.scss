@@ -1,6 +1,11 @@
 @import '../../../styles/variables.scss';
 
 .order-element{
+  &:hover{
+    background-color: rgb(201, 204, 208);
+    border-radius: 8px;
+  }
+
   margin-top: 2em;
   display: flex;
   flex-direction: row;
