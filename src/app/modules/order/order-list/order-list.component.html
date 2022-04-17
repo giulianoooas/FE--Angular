@@ -25,17 +25,28 @@
         class="order-list-books-rec"
         *ngIf="booksRec.length"
       >
+        <span
+          class="order-list-books-rec-title"
+          [ngClass]="{
+            'bigger-text': orderBooks.length == 0
+          }"
+        >
+          See also
+        </span>
         <ng-container
           *ngFor="let book of booksRec"
         >
               <div
-              class="order-book"
-              *ngIf="book"
-            >
+                class="order-book"
+                *ngIf="book"
+             >
               <img
                 [src]="book.imageUrl"
                 alt="book image"
                 class="order-book--image"
+                [ngClass]="{
+                  'bigger-book': orderBooks.length == 0
+                }"
               />
               <span>
                 Name: {{book.name}}

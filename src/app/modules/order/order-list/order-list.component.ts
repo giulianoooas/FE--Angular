@@ -23,33 +23,45 @@ export class OrderListComponent implements OnInit {
     private router: Router
   ) { }
 
-  public ngOnInit(): void {
+  public async ngOnInit(): Promise<void> {
     this.userId = Number(this.route.snapshot.paramMap.get('userId'));
-    this.getOrders();
-    this.getBooks();
+    await this.setOrders();
+    this.setBooks();
   }
 
-  private getBooks(): void{
+  private setBooks(): void{
+    const bookExistsId = new Map<number, boolean>();
+
+    this.orderBooks.forEach((book) => {
+      bookExistsId.set(book.bookId,true);
+    });
+
+    let maxBooks = 3;
+
+    if (this.orderBooks.length > 3){
+      maxBooks = 4;
+    }
+
     this.bookService.getBooks().subscribe((books) => {
       for(const book of books){
-        if (this.booksRec.length >= 4){
+        if (this.booksRec.length >= maxBooks){
           break;
         }
-        this.booksRec.push(book);
+        if (!bookExistsId.get(book.bookId)){
+          this.booksRec.push(book);
+        }
       }
     });
   }
 
-  private getOrders(): void{
-    this.orderService.getAllOrderOfUser(this.userId).subscribe(
-      (orderBooks) =>{
-        this.orderBooks = orderBooks;
-        for (const order of orderBooks){
-          this.totalPrice += order.price * order.numberOfElements;
-        }
-      }
-    )
+  private async setOrders(): Promise<void>{
+    this.orderBooks = await this.orderService.getAllOrderOfUser(this.userId).toPromise();
+    for (const order of this.orderBooks){
+      this.totalPrice += order.price * order.numberOfElements;
+    }
   }
+
+
 
   public navigateToBook(bookId: number): void{
     this.router.navigateByUrl(`books/${bookId}`)

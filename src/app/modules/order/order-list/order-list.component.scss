@@ -11,6 +11,7 @@
     background-color: white;
     border-radius: 8px;
     text-align: center;
+    margin-left: 3em;
   }
 
   &-books{
@@ -19,8 +20,13 @@
     flex-direction: row;
 
     &-rec{
-      margin-left: 5em;
+      margin-left: 6em;
+      text-align: center;
 
+      &-title{
+        font-size: 20px;
+        margin-bottom: 1em;
+      }
     }
   }
 }
@@ -42,8 +48,8 @@
 
   &--image{
     margin-bottom: 1em;
-    width: 13em;
-    height:5em;
+    width: 16em;
+    height:10em;
     border-radius: 8px;
   }
 
@@ -54,4 +60,15 @@
     font-weight: 500;
     font-size:16px;
   }
+}
+
+
+.bigger-book{
+  width:30em;
+  height: 25em;
+}
+
+.bigger-text{
+  font-size: 30px;
+  margin-bottom: 3em;
 }
