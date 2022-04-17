@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Book } from 'src/app/models/book.model';
+import { BookService } from 'src/app/services/book.service';
 import { OrderBook } from '../../../models/order-book.model';
 import { OrderService } from '../../../services/order.service';
 
@@ -12,18 +14,33 @@ export class OrderListComponent implements OnInit {
   public userId: number;
   public orderBooks: OrderBook[] = [];
   public totalPrice = 0;
+  public booksRec: Book[] = [];
 
   public constructor(
+    private bookService: BookService,
     private orderService: OrderService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   public ngOnInit(): void {
     this.userId = Number(this.route.snapshot.paramMap.get('userId'));
-    this.getCars();
+    this.getOrders();
+    this.getBooks();
   }
 
-  private getCars(): void{
+  private getBooks(): void{
+    this.bookService.getBooks().subscribe((books) => {
+      for(const book of books){
+        if (this.booksRec.length >= 4){
+          break;
+        }
+        this.booksRec.push(book);
+      }
+    });
+  }
+
+  private getOrders(): void{
     this.orderService.getAllOrderOfUser(this.userId).subscribe(
       (orderBooks) =>{
         this.orderBooks = orderBooks;
@@ -32,6 +49,10 @@ export class OrderListComponent implements OnInit {
         }
       }
     )
+  }
+
+  public navigateToBook(bookId: number): void{
+    this.router.navigateByUrl(`books/${bookId}`)
   }
 
   public refresh(index: number): void{

@@ -1,22 +1,57 @@
-<div class="order-list"
-  [ngClass]="{'bigger-padding':orderBooks.length > 2}"
->
+<div class="order-list">
   <div *ngIf="totalPrice > 0"
     class="order-list--price"
   >
     Total price of order list is {{totalPrice}} <mat-icon>euro</mat-icon>
   </div>
-  <ng-container
-    *ngFor="let order of orderBooks; let i=index"
+  <div
+    class="order-list-books"
   >
-  <app-order-element
-    [index]="i"
-    [orderBook]="order"
-    [userId]="userId"
-    (decreaseOrderNumberEvent)="refresh($event)"
-  ></app-order-element>
-  </ng-container>
-  <ng-container *ngIf="orderBooks.length == 0">
-    You have no orders for the moment.
-  </ng-container>
+    <div
+      class="order-list-books-orders"
+    >
+      <ng-container
+        *ngFor="let order of orderBooks; let i=index"
+      >
+        <app-order-element
+          [index]="i"
+          [orderBook]="order"
+          [userId]="userId"
+          (decreaseOrderNumberEvent)="refresh($event)"
+        ></app-order-element>
+        </ng-container>
+      </div>
+      <div
+        class="order-list-books-rec"
+        *ngIf="booksRec.length"
+      >
+        <ng-container
+          *ngFor="let book of booksRec"
+        >
+              <div
+              class="order-book"
+              *ngIf="book"
+            >
+              <img
+                [src]="book.imageUrl"
+                alt="book image"
+                class="order-book--image"
+              />
+              <span>
+                Name: {{book.name}}
+              </span>
+              <span>
+                Price: {{book.price}} <mat-icon>euro</mat-icon>
+              </span>
+              <button
+                (click)="navigateToBook(book.bookId)"
+                mat-button
+                class="button"
+              >
+                See details
+              </button>
+            </div>
+        </ng-container>
+      </div>
+  </div>
 </div>

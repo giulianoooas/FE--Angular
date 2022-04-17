@@ -1,5 +1,6 @@
+@import '../../../styles/variables.scss';
+
 .order-list{
-  margin-left: 33%;
   width: 100%;
 
   &--price{
@@ -11,8 +12,46 @@
     border-radius: 8px;
     text-align: center;
   }
+
+  &-books{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+
+    &-rec{
+      margin-left: 5em;
+
+    }
+  }
 }
 
-.bigger-padding{
-  padding-top: 20%;
+
+.order-book{
+  &:hover{
+    border: 1px solid rgb(17, 176, 136);
+  }
+
+  border:1px solid black;
+  border-radius: 8px;
+  margin-bottom: 2em;
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+
+  &--image{
+    margin-bottom: 1em;
+    width: 13em;
+    height:5em;
+    border-radius: 8px;
+  }
+
+  .button{
+    margin-top: 1em;
+    background-color: $buttonColor;
+    color:white;
+    font-weight: 500;
+    font-size:16px;
+  }
 }
