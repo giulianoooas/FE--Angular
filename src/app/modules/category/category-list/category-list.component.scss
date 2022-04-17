@@ -1,8 +1,6 @@
 .category-list{
   width:100em;
-  height:50em;
-  overflow-x: hidden;
-  overflow-y: auto;
+  min-height: 50em;
 
   .category{
     margin:1em;

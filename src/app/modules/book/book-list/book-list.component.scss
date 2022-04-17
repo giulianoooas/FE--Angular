@@ -3,9 +3,10 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 200em;
+  height: 100%;
+  background-color:rgb(241, 243, 245);
   width: 100em;
-  max-height: 50em;
+  min-height: 50em;
   z-index: 1;
 
   .book{
