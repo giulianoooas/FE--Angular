@@ -1,5 +1,11 @@
 <div class="navbar"  id="top">
   <div class="navbar__elements">
+    <div class="navbar__logo">
+      <img
+        class="navbar__logo--image"
+        src="./assets/images/GiulianoStore.png"
+        alt="logo">
+    </div>
     <div *ngFor="let navbarElement of navbarElements">
       <app-navbar-element [navbarElement]="navbarElement">
       </app-navbar-element>
