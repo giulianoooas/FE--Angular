@@ -40,7 +40,8 @@ export class ImageZoomComponent implements OnInit {
 
   private setScaleNormal(): void{
     const scaleX = this.canvas.getWidth() / (this.image.width ?? 1);
-    this.canvas.setZoom(scaleX);
+    const scaleY = this.canvas.getHeight() / (this.image.height ?? 1);
+    this.canvas.setZoom(Math.max(scaleX,scaleY));
   }
 
   private setCanvasImage(): void{
