@@ -67,7 +67,7 @@ export class OrderListComponent implements OnInit {
     this.router.navigateByUrl(`books/${bookId}`)
   }
 
-  public refresh(index: number): void{
+  public decreaseOrder(index: number): void{
     this.orderBooks[index].numberOfElements --;
     this.totalPrice -= this.orderBooks[index].price;
     if (this.orderBooks[index].numberOfElements <= 0){
@@ -82,4 +82,8 @@ export class OrderListComponent implements OnInit {
     }
   }
 
+  public increaseOrder(index: number): void{
+    this.orderBooks[index].numberOfElements ++;
+    this.totalPrice += this.orderBooks[index].price;
+  }
 }

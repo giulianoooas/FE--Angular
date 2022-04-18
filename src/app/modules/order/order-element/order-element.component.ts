@@ -16,6 +16,8 @@ export class OrderElementComponent implements OnInit{
   @Input() index: number;
   @Output() decreaseOrderNumberEvent: EventEmitter<number>=
     new EventEmitter<number>();
+  @Output() increaseOrderNumberEvent: EventEmitter<number>=
+    new EventEmitter<number>();
 
   public constructor(
     private orderService: OrderService,
@@ -39,4 +41,12 @@ export class OrderElementComponent implements OnInit{
     })
   }
 
+  public increaseOrderNumber(): void{
+    this.orderService.increaseOrder({
+      userId: this.userId,
+      bookId: this.orderBook.bookId
+    }).subscribe(() => {
+      this.increaseOrderNumberEvent.emit(this.index);
+    })
+  }
 }

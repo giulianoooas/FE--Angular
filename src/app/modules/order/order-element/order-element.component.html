@@ -3,13 +3,26 @@
     <img
       [src]="orderBook.imageUrl"
     >
+    <div
+      class="order-element__flex"
+    >
+      <button
+        mat-button
+        class="button"
+        (click)="decreaseOrderNumber()"
+      >
+      -
+    </button>
     <button
       mat-button
-      (click)="decreaseOrderNumber()"
+      class="button"
+      (click)="increaseOrderNumber()"
     >
-    Decrease Order
-  </button>
+      +
+    </button>
   </div>
+  </div>
+
   <div class="order-element__right">
     <span class="order-element__right--element">
       Order date: {{date}}

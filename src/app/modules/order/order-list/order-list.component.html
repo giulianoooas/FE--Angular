@@ -17,7 +17,8 @@
           [index]="i"
           [orderBook]="order"
           [userId]="userId"
-          (decreaseOrderNumberEvent)="refresh($event)"
+          (decreaseOrderNumberEvent)="decreaseOrder($event)"
+          (increaseOrderNumberEvent)="increaseOrder($event)"
         ></app-order-element>
         </ng-container>
       </div>
