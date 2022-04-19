@@ -13,6 +13,7 @@ export class ImageZoomComponent implements OnInit {
   private canvas: fb.fabric.Canvas;
   private image: fb.fabric.Image;
   private mousePressed = false;
+  private minZoom: number;
 
   public constructor(
     private dialog: MatDialog,
@@ -41,7 +42,8 @@ export class ImageZoomComponent implements OnInit {
   private setScaleNormal(): void{
     const scaleX = this.canvas.getWidth() / (this.image.width ?? 1);
     const scaleY = this.canvas.getHeight() / (this.image.height ?? 1);
-    this.canvas.setZoom(Math.max(scaleX,scaleY));
+    this.minZoom = Math.max(scaleX,scaleY);
+    this.canvas.setZoom(this.minZoom);
   }
 
   private setCanvasImage(): void{
@@ -74,6 +76,6 @@ export class ImageZoomComponent implements OnInit {
   }
 
   public zoomOut(): void{
-    this.canvas.setZoom(Math.max(this.canvas.getZoom() - 0.1,0.1));
+    this.canvas.setZoom(Math.max(this.canvas.getZoom() - 0.1,this.minZoom));
   }
 }
