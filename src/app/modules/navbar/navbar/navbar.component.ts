@@ -5,6 +5,7 @@ import { Navbar } from '../../../models/navbar.model';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EventService } from 'src/app/services/event.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-navbar',
@@ -19,6 +20,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   public subscription: Subscription = new Subscription();
 
   public constructor(
+        private titleService: Title,
         private authService: AuthService,
         private eventService: EventService,
         private router: Router){
@@ -27,6 +29,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
             this.setNavbarElements();
             this.setHighlightNavbar();
             this.showActionsUser = false;
+            this.setPageTitle(this.router.url);
           })
         )
   }
@@ -35,6 +38,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.setNavbarElements();
     this.updateNickname();
     this.authNavbar = NAVBAR_NO_LOGIN_CONSTANT;
+  }
+
+  private setPageTitle(url: string): void{
+    const urlParts = url.split('/');
+
+    if (!urlParts.includes('books') || (urlParts.includes('books') && urlParts.length == 2)){
+      this.titleService.setTitle('Giuliano`s  Store');
+    }
   }
 
   private updateNickname(): void{

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserStatusArray } from 'src/app/models/user.model';
 import { DialogService } from 'src/app/services/dialog.service';
@@ -31,7 +32,8 @@ export class BookDetailsComponent implements OnInit {
     private router: Router,
     private authService: AuthService,
     private orderService: OrderService,
-    private dialogService: DialogService) { }
+    private dialogService: DialogService,
+    private titleService: Title) { }
 
   public ngOnInit(): void {
     this.setBook();
@@ -65,6 +67,7 @@ export class BookDetailsComponent implements OnInit {
       if (!!book){
         this.book = book.book;
         this.categoryName = book.categoryName;
+        this.titleService.setTitle(book.book.name);
       }
     })
     this.setSeeAlsoBooks();
