@@ -34,3 +34,7 @@ import { ForumModule } from './modules/forum/forum.module';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+/*
+  Scot numele si pretul si autorul
+  scot categoria
+*/

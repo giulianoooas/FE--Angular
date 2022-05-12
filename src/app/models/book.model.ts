@@ -12,5 +12,6 @@ export interface Book{
 export interface BookFilter{
   minPrice?: number,
   maxPrice?: number,
+  category?: number,
   name: string
 }

@@ -33,4 +33,21 @@
         placeholder="Book maximum price"
         type="number">
       </div>
+      <div class="book-filter__element">
+        <mat-icon>
+          monetization_on
+        </mat-icon>
+        <mat-select
+          class="book-filter__element--input"
+          formControlName="category"
+          placeholder="Book category"
+          type="number">
+            <ng-container *ngFor="let category of categories">
+              <mat-option
+                [value]="category.categoryId"
+              >{{category.name}}
+              </mat-option>
+            </ng-container>
+          </mat-select>
+        </div>
 </form>

@@ -1,6 +1,8 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { Category } from 'src/app/models/category.model';
+import { CategoryService } from 'src/app/services/category.service';
 import { BookFilter } from '../../../models/book.model';
 
 @Component({
@@ -10,10 +12,12 @@ import { BookFilter } from '../../../models/book.model';
 })
 export class BookFilterComponent implements OnInit, OnDestroy {
   private subscription: Subscription = new Subscription();
+  public categories: Category[];
   public formGroup: FormGroup = new FormGroup({
     name: new FormControl(''),
     minPrice: new FormControl(),
-    maxPrice: new FormControl()
+    maxPrice: new FormControl(),
+    category: new FormControl()
   });
   private filter: BookFilter = {
     minPrice: 0,
@@ -23,8 +27,23 @@ export class BookFilterComponent implements OnInit, OnDestroy {
   @Output() public setFilter: EventEmitter<BookFilter>=
     new EventEmitter<BookFilter>();
 
+  public constructor(private readonly categoryService: CategoryService){}
+
   public ngOnInit(): void {
     this.setFormControlSubscription();
+    this.getAllCategories();
+  }
+
+  private getAllCategories(): void{
+    this.categoryService.getAllCategories()
+    .subscribe((categories) => {
+      this.categories = categories;
+      this.categories.push({
+        categoryId: -1,
+        name: 'All',
+        userId: -1
+      });
+    })
   }
 
   private setFormControlSubscription(): void{
@@ -39,6 +58,8 @@ export class BookFilterComponent implements OnInit, OnDestroy {
           data.maxPrice = data.minPrice + 1;
           this.formGroup.controls['maxPrice'].setValue(data.maxPrice);
         }
+
+        this.filter.category = data.category;
         this.filter.minPrice = data.minPrice;
         this.filter.maxPrice = data.maxPrice;
         this.setFilterEmit();
