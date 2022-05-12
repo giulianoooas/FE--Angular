@@ -12,6 +12,7 @@ import { BookListComponent } from './modules/book/book-list/book-list.component'
 import { CategoryListComponent } from './modules/category/category-list/category-list.component';
 import { ForumComponent } from './modules/forum/forum.component';
 import { OrderListComponent } from './modules/order/order-list/order-list.component';
+import { OrderSelectionComponent } from './modules/order/order-selection/order-selection.component';
 
 const routes: Routes = [
     {
@@ -72,7 +73,7 @@ const routes: Routes = [
   },
   {
     path: 'orders/:userId',
-    component: OrderListComponent,
+    component: OrderSelectionComponent,
     canActivate: [AuthGuard, CustomerGuard]
   }
 ];
