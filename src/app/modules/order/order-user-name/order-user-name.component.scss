@@ -1,0 +1,27 @@
+@import '../../../styles/variables.scss';
+
+.button{
+  background-color: $buttonColor;
+  color:whitesmoke;
+  font-size: 20px;
+  font-weight: 400;
+  margin-left: 1em;
+}
+
+.customer{
+  width:50em;
+  background-color: $backgroundColor;
+  height:5em;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid black;
+  margin-left: 1em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+
+  &-name{
+    width: 35em;
+    text-align: center;
+  }
+}

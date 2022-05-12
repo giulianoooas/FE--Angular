@@ -1,6 +1,8 @@
-<ng-container *ngIf="!isAdmin">
-  <app-order-list></app-order-list>
-</ng-container>
-<ng-container *ngIf="isAdmin">
-  <app-order-admin-view></app-order-admin-view>
-</ng-container>
+<div class="fix">
+  <ng-container *ngIf="!isAdmin">
+    <app-order-list></app-order-list>
+  </ng-container>
+  <ng-container *ngIf="isAdmin">
+    <app-order-admin-view></app-order-admin-view>
+  </ng-container>
+</div>

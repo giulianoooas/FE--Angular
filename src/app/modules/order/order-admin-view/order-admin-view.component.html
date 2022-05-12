@@ -1,1 +1,18 @@
-<p>order-admin-view works!</p>
+<div class="order-admin-view">
+  <ng-container
+    *ngFor="let user of users"
+  >
+    <app-order-user-name
+      [name]="user.name"
+      [isHidden]="showUserOrders.get(user.userId) ?? false"
+      (eventEmitter)="showHideUserOrder(user.userId)"
+    >
+    </app-order-user-name>
+    <app-order-list
+      *ngIf="showUserOrders.get(user.userId) ?? false"
+      [customer]="user.userId"
+      [showExtraInfo]="false"
+      [extraLeftSpace]="true"
+    ></app-order-list>
+  </ng-container>
+</div>

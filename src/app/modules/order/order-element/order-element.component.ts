@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class OrderElementComponent implements OnInit{
   public date = '';
   @Input() userId: number;
+  @Input() showExtraInfo = true;
   @Input() orderBook: OrderBook;
   @Input() index: number;
   @Output() decreaseOrderNumberEvent: EventEmitter<number>=

@@ -1,0 +1,15 @@
+<div class="customer">
+  <span
+    class="customer-name"
+  >
+    {{name}}
+  </span>
+  <button
+    mat-button
+    class="button"
+    (click)="emitEvent()"
+  >
+    <ng-container *ngIf="!isHidden">Show orders</ng-container>
+    <ng-container *ngIf="isHidden">Hide orders</ng-container>
+  </button>
+</div>

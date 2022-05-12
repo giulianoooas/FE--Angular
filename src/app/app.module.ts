@@ -36,5 +36,4 @@ import { ForumModule } from './modules/forum/forum.module';
 export class AppModule { }
 /*
   Scot numele si pretul si autorul
-  scot categoria
 */

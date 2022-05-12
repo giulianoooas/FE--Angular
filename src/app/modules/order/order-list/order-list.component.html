@@ -1,4 +1,6 @@
-<div class="order-list">
+<div class="order-list"
+  [ngClass]="{left: extraLeftSpace}"
+>
   <div *ngIf="totalPrice > 0"
     class="order-list--price"
   >
@@ -14,6 +16,7 @@
         *ngFor="let order of orderBooks; let i=index"
       >
         <app-order-element
+          [showExtraInfo]="showExtraInfo"
           [index]="i"
           [orderBook]="order"
           [userId]="userId"
@@ -24,7 +27,7 @@
       </div>
       <div
         class="order-list-books-rec"
-        *ngIf="booksRec.length"
+        *ngIf="booksRec.length && showExtraInfo"
       >
         <span
           class="order-list-books-rec-title"

@@ -2,7 +2,6 @@
 
 .order-list{
   width: 100%;
-  min-height: 50em;
 
   &--price{
     margin-bottom: 1em;
@@ -72,4 +71,8 @@
 .bigger-text{
   font-size: 30px;
   margin-bottom: 3em;
+}
+
+.left{
+  margin-left: 5em;
 }

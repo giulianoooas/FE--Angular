@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/book.model';
 import { BookService } from 'src/app/services/book.service';
@@ -11,6 +11,9 @@ import { OrderService } from '../../../services/order.service';
   styleUrls: ['./order-list.component.scss']
 })
 export class OrderListComponent implements OnInit {
+  @Input() public showExtraInfo = true;
+  @Input() public customer: number;
+  @Input() public extraLeftSpace = false;
   public userId: number;
   public orderBooks: OrderBook[] = [];
   public totalPrice = 0;
@@ -24,7 +27,7 @@ export class OrderListComponent implements OnInit {
   ) { }
 
   public async ngOnInit(): Promise<void> {
-    this.userId = Number(this.route.snapshot.paramMap.get('userId'));
+    this.userId = this.customer ?? Number(this.route.snapshot.paramMap.get('userId'));
     await this.setOrders();
     this.setBooks();
   }

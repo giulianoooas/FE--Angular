@@ -55,4 +55,14 @@ export class UserService {
       userId: number;
     } []>(`${this.baseUrl}users/all/info`, userIds);
   }
+
+  public getAllUsersInfo(): Observable<{
+    name: string;
+    userId: number;
+  } []>{
+    return this.http.get<{
+      name: string;
+      userId: number;
+    } []>(`${this.baseUrl}users/name-id`);
+  }
 }

@@ -6,6 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { OrderSelectionComponent } from './order-selection/order-selection.component';
 import { OrderAdminViewComponent } from './order-admin-view/order-admin-view.component';
+import { OrderUserNameComponent } from './order-user-name/order-user-name.component';
 
 
 
@@ -14,7 +15,8 @@ import { OrderAdminViewComponent } from './order-admin-view/order-admin-view.com
     OrderListComponent,
     OrderElementComponent,
     OrderSelectionComponent,
-    OrderAdminViewComponent
+    OrderAdminViewComponent,
+    OrderUserNameComponent
   ],
   imports: [
     CommonModule,
