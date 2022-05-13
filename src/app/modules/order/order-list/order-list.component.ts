@@ -33,6 +33,20 @@ export class OrderListComponent implements OnInit {
   }
 
   private setBooks(): void{
+    if (this.orderBooks.length !== 0){
+
+      this.orderBooks.sort((a,b) => {
+        return -(a.price * a.numberOfElements - b.price * b.numberOfElements);
+      });
+      const bookId = this.orderBooks[0].bookId;
+
+      this.bookService.getSeeAlsoBooks(bookId).subscribe((books) => {
+        this.booksRec = books;
+      });
+
+      return;
+    }
+
     const bookExistsId = new Map<number, boolean>();
 
     this.orderBooks.forEach((book) => {
