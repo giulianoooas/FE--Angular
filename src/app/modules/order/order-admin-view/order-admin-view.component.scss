@@ -1,1 +1,26 @@
+.filter{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  background-color: white;
+  width: 50em;
+  border: 1px solid black;
+  border-radius: 8px;
+  height: 3em;
+  margin-left: 1em;
 
+  &-input{
+    width: 90%;
+    outline: 0;
+    border: 0;
+  }
+}
+
+.no-user-found{
+  width: 34em;
+  margin-left: 1em;
+  text-align: center;
+  font-size: 20px;
+  margin-top: 3em;
+}

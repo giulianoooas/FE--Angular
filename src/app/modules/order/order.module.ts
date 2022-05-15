@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { OrderSelectionComponent } from './order-selection/order-selection.component';
 import { OrderAdminViewComponent } from './order-admin-view/order-admin-view.component';
 import { OrderUserNameComponent } from './order-user-name/order-user-name.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { OrderUserNameComponent } from './order-user-name/order-user-name.compon
   imports: [
     CommonModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    ReactiveFormsModule
   ]
 })
 export class OrderModule { }

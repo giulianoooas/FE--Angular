@@ -1,6 +1,18 @@
+<form
+  class="filter"
+  [formGroup]="filter"
+>
+  <mat-icon>account_circle</mat-icon>
+  <input
+    mat-input
+    class="filter-input"
+    formControlName="userName"
+    placeholder="Filter users by name"
+  >
+</form>
 <div class="order-admin-view">
   <ng-container
-    *ngFor="let user of users"
+    *ngFor="let user of showingUsers"
   >
     <app-order-user-name
       [name]="user.name"
@@ -15,4 +27,10 @@
       [extraLeftSpace]="true"
     ></app-order-list>
   </ng-container>
+</div>
+<div
+  *ngIf="showingUsers.length === 0"
+  class="no-user-found"
+>
+  No Users found.
 </div>

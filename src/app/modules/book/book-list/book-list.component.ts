@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlgoService } from 'src/app/services/algo.service';
 import { Book, BookFilter } from '../../../models/book.model';
 import { BookService } from '../../../services/book.service';
 
@@ -11,7 +12,9 @@ export class BookListComponent implements OnInit {
   public isAdded = false;
   public books: Book[] = [];
   public filteredBooks: Book[] = [];
-  public constructor(private bookService: BookService) { }
+  public constructor(
+    private bookService: BookService,
+    private algoService: AlgoService) { }
 
   public ngOnInit(): void {
     this.bookService.getBooks().subscribe((books: Book[]) => {
@@ -26,7 +29,7 @@ export class BookListComponent implements OnInit {
       const min = Math.min(book.name.length, filter.name.length);
       if ((
         book.name.toLowerCase().includes(filter.name.toLowerCase()) ||
-        Math.abs(min - this.computeDistanceNamesDP(book.name,filter.name)) < 2 // are aproape toate caracterele la fel
+        Math.abs(min - this.algoService.computeDistanceNamesDP(book.name,filter.name)) < 2 // are aproape toate caracterele la fel
       ) && (
         book.categoryId === filter.category
         || filter.category === -1
@@ -48,30 +51,5 @@ export class BookListComponent implements OnInit {
         clearInterval(action);
       }
     },1000);
-  }
-
-  private computeDistanceNamesDP(str1: string, str2: string): number{
-    const matrix = [];
-    str1 = str1.toLowerCase();
-    str2 = str2.toLowerCase();
-    for (let i = 0; i < str1.length + 1; i ++){
-      const newMatrix = [];
-      for (let j = 0; j < str2.length + 1; j ++){
-        newMatrix.push(0);
-      }
-      matrix.push(newMatrix);
-    }
-
-    for (let i = 0; i < str1.length; i ++){
-      for (let j = 0; j < str2.length; j ++){
-        if (str1[i] == str2[j]){
-          matrix[i+1][j+1] = matrix[i][j] + 1;
-        } else {
-          matrix[i+1][j+1] = Math.max(matrix[i][j+1],matrix[i+1][j]);
-        }
-      }
-    }
-
-    return matrix[str1.length][str2.length];
   }
 }
