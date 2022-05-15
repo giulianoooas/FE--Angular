@@ -19,7 +19,7 @@
         </form>
     </div>
     <div class="category-element__details__buttons">
-      <ng-container *ngIf="isEditable && (userId == category.userId || isAdmin)">
+      <ng-container *ngIf="isEditable && (isLibrary || isAdmin)">
         <button class="button"
           mat-button
           (click)="editCategory()"
@@ -54,14 +54,14 @@
       </ng-container>
       <button class="button"
         mat-button
-        *ngIf="userId == category.userId || isAdmin"
+        *ngIf="isLibrary || isAdmin"
         (click)="makeEditable()"
       >
         Edit <mat-icon>edit</mat-icon>
       </button>
       <button class="button"
         mat-button
-        *ngIf="userId == category.userId || isAdmin"
+        *ngIf="isLibrary || isAdmin "
         (click)="deleteCategory()"
       >
         Delete <mat-icon>delete</mat-icon>

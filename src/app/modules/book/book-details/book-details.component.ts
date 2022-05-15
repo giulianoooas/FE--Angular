@@ -23,6 +23,7 @@ export class BookDetailsComponent implements OnInit {
   public hasComments = true;
   public userStatus: number;
   public isCustomer = false;
+  public isLibrary = false;
   public allUserStatus = UserStatusArray;
   public seeAlsoBooks: Book[] = [];
 
@@ -53,6 +54,7 @@ export class BookDetailsComponent implements OnInit {
     this.userId = this.authService.getUserId();
     this.isAdmin= this.authService.getIsAdmin();
     this.isCustomer = this.authService.getIsCustomer() || this.authService.getIsAdmin();
+    this.isLibrary = this.authService.getIsLibrary();
     const status = this.authService.getUserStatus();
     for (let i = 0; i < this.allUserStatus.length; i ++){
       if (this.allUserStatus[i] === status){

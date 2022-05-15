@@ -23,6 +23,7 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
     new EventEmitter<Category>();
   @Output() public hideBooksEvent: EventEmitter<number>= new EventEmitter<number>();
   public isAdmin = false;
+  public isLibrary = false;
 
   public maxLength = MAX_INPUT_CONSTANT_LENGTH_CATEGORIES;
   public isEditable = false;
@@ -46,6 +47,7 @@ export class CategoryElementComponent implements OnInit, OnDestroy {
       })
     );
     this.isAdmin = this.authService.getIsAdmin();
+    this.isLibrary = this.authService.getIsLibrary();
   }
 
   public requestToShowBooks(): void{

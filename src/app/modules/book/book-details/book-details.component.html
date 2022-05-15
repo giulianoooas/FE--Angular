@@ -20,7 +20,7 @@
             <button (click)="goBooksDashboard()" mat-button>See all books</button>
             <button mat-button
               (click)="editBook()"
-              *ngIf="isAdmin == true || userId === book.userId"
+              *ngIf="isAdmin == true || isLibrary"
             >
               Edit book
             </button>
@@ -28,7 +28,7 @@
           <div class="book-details__content__image--back">
             <button mat-button
               (click)="deleteBook()"
-              *ngIf="isAdmin || userId === book.userId"
+              *ngIf="isAdmin || isLibrary"
             >
               Delete book
             </button>
