@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { DialogService } from '../../../../app/services/dialog.service';
@@ -41,6 +42,7 @@ export class BookCreateComponent implements OnInit, OnDestroy {
     new Subscription();
 
   public constructor(
+    private titleService: Title,
     private bookService: BookService,
     private router: Router,
     private route: ActivatedRoute,
@@ -95,6 +97,7 @@ export class BookCreateComponent implements OnInit, OnDestroy {
         this.formGroup.controls['author'].setValue(book.author);
         this.bookId = book.bookId;
         this.book.bookId = book.bookId;
+        this.titleService.setTitle(book.name);
       })
     }
   }
@@ -164,5 +167,6 @@ export class BookCreateComponent implements OnInit, OnDestroy {
 
   public ngOnDestroy(): void{
     this.subscription.unsubscribe();
+    this.titleService.setTitle('Giuliano`s  Store');
   }
 }

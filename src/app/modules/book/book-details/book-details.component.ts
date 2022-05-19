@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserStatusArray } from 'src/app/models/user.model';
@@ -13,7 +13,7 @@ import { BookService } from '../../../services/book.service';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.scss']
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent implements OnInit, OnDestroy {
   public isAdded = false;
   public book: Book;
   public bookId: number;
@@ -40,6 +40,10 @@ export class BookDetailsComponent implements OnInit {
     this.setBook();
     this.setSeeAlsoBooks();
     this.setUser();
+  }
+
+  public ngOnDestroy(): void {
+    this.titleService.setTitle('Giuliano`s  Store');
   }
 
   private setSeeAlsoBooks(): void{
