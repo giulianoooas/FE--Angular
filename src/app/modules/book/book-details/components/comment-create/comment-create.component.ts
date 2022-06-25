@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
+import { TextValidatorAPI } from 'src/app/services/text-validator.api.service';
 import { MAX_INPUT_CONSTANT_LENGTH_COMMENTS } from '../../../../../constants/input-max-length.constant';
 import { Comment } from '../../../../../models/comment.model';
 import { AuthService } from '../../../../../services/auth.service';
@@ -21,7 +22,8 @@ export class CommentCreateComponent implements OnInit, OnDestroy {
   @Input()public bookId: number;
   @Output()public save: EventEmitter<Comment>= new EventEmitter<Comment>();
 
-  public constructor(private authService: AuthService){}
+  public constructor(private authService: AuthService,
+    private textValidatorApi: TextValidatorAPI){}
 
   public ngOnInit(): void {
     this.setCreatedComment();
@@ -49,7 +51,13 @@ export class CommentCreateComponent implements OnInit, OnDestroy {
 
   public createComment(): void{
     this.comment.date = new Date();
-    this.save.emit(this.comment);
+    const comment = {...this.comment};
+    this.textValidatorApi.getTextStatus(this.comment.message).subscribe((data) => {
+
+      if (data == '1'){
+        this.save.emit(comment);
+      }
+    });
     this.comment.message = '';
     this.formGroup.controls['message'].setValue('');
   }

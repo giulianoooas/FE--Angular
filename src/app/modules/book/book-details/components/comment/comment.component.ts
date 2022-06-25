@@ -5,6 +5,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import {Subscription } from 'rxjs';
 import { MAX_INPUT_CONSTANT_LENGTH_COMMENTS } from '../../../../../constants/input-max-length.constant';
 import { AuthService } from '../../../../../services/auth.service';
+import { TextValidatorAPI } from 'src/app/services/text-validator.api.service';
 
 @Component({
   selector: 'app-comment',
@@ -29,7 +30,8 @@ export class CommentComponent implements OnInit, OnDestroy {
     new EventEmitter<Comment>();
   @Input() public comment: Comment;
 
-  public constructor(private authService: AuthService) { }
+  public constructor(private authService: AuthService,
+    private textValidatorApi: TextValidatorAPI) { }
 
   public ngOnInit(): void {
     this.setComment();
@@ -64,9 +66,16 @@ export class CommentComponent implements OnInit, OnDestroy {
 
   public edit(): void{
     this.editedComment.date = new Date();
-    this.editComment.emit(this.editedComment);
-    this.message = this.editedComment.message;
-    this.date = formatDate(this.editedComment.date);
+    const comment = {...this.editedComment};
+    this.textValidatorApi.getTextStatus(comment.message).subscribe((data) => {
+
+      if (data == '1'){
+        this.editComment.emit(comment);
+        this.message = comment.message;
+        this.date = formatDate(comment.date);
+      }
+    });
+
     this.makeUnEditable();
   }
 
