@@ -6,7 +6,7 @@ import { Observable } from "rxjs";
   providedIn: 'root'
 })
 export class TextValidatorAPI{
-  private readonly endpoint = 'http://127.0.0.1:5000/comment-status';
+  private readonly endpoint = 'http://137.50.17.247:5000/comment-status';
 
   public constructor(
     private readonly http: HttpClient
